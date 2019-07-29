@@ -1,0 +1,73 @@
+<HTML>
+<!-- [template Report] -->
+
+<HEAD>
+  <TITLE>[Title] Master Action Report</TITLE>
+  <META NAME=Generator CONTENT="Grapevine LARP Administration Utility (www.GrapevineLARP.com)">
+  <STYLE TYPE="text/css">
+    <!--
+    H3 { font-family: Arial, sans-serif; margin-bottom: 0 };
+    B  { font-family: Arial, sans-serif };
+    TD { font-size: 75% };
+    TH { font-size: 75% ; font-family: Arial, sans-serif; background-color: #cccccc; text-align: center; border-bottom: solid 1px black };
+    -->
+  </STYLE>
+</HEAD>
+
+<BODY>
+
+  <CENTER>
+
+    <H3>[Title]<BR>Master Action Report</H3>
+    [#Actions] Actions
+    <P></P>
+
+    <!--[report Actions]-->
+
+      <TABLE WIDTH=75% STYLE="border:solid black 1px">
+
+        <TR>
+          <TH ALIGN=CENTER COLSPAN=4><H3>[Name] Actions</H3></TD>
+        </TR>
+
+        <TR>
+          <TD ALIGN=CENTER COLSPAN=4>[Date]</TD>
+        </TR>
+
+        <!--[repeat]-->
+
+          <TR>
+            <TH COLSPAN=4><P ALIGN=LEFT>[Type] Actions</P></TD>
+          </TR>
+
+          <TR>
+            <TD WIDTH=25%><B>Level:</B> [Level]</TD>
+            <TD WIDTH=25%><B>Unused:</B> [Unused]</TD>
+            <TD WIDTH=25%><B>of Total:</B> [Total]</TD>
+            <TD WIDTH=25%><B>Growth:</B> [Growth]</TD>
+          </TR>
+
+          <TR>
+            <TD COLSPAN=4><B>Actions:</B> [Action]</TD>
+          </TR>
+
+          <TR>
+            <TD COLSPAN=4><B>Results:</B> [Result]</TD>
+          </TR>
+
+        <!--[/repeat]-->
+
+      <TR>
+        <TH ALIGN=CENTER COLSPAN=4>&nbsp;</TD>
+      </TR>
+
+      </TABLE>
+
+      <P></P>
+
+    <!--[/report]-->
+
+  </CENTER>
+
+</BODY>
+</HTML>

@@ -1,0 +1,62 @@
+<HTML>
+<!-- [template Report] -->
+
+<HEAD>
+  <TITLE>[Title] Game Calendar</TITLE>
+  <META NAME=Generator CONTENT="Grapevine LARP Administration Utility (www.GrapevineLARP.com)">
+  <STYLE TYPE="text/css">
+    <!--
+    H3 { font-family: Arial, sans-serif; margin-bottom: 0 };
+    B  { font-family: Arial, sans-serif };
+    TD { font-size: 75% };
+    TH { font-size: 75% ; font-family: Arial, sans-serif; background-color: #cccccc; text-align: center; border-bottom: solid 1px black };
+    -->
+  </STYLE>
+</HEAD>
+
+<BODY>
+
+  <CENTER>
+  
+    <H3>[Title]</H3>
+    Game Calendar: [DateRange]
+    <BR>
+    
+    <TABLE WIDTH=50% NOBORDER>
+
+      <!--[!Email]-->
+        <TR>
+          <TD ALIGN=CENTER>Game E-Mail: <A HREF="mailto:[EMail]">[EMail]</A></TD>
+        </TR>      
+      <!--[/!]-->
+
+      <!--[!Website]-->
+        <TR>
+          <TD ALIGN=CENTER>Game Website: <A HREF="[Website]">[Website]</A></TD>
+        </TR>      
+      <!--[/!]-->
+
+      <!--[!Description]-->
+        <TR>
+          <TD>
+            <BR>
+            <P STYLE="font-size:133%">[Description]</P>
+          </TD>
+        </TR>      
+      <!--[/!]-->
+
+      <!--[report calendar][repeat]-->
+        <TR>
+          <TH WIDTH=100%>[dateformat dddd, mmmm d][Date], [dateformat h:mm AM/PM][Time]</TH>
+        </TR>
+        <TR>
+          <TD ALIGN=CENTER><P>[Place]</P><P></P></TD>
+        </TR>
+      <!--[/repeat][/report]-->
+
+    </TABLE>
+
+  </CENTER>
+
+</BODY>
+</HTML>

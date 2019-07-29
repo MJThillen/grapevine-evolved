@@ -1,0 +1,9 @@
+[SearchName]
+
+[Wrap 70][Terms][wrap 0]
+
+[#search] results found.
+
+Name   [col 35] Matching Value(s) [col 60] Sort Value
+----   [col 35] ----------------- [col 60] ----------[report search]
+[Name] [col 35] [MatchValue]      [col 60] [SortValue][/report]

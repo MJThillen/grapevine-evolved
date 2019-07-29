@@ -1,0 +1,115 @@
+<HTML>
+<!-- [template Player] -->
+<HEAD>
+  <TITLE>[Name] Player Point History</TITLE>
+  <META NAME=Generator CONTENT="Grapevine LARP Administration Utility (www.GrapevineLARP.com)">
+  <STYLE TYPE="text/css">
+    <!--
+    H3 { font-family: Arial, sans-serif; margin-bottom: 0 };
+    B  { font-family: Arial, sans-serif };
+    TD { font-size: 75% };
+    TH { font-size: 75% ; font-family: Arial, sans-serif; background-color: #cccccc; text-align: center; border-bottom: solid 1px black };
+    -->
+  </STYLE>
+</HEAD>
+
+<BODY>
+
+  <CENTER>
+
+    <H3>[Name]</H3>
+    <BR>
+    
+    <TABLE NOBORDER WIDTH=75%>
+
+      <TR>
+        <TD WIDTH=15%></TD>
+        <TD WIDTH=35%></TD>
+        <TD WIDTH=15%></TD>
+        <TD WIDTH=35%></TD>
+      </TR>
+
+      <TR>
+        <TH COLSPAN=4>&nbsp;</TD>
+      </TR>
+
+      <TR>
+        <TD ALIGN=RIGHT><B>Position:</B></TD>
+        <TD ALIGN=LEFT >[Position]</TD>
+        <TD ALIGN=RIGHT><B>Player ID:</B></TD>
+        <TD ALIGN=LEFT >[ID]</TD>
+      </TR>
+
+      <TR>
+        <TD ALIGN=RIGHT><B>Status:</B></TD>
+        <TD ALIGN=LEFT >[PlayStatus]</TD>
+        <TD ALIGN=RIGHT><B>Phone:</B></TD>
+        <TD ALIGN=LEFT >[Phone]</TD>
+      </TR>
+
+      <TR>
+        <TD ALIGN=RIGHT><B>E-Mail:</B></TD>
+        <TD ALIGN=LEFT COLSPAN=3><A HREF="mailto:[EMail]">[EMail]</A></TD>
+      </TR>
+
+      <TR>
+        <!--[!Address]-->
+          <TD VALIGN=TOP ALIGN=RIGHT><B>Address:</B></TD>
+          <TD VALIGN=TOP ALIGN=LEFT>[Address]</TD>
+        <!--[/!]-->
+        <!--[option Notes]-->
+          <TD VALIGN=TOP ALIGN=RIGHT><B>Notes:</B></TD>
+          <TD VALIGN=TOP ALIGN=LEFT>[Notes]</TD>
+        <!--[/option]-->
+      </TR>
+
+    </TABLE>
+    
+    <BR>
+    <H3>Player Point History</H3>
+    [DateRange]
+    <BR>
+
+    <!--[option History][dateformat yyyy-mmm-dd]-->
+
+      <TABLE NOBORDER WIDTH=75%>
+
+        <TR>
+          <TD WIDTH=20%></TD>
+          <TD WIDTH=20%></TD>
+          <TD WIDTH=10%></TD>
+          <TD WIDTH=50%></TD>
+        </TR>
+
+        <TR>
+          <TH COLSPAN=4>Current Player Points ([PrintDate])</TD>
+        </TR>
+
+        <TR>
+          <TD COLSPAN=4 ALIGN=CENTER>[PPUnspent] Unspent / [PPEarned] Earned</TD>
+        </TR>
+
+        <TR>
+          <TH>Date</TD>
+          <TH>Change</TD>
+          <TH>U/E</TD>
+          <TH>Reason</TD>
+        </TR>
+
+        <!--[repeat]-->
+          <TR>
+            <TD ALIGN=LEFT  >[Date]</TD>
+            <TD ALIGN=LEFT  >[ChangeText]</TD>
+            <TD ALIGN=CENTER>[Unspent]/[Earned]</TD>
+            <TD ALIGN=LEFT  >[Reason]</TD>
+          </TR>
+        <!--[/repeat]-->
+
+      </TABLE>
+
+    <!--[/option]-->
+
+  </CENTER>
+
+</BODY>
+</HTML>

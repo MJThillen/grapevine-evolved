@@ -1,0 +1,18 @@
+[StatName][statscale 40]
+Distinct values found: [col 35] [Count]
+[TotalLabel]:          [col 35] [Total]
+Maximum value:         [col 35] [Maximum] 
+
+--------------------------------------------------------------------------------
+Value [col 15] Number
+--------------------------------------------------------------------------------
+[report statistics]
+[Value] [col 15] [Number] [col 30] [Percent] [col 40][TextGraph][/report]
+
+--------------------------------------------------------------------------------
+Value [col 35] Characters
+--------------------------------------------------------------------------------
+[report statistics][Value][repeat][col 35] [CharName][!MatchValue] ([MatchValue])[/!]
+[/repeat][/report]
+
+

@@ -1,0 +1,52 @@
+<HTML>
+<!-- [template Report] -->
+<HEAD>
+  <TITLE>[Title] [SearchName] Report</TITLE>
+  <META NAME=Generator CONTENT="Grapevine LARP Administration Utility (www.GrapevineLARP.com)">
+  <STYLE TYPE="text/css">
+    <!--
+    H3 { font-family: Arial, sans-serif; margin-bottom: 0 };
+    B  { font-family: Arial, sans-serif };
+    TD { font-size: 75% };
+    TH { font-size: 75% ; font-family: Arial, sans-serif; background-color: #cccccc; text-align: center; border-bottom: solid 1px black };
+    -->
+  </STYLE>
+</HEAD>
+
+<BODY>
+
+  <CENTER>
+
+    <H3>[Title]<BR>[SearchName]</H3>
+    [#Search] Characters Found
+    <BR><BR>
+
+
+    <TABLE WIDTH=60% STYLE="border: black solid 1px">
+
+      <TR>
+        <TH WIDTH=33%>Name</TH>
+        <TH WIDTH=33%>Matching Value</TH>
+        <TH WIDTH=33%>Sort Value</TH>
+      </TR>
+
+      <!--[report Search]-->
+
+        <TR>
+          <TD>[Name]</TD>
+          <TD>[MatchValue]</TD>
+          <TD>[SortValue]</TD>
+        </TR>
+    
+      <!--[/report]-->
+
+      <TR>
+        <TH COLSPAN=3>[Terms]</TH>
+      </TR>
+
+    </TABLE>
+
+  </CENTER>
+
+</BODY>
+</HTML>

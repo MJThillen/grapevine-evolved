@@ -1,0 +1,7 @@
+[Title]
+Sign-In
+
+Present?[col 9] Name [col 40] Player
+--------[col 9] ---- [col 40] ------[report characters]
+________[col 9] [Name] [col 40] [Player][/report]
+[col 55][#characters] Characters

@@ -1,0 +1,119 @@
+<HTML>
+<!-- [template Report] -->
+<HEAD>
+  <TITLE>[Title] Influence Report</TITLE>
+  <META NAME=Generator CONTENT="Grapevine LARP Administration Utility (www.GrapevineLARP.com)">
+  <STYLE TYPE="text/css">
+    <!--
+    H3 { font-family: Arial, sans-serif; margin-bottom: 0 };
+    B  { font-family: Arial, sans-serif };
+    TD { font-size: 75% };
+    TH { font-size: 75% ; font-family: Arial, sans-serif; background-color: #cccccc; text-align: center; border-bottom: solid 1px black };
+    -->
+  </STYLE>
+</HEAD>
+
+<BODY>
+
+  <CENTER>
+
+    <H3>[Title]<br>Influence Report</H3>
+    [SearchName]<BR>
+    [PrintDate][statscale 100]<BR>
+    
+    <TABLE WIDTH=75%>
+
+      <TR>
+        <TD WIDTH=20%></TD>
+        <TD WIDTH=5% ></TD>
+        <TD WIDTH=5% ></TD>
+        <TD WIDTH=70%></TD>
+      </TR>
+
+      <TR>
+        <TD COLSPAN=4 ALIGN=CENTER STYLE="font-size: 100%"><B>Distinct Influences Found:</B> [Count]</TD>
+      </TR>
+
+      <TR>
+        <TD COLSPAN=4 ALIGN=CENTER ALIGN=RIGHT STYLE="font-size: 100%"><B>Total Influence Traits:</B> [Total]</TD>
+      </TR>
+
+      <TR>
+        <TD COLSPAN=4>&nbsp;</TD>
+      </TR>
+
+      <TR>
+        <TH COLSPAN=4 STYLE="font-size: 100%">Influence Sums</TD>
+      </TR>
+
+      <TR>
+        <TD COLSPAN=4>&nbsp;</TD>
+      </TR>
+
+      <!--[statfield influences][stattype sums]-->
+      <!--[report Statistics]-->
+
+        <TR>
+          <TD ALIGN=RIGHT><B>[Value]</B></TD>
+          <TD ALIGN=CENTER>[Number]</TD>
+          <TD ALIGN=CENTER>[Percent]</TD>
+          <TD ALIGN=LEFT><P STYLE="background-color: #cccccc; width: [scale]%; border: black solid 1px">&nbsp;</P></TD>
+        </TR>
+
+      <!--[/report]-->
+
+      <TR>
+        <TD COLSPAN=4>&nbsp;</TD>
+      </TR>
+
+      <TR>
+        <TH COLSPAN=4 STYLE="font-size: 100%">Influence Maxima</TD>
+      </TR>
+
+      <TR>
+        <TD COLSPAN=4>&nbsp;</TD>
+      </TR>
+
+      <!--[statfield influences][stattype maxima]-->
+      <!--[report Statistics]-->
+
+        <TR>
+          <TD ALIGN=RIGHT><B>[Value]</B></TD>
+          <TD ALIGN=CENTER>[Number]</TD>
+          <TD ALIGN=CENTER>[Percent]</TD>
+          <TD ALIGN=LEFT><P STYLE="background-color: #cccccc; width: [scale]%; border: black solid 1px">&nbsp;</P></TD>
+        </TR>
+
+      <!--[/report]-->
+
+      <TR>
+        <TD COLSPAN=4>&nbsp;</TD>
+      </TR>
+
+      <TR>
+        <TH COLSPAN=4 STYLE="font-size: 100%"><B>Characters Holding Influence</B></TD>
+      </TR>
+
+      <TR>
+        <TD COLSPAN=4>&nbsp;</TD>
+      </TR>
+
+      <!--[report Statistics]-->
+
+        <TR>
+          <TD ALIGN=RIGHT><B>[Value]</B></TD>
+          <TD ALIGN=CENTER>[CharCount]</TD>
+          <TD ALIGN=LEFT COLSPAN=2>
+            <!--[divider , ]-->
+            [repeat][CharName] ([MatchValue])[/repeat]
+          </TD>
+        </TR>
+
+      <!--[divider][/report]-->
+
+    </TABLE>
+
+  </CENTER>
+
+</BODY>
+</HTML>

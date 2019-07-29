@@ -1,0 +1,21 @@
+Influence Report for [SearchName][statscale 40]
+
+Distinct Influences Found: [Count]
+Total Influences:          [Total]
+
+===========================================================================
+Influence Sums[stattype sums][statfield influences]
+---------------------------------------------------------------------------[report statistics]
+[Value] [col 20] [Number] [col 25] [Percent] [col 35][TextGraph][/report]
+
+===========================================================================
+Influence Maxima[stattype maxima][statfield influences]
+---------------------------------------------------------------------------[report statistics]
+[Value] [col 20] [Number] [col 25] [Percent] [col 35][TextGraph][/report]
+
+===========================================================================
+Influence Held by Characters
+---------------------------------------------------------------------------
+[report Statistics][Value][repeat] [col 35] [CharName] ([MatchValue])
+[/repeat]---------------------------------------------------------------------------
+[/report]

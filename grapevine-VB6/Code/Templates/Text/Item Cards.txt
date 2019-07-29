@@ -1,0 +1,11 @@
+[wrap 70][report items]
+----------------------------------------------------------------------
+[Name]
+[Type] [Tally Level]              [col 35] [Subtype]
+[!Bonus 0]+[Bonus] Traits[/!]     [col 35] [!DamageType][DamageAmount] [DamageType][/!][repeat]
+[Abilities]                       [col 35] [Negatives][/repeat]
+Conceal: [Conceal]
+Appearance: [Appearance]
+Powers: [Powers]
+----------------------------------------------------------------------
+[/report]

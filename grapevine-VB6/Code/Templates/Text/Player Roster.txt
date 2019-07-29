@@ -1,0 +1,7 @@
+[Title]
+Player Roster
+[#players] Players [col 50][PrintDate]
+
+Name   [col 24] Status       [col 33] ID   [col 46] Phone   [col 61] EMail
+----   [col 24] ------       [col 33] --   [col 46] -----   [col 61] ----- [report players]
+[Name] [col 24] [PlayStatus] [col 33] [ID] [col 46] [Phone] [col 61] [EMail][/report]

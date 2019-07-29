@@ -1,0 +1,67 @@
+<HTML>
+<!-- [template Report] -->
+
+<HEAD>
+  <TITLE>[Title] Master Rumor Report</TITLE>
+  <META NAME=Generator CONTENT="Grapevine LARP Administration Utility (www.GrapevineLARP.com)">
+  <STYLE TYPE="text/css">
+    <!--
+    H3 { font-family: Arial, sans-serif; margin-bottom: 0 };
+    B  { font-family: Arial, sans-serif };
+    TD { font-size: 75% };
+    TH { font-size: 75% ; font-family: Arial, sans-serif; background-color: #cccccc; text-align: center; border-bottom: solid 1px black };
+    -->
+  </STYLE>
+</HEAD>
+
+<BODY>
+
+  <CENTER>
+
+    <H3>[Title]<BR>Master Rumor Report</H3>
+    [#Rumors] Rumors
+    <P></P>
+
+    <!--[report Rumors]-->
+
+      <TABLE WIDTH=75% STYLE="border:solid black 1px">
+
+        <TR>
+          <TH WIDTH=100%><H3>[Title] Rumors</H3></TD>
+        </TR>
+
+        <TR>
+          <TD ALIGN=CENTER>[Date]</TD>
+        </TR>
+
+        <!--[repeat]-->
+
+          <!--[!Level]-->
+            <TR>
+              <TH><P ALIGN=LEFT>Level [Level] [Title] Rumors</P></TD>
+            </TR>
+          <!--[/!]-->
+
+          <TR>
+            <TD>
+              <P>[Rumor]</P>
+              <P></P>
+            </TD>
+          </TR>
+
+        <!--[/repeat]-->
+
+        <TR>
+          <TH ALIGN=CENTER COLSPAN=4>&nbsp;</TD>
+        </TR>
+
+      </TABLE>
+
+      <P></P>
+
+    <!--[/report]-->
+
+  </CENTER>
+
+</BODY>
+</HTML>

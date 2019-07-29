@@ -1,0 +1,92 @@
+<HTML>
+<!-- [template Report][dateformat yyyy-mmm-dd] -->
+
+<HEAD>
+  <TITLE>[Title] Location Cards</TITLE>
+  <META NAME=Generator CONTENT="Grapevine LARP Administration Utility (www.GrapevineLARP.com)">
+  <STYLE TYPE="text/css">
+    <!--
+    H3 { font-family: Arial, sans-serif; margin-bottom: 0 };
+    B  { font-family: Arial, sans-serif };
+    TD { font-size: 75% };
+    TH { font-size: 75% ; font-family: Arial, sans-serif; background-color: #cccccc; text-align: center; border-bottom: solid 1px black };
+    -->
+  </STYLE>
+</HEAD>
+
+<BODY>
+
+  <CENTER>
+
+    <!--[report Locations]-->
+
+    <TABLE STYLE="width: 5in; height: 3in; border: solid 1px black">
+
+      <TR>
+        <TH ALIGN=LEFT COLSPAN=2>[Name]</TD>
+      </TR>
+
+      <TR>
+        <TD ALIGN=LEFT WIDTH=50%><B>[Type] [Tally Level]</B></TD>
+        <TD ALIGN=LEFT WIDTH=50%><B>Owner:</B> [Owner]</B></TD>
+      </TR>
+
+      <TR>
+        <TD><B>Access:</B> [Access]</TD>
+        <TD>[!Affinity]<B>Affinity:</B> [Affinity][/!]</TD>
+      </TR>
+
+      <TR>
+        <TD><B>[SecurityTraits] Security Traits</B></B></TD>
+        <TD>[!Totem]<B>Totem:</B> [Totem][/!]</TD>
+      </TR>
+
+      <TR>
+        <TD><B>[SecurityRetests] Security Retests</B></B></TD>
+        <TD><B>Gauntlet/Shroud:</B> [Gauntlet][/!]</TD>
+      </TR>
+
+      <!--[!Where]-->
+        <TR>
+          <TD COLSPAN=2><B>Where:</B> [Where]</TD>
+        </TR>
+      <!--[/!]-->
+
+      <!--[!Appearance]-->
+        <TR>
+          <TD COLSPAN=2><B>Appearance:</B> [Appearance]</TD>
+        </TR>
+      <!--[/!]-->
+
+      <!--[!Security]-->
+        <TR>
+          <TD COLSPAN=2><B>Security:</B> [Security]</TD>
+        </TR>
+      <!--[/!]-->
+
+      <!--[!Umbra]-->
+        <TR>
+          <TD COLSPAN=2><B>Umbra:</B> [Umbra]</TD>
+        </TR>
+      <!--[/!]-->
+
+      <TR>
+        <TD COLSPAN=2>
+          <!--[!#Links 0]-->
+            <B>Moon Bridges/Trods:</B>
+          <!--[/!]-->
+          [divider , ][repeat][Links][/repeat][divider]
+        </TD>
+      </TR>
+
+      <TR HEIGHT=100%>
+        <TD VALIGN=BOTTOM ALIGN=LEFT >[PrintDate]</TD>
+        <TD VALIGN=BOTTOM ALIGN=RIGHT>[GameTitle]</TD>
+      </TR>
+
+    </TABLE>
+
+    <!--[/report]-->
+
+</BODY>
+</HTML>

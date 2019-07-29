@@ -1,0 +1,19 @@
+[Title]
+Plot Report: [DateRange]
+[GameDate]
+[wrap 70][report plots]
+======================================================================
+[Title] 
+
+Start Date: [StartDate]        [col 35] End Date: [EndDate]
+Narrator:   [Narrator]         [col 35] Key Characters:[repeat]
+                               [col 35]    [KeyCharacters][/repeat]
+Outline:
+[Outline]
+[repeat]
+----------------------------------------------------------------------
+[DevDate] Plot Development
+
+[Development]
+[/repeat][/report]
+======================================================================

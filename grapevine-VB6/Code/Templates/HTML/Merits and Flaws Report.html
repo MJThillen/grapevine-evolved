@@ -1,0 +1,89 @@
+<HTML>
+<!-- [template Report] -->
+
+<HEAD>
+  <TITLE>[Title] Merits and Flaws Report</TITLE>
+  <META NAME=Generator CONTENT="Grapevine LARP Administration Utility (www.GrapevineLARP.com)">
+  <STYLE TYPE="text/css">
+    <!--
+    H3 { font-family: Arial, sans-serif; margin-bottom: 0 };
+    B  { font-family: Arial, sans-serif };
+    TD { font-size: 75% };
+    TH { font-size: 75% ; font-family: Arial, sans-serif; background-color: #cccccc; text-align: center; border-bottom: solid 1px black };
+    -->
+  </STYLE>
+</HEAD>
+
+<BODY>
+
+  <CENTER>
+
+    <H3>[Title]<br>Merits and Flaws Report</H3>
+    [SearchName]<BR>
+    [PrintDate]<BR>
+    
+    <TABLE WIDTH=75%>
+
+      <TR>
+        <TD WIDTH=20%></TD>
+        <TD WIDTH=5% ></TD>
+        <TD WIDTH=5% ></TD>
+        <TD WIDTH=70%></TD>
+      </TR>
+
+      <TR>
+        <TH COLSPAN=4 STYLE="font-size: 100%">Merits</TD>
+      </TR>
+
+      <TR>
+        <TD COLSPAN=4>&nbsp;</TD>
+      </TR>
+
+      <!--[statfield merits][stattype distinct]-->
+      <!--[report Statistics]-->
+
+        <TR>
+          <TD ALIGN=RIGHT><B>[Value]</B></TD>
+          <TD ALIGN=CENTER>[Number]</TD>
+          <TD ALIGN=CENTER>[Percent]</TD>
+          <TD ALIGN=LEFT>
+            <!--[divider , ]-->
+            [repeat][CharName] ([MatchValue])[/repeat]
+          </TD>
+        </TR>
+
+      <!--[divider][/report]-->
+
+      <TR>
+        <TD COLSPAN=4>&nbsp;</TD>
+      </TR>
+
+      <TR>
+        <TH COLSPAN=4 STYLE="font-size: 100%">Flaws</TD>
+      </TR>
+
+      <TR>
+        <TD COLSPAN=4>&nbsp;</TD>
+      </TR>
+
+      <!--[statfield flaws][stattype distinct]-->
+      <!--[report Statistics]-->
+
+        <TR>
+          <TD ALIGN=RIGHT><B>[Value]</B></TD>
+          <TD ALIGN=CENTER>[Number]</TD>
+          <TD ALIGN=CENTER>[Percent]</TD>
+          <TD ALIGN=LEFT>
+            <!--[divider , ]-->
+            [repeat][CharName] ([MatchValue])[/repeat]
+          </TD>
+        </TR>
+
+      <!--[divider][/report]-->
+
+    </TABLE>
+
+  </CENTER>
+
+</BODY>
+</HTML>

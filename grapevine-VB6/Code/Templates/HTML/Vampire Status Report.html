@@ -1,0 +1,56 @@
+<HTML>
+<!-- [template Report] -->
+
+<HEAD>
+  <TITLE>[Title] Vampire Status Report</TITLE>
+  <META NAME=Generator CONTENT="Grapevine LARP Administration Utility (www.GrapevineLARP.com)">
+  <STYLE TYPE="text/css">
+    <!--
+    H3 { font-family: Arial, sans-serif; margin-bottom: 0 };
+    B  { font-family: Arial, sans-serif };
+    TD { font-size: 75% };
+    TH { font-size: 75% ; font-family: Arial, sans-serif; background-color: #cccccc; text-align: center; border-bottom: solid 1px black };
+    -->
+  </STYLE>
+</HEAD>
+
+<BODY>
+
+  <CENTER>
+
+    <H3>[Title]<BR>
+    Vampire Status Report</H3>
+    [#Characters] Characters<BR>
+    [PrintDate][DateFormat mm/dd/yy]
+    <BR>
+
+    <TABLE WIDTH=75% NOBORDER>
+
+      <!--[report Characters]-->
+
+      <TR>
+        <TH WIDTH=25%><P ALIGN=LEFT>[Name]</P></TH>
+        <TH WIDTH=75%>[#Status] Status / [#Boons] Boons</TH>
+      </TR>
+
+      <TR> <!--[divider , ]-->
+        <TD VALIGN=TOP ALIGN=LEFT><B>[Title]</B>[!Title]<BR>[/!][Group]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER><P>[repeat][Status][/repeat]</P><P></P></TD>
+      </TR> <!--[divider]-->
+
+      <!--[option Boons]-->
+        <TR>
+          <TD VALIGN=TOP ALIGN=Right>[Date]&nbsp;</TD>
+          <TD VALIGN=TOP ALIGN=LEFT>
+            <B>[Name]</B>
+            [!Description]<BR>[Description]<BR><BR>[/!]
+          </TD>
+        </TR>
+      <!--[/option]-->
+
+      <!--[/report]-->
+
+    </TABLE>
+
+</BODY>
+</HTML>

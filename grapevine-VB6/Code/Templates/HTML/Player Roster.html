@@ -1,0 +1,67 @@
+<HTML>
+<!-- [template Report] -->
+
+<HEAD>
+  <TITLE>[Title] Player Roster</TITLE>
+  <META NAME=Generator CONTENT="Grapevine LARP Administration Utility (www.GrapevineLARP.com)">
+  <STYLE TYPE="text/css">
+    <!--
+    H3 { font-family: Arial, sans-serif; margin-bottom: 0 };
+    B  { font-family: Arial, sans-serif };
+    TD { font-size: 75% };
+    TH { font-size: 75% ; font-family: Arial, sans-serif; background-color: #cccccc; text-align: center; border-bottom: solid 1px black };
+    -->
+  </STYLE>
+</HEAD>
+
+<BODY>
+
+  <CENTER>
+
+    <H3>[Title]<BR>
+    Player Roster</H3>
+    [#Players] Characters<BR>
+    [PrintDate]
+    <BR>
+
+    <TABLE WIDTH=100% NOBORDER>
+
+      <TR>
+        <TD WIDTH=20%></TD>
+        <TD WIDTH=10%></TD>
+        <TD WIDTH=10%></TD>
+        <TD WIDTH=10%></TD>
+        <TD WIDTH=20%></TD>
+        <TD WIDTH=20%></TD>
+      </TR>
+
+      <TR>
+        <TH>Name</TH>
+        <TH>Position</TH>
+        <TH>Status</TH>
+        <TH>ID</TH>
+        <TH>E-Mail</TH>
+        <TH>Phone</TH>
+      </TR>
+
+      <!--[report Players]-->
+
+      <TR>
+        <TD>[Name]</TD>
+        <TD ALIGN=CENTER>[Position]</TD>
+        <TD ALIGN=CENTER>[PlayStatus]</TD>
+        <TD ALIGN=CENTER>[ID]</TD>
+        <TD><A HREF="mailto:[EMail]">[EMail]</A></TD>
+        <TD>[Phone]</TD>
+      </TR>
+    
+      <!--[/report]-->
+
+      <TR>
+        <TH COLSPAN=6>&nbsp;</TH>
+      </TR>
+
+    </TABLE>
+
+</BODY>
+</HTML>

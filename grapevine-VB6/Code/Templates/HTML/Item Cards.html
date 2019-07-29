@@ -1,0 +1,71 @@
+<HTML>
+<!-- [template Report] -->
+
+<HEAD>
+  <TITLE>[Title] Item Cards</TITLE>
+  <META NAME=Generator CONTENT="Grapevine LARP Administration Utility (www.GrapevineLARP.com)">
+  <STYLE TYPE="text/css">
+    <!--
+    H3 { font-family: Arial, sans-serif; margin-bottom: 0 };
+    B  { font-family: Arial, sans-serif };
+    TD { font-size: 75% };
+    TH { font-size: 75% ; font-family: Arial, sans-serif; background-color: #cccccc; text-align: center; border-bottom: solid 1px black };
+    -->
+  </STYLE>
+</HEAD>
+
+<BODY>
+
+  <CENTER>
+
+    <!--[report Items]-->
+
+    <TABLE STYLE="width: 5in; height: 3in; border: solid 1px black">
+
+      <TR>
+        <TH ALIGN=LEFT COLSPAN=2>[Name]</TD>
+      </TR>
+
+      <TR>
+        <TD ALIGN=LEFT WIDTH=50%><B>[Type] [Tally Level]</B></TD>
+        <TD ALIGN=LEFT WIDTH=50%><B>[!Bonus 0]+[Bonus] Traits[/!]</B></TD>
+      </TR>
+
+      <TR>
+        <TD><B>[Subtype]</B></TD>
+        <TD><B>[!DamageType][DamageAmount] [DamageType][/!]</B></TD>
+      </TR>
+
+      <TR> <!--[divider <br>]-->
+        <TD VALIGN=TOP><B>[repeat][Tempers][/repeat]</B></TD>
+        <TD VALIGN=TOP>[!Conceal]<B>Concealability:</B> [Conceal][/!]</TD>
+      </TR>
+
+      <TR> 
+        <TD ALIGN=CENTER VALIGN=TOP>[repeat][Abilities][/repeat]</TD>
+        <TD ALIGN=CENTER VALIGN=TOP>[repeat][Negatives][/repeat]</TD>
+      </TR> <!--[divider]-->
+
+      <!--[!Appearance]-->
+        <TR>
+          <TD COLSPAN=2><B>Appearance:</B> [Appearance]</TD>
+        </TR>
+      <!--[/!]-->
+
+      <!--[!Powers]-->
+        <TR>
+          <TD COLSPAN=2><B>Powers:</B> [Powers]</TD>
+        </TR>
+      <!--[/!]-->
+
+      <TR HEIGHT=100%>
+        <TD VALIGN=BOTTOM ALIGN=LEFT >[PrintDate]</TD>
+        <TD VALIGN=BOTTOM ALIGN=RIGHT>[GameTitle]</TD>
+      </TR>
+
+    </TABLE>
+
+    <!--[/report]-->
+
+</BODY>
+</HTML>

@@ -1,0 +1,548 @@
+<?xml version="1.0"?>
+<grapevinemenus version="2.399" size="55">
+  <description>
+    <![CDATA[Added content new in 2.4/3.0 BETA.]]>
+  </description>
+  <menu name="Abilities, Vampire" category="2" abc="yes" required="yes" display="0">
+    <include name="Abilities"/>
+    <item name="Alertness"/>
+    <item name="Commerce"/>
+    <item name="Hearth Wisdom"/>
+    <item name="Legerdemain"/>
+    <item name="Theology"/>
+  </menu>
+  <menu name="Abombwe" category="2" abc="no" autonote="yes" display="5">
+    <item name="Predator's Communion" cost="3" note="basic"/>
+    <item name="Taming the Beast" cost="3" note="basic"/>
+    <item name="Whistling Up the Beast" cost="6" note="int."/>
+    <item name="Devil-Channel" cost="6" note="DELETE"/>
+    <item name="Beast-Channel" cost="6" note="int."/>
+    <item name="Taking the Skin" cost="9" note="adv."/>
+    <item name="Predator's Mastery" cost="12" note="elder"/>
+  </menu>
+  <menu name="Access" abc="yes" required="yes" display="0">
+    <item name="Private"/>
+    <item name="Public"/>
+    <item name="Secret"/>
+  </menu>
+  <menu name="Animalism" category="2" abc="no" autonote="yes" display="5">
+    <item name="Feral Whispers" cost="3" note="basic"/>
+    <item name="Beckoning" cost="3" note="basic"/>
+    <item name="Quell the Beast" cost="6" note="int."/>
+    <item name="Subsume the Spirit" cost="6" note="int."/>
+    <item name="Drawing Out the Beast" cost="3" note="adv."/>
+    <item name="Animal Succulence" cost="12" note="elder"/>
+    <item name="Eye of the Szlachta" cost="12" note="elder tzimisce"/>
+    <item name="Quell the Herd" cost="12" note="elder gangrel"/>
+    <item name="Shared Soul" cost="12" note="elder"/>
+    <item name="Song in the Dark" cost="12" note="elder nosferatu"/>
+    <item name="Species Speech" cost="12" note="elder"/>
+    <item name="Conquer the Beast" cost="15" note="master"/>
+    <item name="Stampede" cost="15" note="master gangrel"/>
+    <item name="Crimson Fury" cost="18" note="asc. gangrel"/>
+    <item name="Taunt the Caged Beast" cost="18" note="asc."/>
+    <item name="Eyes of the Forest" cost="21" note="meth. gangrel"/>
+    <item name="Unchain the Beast" cost="21" note="meth."/>
+    <item name="Beast Within" cost="3" note="basic, 2nd ed."/>
+    <item name="Song of Serenity" cost="6" note="int., 2nd ed."/>
+    <item name="Embrace the Beast" cost="9" note="adv., 2nd ed."/>
+    <item name="Feral Speech" cost="3" note="basic, dark ages"/>
+    <item name="Noah's Call" cost="3" note="basic, dark ages"/>
+    <item name="Cowing the Beast" cost="6" note="int., dark ages"/>
+    <item name="Ride the Wild Mind" cost="6" note="int., dark ages"/>
+  </menu>
+  <menu name="Aura" category="2" abc="yes" required="yes" display="0">
+    <item name="Command"/>
+    <item name="Holiness"/>
+    <item name="Menace"/>
+    <item name="Normalcy"/>
+    <item name="Seduction"/>
+  </menu>
+  <menu name="Auspex" category="2" abc="no" autonote="yes" display="5">
+    <item name="Heightened Senses" cost="3" note="basic"/>
+    <item name="Aura Perception" cost="3" note="basic"/>
+    <item name="Spirit's Touch" cost="6" note="int."/>
+    <item name="Telepathy" cost="6" note="int."/>
+    <item name="Psychic Projection" cost="9" note="adv."/>
+    <item name="Babble" cost="12" note="elder malkavian"/>
+    <item name="Clairvoyance" cost="12" note="elder"/>
+    <item name="Crocodile's Tongue" cost="12" note="elder toreador"/>
+    <item name="Prediction" cost="12" note="elder"/>
+    <item name="Sibyl's Tongue" cost="12" note="elder malkavian"/>
+    <item name="Soul Scan" cost="12" note="elder"/>
+    <item name="Telepathic Communication" cost="12" note="elder"/>
+    <item name="Anima Gathering" cost="15" note="master assamite"/>
+    <item name="Karmic Sight" cost="15" note="master"/>
+    <item name="Mirror Reflex" cost="15" note="master"/>
+    <item name="The Call" cost="18" note="asc. malkavian"/>
+    <item name="Psychic Assault" cost="18" note="asc."/>
+    <item name="False Slumber" cost="21" note="meth."/>
+    <item name="Soulsight" note="basic, dark ages"/>
+    <item name="Steal Secrets" cost="3" note="int., dark ages"/>
+    <item name="Anima Walk" note="adv., dark ages"/>
+    <item name="Farsight" cost="12" note="elder, dark ages"/>
+  </menu>
+  <menu name="Availability" abc="no" required="yes" display="0">
+    <item name="Any"/>
+    <item name="Unique"/>
+    <item name="Resources"/>
+    <include name="Influences"/>
+    <item name="Arsenal"/>
+  </menu>
+  <menu name="Backgrounds, Vampire" category="2" abc="yes" required="yes" display="0">
+    <item name="Alternate Identity"/>
+    <include name="Backgrounds"/>
+    <item name="Domain"/>
+    <item name="Generation"/>
+    <item name="Herd"/>
+    <item name="Information Network"/>
+    <item name="Military Force"/>
+    <item name="Spirit Slaves"/>
+  </menu>
+  <menu name="Boons" category="2" abc="no" required="yes" display="0">
+    <item name="Trivial Boon"/>
+    <item name="Minor Boon"/>
+    <item name="Major Boon"/>
+    <item name="Blood Boon"/>
+    <item name="Life Boon"/>
+  </menu>
+  <menu name="Cadaverous Animation" category="2" abc="no" autonote="yes" display="5">
+    <item name="Trace of Life" cost="3" note="basic"/>
+    <item name="Call the Homuncular Servant" cost="3" note="basic"/>
+    <item name="Raise the Corpse to Service" cost="6" note="int."/>
+    <item name="Call the Athanatos" cost="6" note="int."/>
+    <item name="Muster the Corpse Army" cost="9" note="adv."/>
+  </menu>
+  <menu name="Camps, Werewolf" category="3" abc="yes" required="yes" display="0">
+    <item name="Bringers of Eternal Peace"/>
+    <item name="Gluskap's Lodge"/>
+    <item name="Grandchildren of Fionn"/>
+    <item name="Mother's Fundamentalists"/>
+    <item name="Myeengun's Lodge"/>
+    <item name="Renewalists"/>
+    <item name="Seekers of the Lost Tribes"/>
+    <item name="Wyld Children"/>
+  </menu>
+  <menu name="Chimerstry" category="2" abc="no" autonote="yes" display="5">
+    <item name="Ingis Fatuus" cost="3" note="DELETE"/>
+    <item name="Ignis Fatuus" cost="3" note="basic"/>
+    <item name="Fata Morgana" cost="3" note="basic"/>
+    <item name="Apparition" cost="6" note="int."/>
+    <item name="Permanency" cost="6" note="int."/>
+    <item name="Horrid Reality" cost="9" note="adv."/>
+    <item name="False Resonance" cost="12" note="elder"/>
+    <item name="Fatuus Mastery" cost="12" note="elder"/>
+    <item name="Mass Reality" cost="12" note="elder"/>
+    <item name="Pseudo Blindness" cost="12" note="elder"/>
+    <item name="Shared Nightmare" cost="12" note="elder"/>
+    <item name="Far Fatuus" cost="15" note="master"/>
+    <item name="Suspension of Disbelief" cost="15" note="master"/>
+    <item name="Occlusion" cost="18" note="asc."/>
+    <item name="Mayaparisatya" cost="21" note="meth."/>
+    <item name="Dweomer" cost="3" note="basic, dark ages"/>
+    <item name="Mass Horror" cost="12" note="elder, dark ages"/>
+    <item name="Minor Illusion" cost="3" note="basic, 2nd ed."/>
+    <item name="Complex Illusion" cost="6" note="int., 2nd ed."/>
+  </menu>
+  <menu name="Corpse in the Monster" category="2" abc="no" autonote="yes" display="5">
+    <item name="Masque of Death" cost="3" note="basic"/>
+    <item name="Cold of the Grave" cost="3" note="basic"/>
+    <item name="Curse of Life" cost="6" note="int."/>
+    <item name="Gift of the Corpse" cost="6" note="int."/>
+    <item name="Gift of Life" cost="9" note="adv."/>
+  </menu>
+  <menu name="Daimoinon" category="2" abc="no" autonote="yes" display="5">
+    <item name="Sense the Sin" cost="3" note="basic"/>
+    <item name="Fear of the Void" cost="3" note="basic"/>
+    <item name="Conflagration" cost="6" note="int."/>
+    <item name="Psychomachia" cost="6" note="int."/>
+    <item name="Condemnation" cost="9" note="adv."/>
+    <item name="Concordance" cost="12" note="elder"/>
+    <item name="Summon the Herald of Topheth" cost="15" note="master"/>
+    <item name="Contagion" cost="18" note="asc."/>
+    <item name="Call the Great Beast" cost="21" note="meth."/>
+    <item name="Essence of the Netherworld" cost="6" note="int., dark ages"/>
+    <item name="Curse" cost="9" note="adv., dark ages"/>
+    <item name="Hell-Born Investiture" cost="12" note="elder, dark ages"/>
+  </menu>
+  <menu name="Dementation" category="2" abc="no" autonote="yes" display="5">
+    <item name="Passion" cost="3" note="basic"/>
+    <item name="The Haunting" cost="3" note="basic"/>
+    <item name="Eyes of Chaos" cost="6" note="int."/>
+    <item name="Voice of Madness" cost="6" note="int."/>
+    <item name="Total Insanity" cost="9" note="adv."/>
+    <item name="Babble" cost="12" note="elder"/>
+    <item name="The Call" cost="12" note="elder"/>
+    <item name="Kindred Spirits" cost="12" note="elder"/>
+    <item name="Lingering Malaise" cost="12" note="elder"/>
+    <item name="Mind of a Killer" cost="12" note="elder"/>
+    <item name="Shattered Mirror" cost="12" note="elder"/>
+    <item name="Childmind" cost="15" note="master"/>
+    <item name="Restructure" cost="15" note="master"/>
+    <item name="Sleep of Reason" cost="15" note="master"/>
+    <item name="Deny" cost="18" note="asc."/>
+    <item name="Personal Scourge" cost="18" note="asc."/>
+    <item name="Lunatic Eruption" cost="21" note="meth."/>
+    <item name="Incubus Passion" cost="3" note="basic, dark ages"/>
+    <item name="Haunt the Soul" cost="3" note="basic, dark ages"/>
+    <item name="Silence the Sane Mind" cost="6" note="int., dark ages"/>
+    <item name="Howling Lunacy" cost="9" note="adv., dark ages"/>
+    <item name="Kiss of the Moon" cost="12" note="elder, dark ages"/>
+    <item name="Mind Tricks" cost="3" note="basic, 2nd ed."/>
+    <item name="Confusion" cost="6" note="int., 2nd ed."/>
+  </menu>
+  <menu name="Derangements" abc="yes" required="yes" display="0">
+    <item name="Possession"/>
+    <item name="Saint Vitus's Dance" cost="2"/>
+    <item name="Visions" cost="2"/>
+  </menu>
+  <menu name="Disciplines" category="2" abc="no" autonote="yes" required="yes" display="5">
+    <submenu name="Flight"/>
+    <submenu name="Gargoyle Powers"/>
+  </menu>
+  <menu name="Dominate" category="2" abc="no" autonote="yes" display="5">
+    <item name="Command" cost="3" note="basic"/>
+    <item name="Mesmerism" cost="3" note="basic"/>
+    <item name="Forgetful Mind" cost="6" note="int."/>
+    <item name="Conditioning" cost="6" note="int."/>
+    <item name="Possession" cost="9" note="adv."/>
+    <item name="Chain the Psyche" cost="12" note="elder"/>
+    <item name="Loyalty" cost="12" note="elder"/>
+    <item name="Obedience" cost="12" note="elder"/>
+    <item name="Oberon's Grail" cost="12" note="elder tremere"/>
+    <item name="Rationale" cost="12" note="elder"/>
+    <item name="Mass Manipulation" cost="15" note="master"/>
+    <item name="Still the Mortal Flesh" cost="15" note="master"/>
+    <item name="Far Mastery" cost="18" note="asc."/>
+    <item name="Speak Through the Blood" cost="21" note="meth."/>
+    <item name="Observance of the Spoken Word" cost="3" note="basic, dark ages"/>
+    <item name="Murmur of the False Will" cost="3" note="basic, dark ages"/>
+    <item name="Reveler's Memory" cost="6" note="int., dark ages"/>
+    <item name="Lure of Subtle Whispers" cost="6" note="int., dark ages"/>
+    <item name="Vessel" cost="9" note="adv., dark ages"/>
+    <item name="Fealty" cost="12" note="elder, dark ages"/>
+  </menu>
+  <menu name="Elemental Mastery" category="2" abc="no" autonote="yes" display="5">
+    <item name="Elemental Strength" cost="3" note="basic"/>
+    <item name="Wooden Tongues" cost="3" note="basic"/>
+    <item name="Animate the Unmoving" cost="6" note="int."/>
+    <item name="Elemental Form" cost="6" note="int."/>
+    <item name="Summon Elemental" cost="9" note="adv."/>
+    <item name="Earth-Born Strength" cost="3" note="basic, dark ages"/>
+  </menu>
+  <menu name="Flaws, Vampire" category="2" abc="yes" negative="yes" required="yes" display="4">
+    <item name="Cannot Embrace" cost="2"/>
+    <item name="Diseased" cost="1-5"/>
+    <item name="Flesh Eater" cost="4"/>
+    <item name="Leper" cost="1-3"/>
+    <item name="Ragged Bite" cost="2"/>
+    <item name="Religious Prohibition" cost="2 or 4"/>
+    <item name="Thirteenth Generation" cost="2"/>
+  </menu>
+  <menu name="Flight" category="2" abc="no" autonote="yes" display="5">
+    <item name="15 mph" note="DELETE"/>
+    <item name="30 mph" note="DELETE"/>
+    <item name="45 mph" note="DELETE"/>
+    <item name="60 mph" note="DELETE"/>
+    <item name="75 mph" note="DELETE"/>
+    <item name="Glide" cost="3" note="basic"/>
+    <item name="Fly" cost="3" note="basic"/>
+    <item name="Swoop" cost="6" note="int."/>
+    <item name="Soar" cost="6" note="int."/>
+    <item name="Flight of the Eagle" cost="9" note="adv."/>
+    <item name="One with the Wind" cost="12" note="elder"/>
+    <item name="Pounce" cost="2"/>
+    <item name="Slam" cost="2"/>
+    <item name="Dive" cost="2"/>
+  </menu>
+  <menu name="Gargoyle Powers" category="2" abc="yes" autonote="yes" display="5">
+    <item name="Embrace" cost="9"/>
+    <item name="Extra Arms" cost="6"/>
+    <item name="Foulness" cost="3"/>
+    <item name="Heightened Senses" cost="6"/>
+    <item name="Horror" cost="9"/>
+    <item name="Huge Size" cost="6"/>
+    <submenu name="Ritual" link="Rituals, Gargoyle"/>
+    <item name="Talons or Claws" cost="6"/>
+    <item name="Terrifying Visage" cost="3"/>
+  </menu>
+  <menu name="Grave's Decay" category="2" abc="no" autonote="yes" display="5">
+    <item name="Destroy the Husk" cost="3" note="basic"/>
+    <item name="Rigor Mortis" cost="3" note="basic"/>
+    <item name="Wither" cost="6" note="int."/>
+    <item name="Corrupt the Undead Flesh" cost="6" note="int."/>
+    <item name="Dissolve the Flesh" cost="9" note="adv."/>
+  </menu>
+  <menu name="Merits, Vampire" category="2" abc="yes" required="yes" display="4">
+    <item name="Berserker" cost="2-3"/>
+    <item name="Crusader"/>
+  </menu>
+  <menu name="Mortis" category="2" abc="no" autonote="yes" display="5">
+    <item name="Masque of Death" cost="3" note="basic"/>
+    <item name="Blight" cost="3" note="basic"/>
+    <item name="Awaken" cost="6" note="int."/>
+    <item name="Black Death" cost="9" note="adv."/>
+    <item name="Plague Wind" cost="12" note="elder"/>
+    <item name="Sense Death's Imminence" cost="12" note="elder"/>
+    <submenu name="Grave's Decay"/>
+    <submenu name="Corpse in the Monster"/>
+    <submenu name="Cadaverous Animation"/>
+    <submenu name="Four Humours"/>
+  </menu>
+  <menu name="Obtenebration" category="2" abc="no" autonote="yes" display="5">
+    <item name="Shadow Play" cost="3" note="basic"/>
+    <item name="Shroud of Night" cost="3" note="basic"/>
+    <item name="Arms of the Abyss" cost="6" note="int."/>
+    <item name="Black Metamorphosis" cost="6" note="int."/>
+    <item name="Shadow Body" cost="9" note="adv."/>
+    <item name="Darkness Within" cost="12" note="elder"/>
+    <item name="Eyes of the Night" cost="12" note="elder"/>
+    <item name="Shadowstep" cost="12" note="elder"/>
+    <item name="Shadow Twin" cost="15" note="master"/>
+    <item name="Oubliette" cost="18" note="asc."/>
+    <item name="Ahriman's Demesne" cost="21" note="meth."/>
+    <item name="Nocturne" cost="3" note="basic, dark ages"/>
+    <item name="Arms of Ahriman" cost="6" note="int., dark ages"/>
+    <item name="Nightshades" cost="6" note="int., dark ages"/>
+    <item name="Tenebrous Avatar" cost="9" note="adv., dark ages"/>
+    <item name="Walk the Abyss" cost="12" note="elder, dark ages"/>
+  </menu>
+  <menu name="Ogham" category="2" abc="no" autonote="yes" display="5">
+    <item name="Consecrate the Grove" cost="3" note="basic"/>
+    <item name="Crimson Woad" cost="3" note="basic"/>
+    <item name="Inscribe the Curse" cost="6" note="int."/>
+    <item name="Moon and Sun" cost="6" note="int."/>
+    <item name="Drink Dry the Earth" cost="9" note="adv."/>
+    <item name="Inscribe the Forgotten Names" cost="12" note="elder"/>
+  </menu>
+  <menu name="Path" category="2" abc="yes" required="yes" display="0">
+    <item name="Road of Bones"/>
+    <item name="Road of Kings"/>
+    <item name="Road of Metamorphosis"/>
+    <item name="Road of Night"/>
+    <item name="Road of Sin"/>
+    <item name="Road of the Serpent"/>
+  </menu>
+  <menu name="Position, Werewolf" category="3" abc="yes" required="yes" display="0">
+    <item name="Pack Alpha"/>
+    <item name="Pack Beta"/>
+  </menu>
+  <menu name="Presence" category="2" abc="no" autonote="yes" display="5">
+    <item name="Awe" cost="3" note="basic"/>
+    <item name="Dread Gaze" cost="3" note="basic"/>
+    <item name="Entrancement" cost="6" note="int."/>
+    <item name="Summon" cost="6" note="int."/>
+    <item name="Majesty" cost="9" note="adv."/>
+    <item name="Absent Sway" cost="12" note="elder toreador"/>
+    <item name="Love" cost="12" note="elder"/>
+    <item name="Mind Numb" cost="12" note="elder"/>
+    <item name="Paralyzing Glance" cost="12" note="elder"/>
+    <item name="Passion" cost="12" note="elder, dark ages"/>
+    <item name="Spark of Rage" cost="12" note="elder"/>
+    <item name="Temptation" cost="12" note="elder setite"/>
+    <item name="Cooperation" cost="15" note="master"/>
+    <item name="Father Knows Best" cost="15" note="master"/>
+    <item name="Phobia" cost="15" note="master setite"/>
+    <item name="Corruption" cost="18" note="asc. setite"/>
+    <item name="Ironclad Command" cost="18" note="asc."/>
+    <item name="Pulse of the City" cost="21" note="meth."/>
+  </menu>
+  <menu name="Protean" category="2" abc="no" autonote="yes" display="5">
+    <item name="Eyes of the Beast" cost="3" note="basic"/>
+    <item name="Feral Claws" cost="3" note="basic"/>
+    <item name="Earth Meld" cost="6" note="int."/>
+    <item name="Shape of the Beast" cost="6" note="int."/>
+    <item name="Mist Form" cost="9" note="adv."/>
+    <item name="Earth Control" cost="12" note="elder"/>
+    <item name="Flesh of Marble" cost="12" note="elder"/>
+    <item name="Form of the Ghost" cost="12" note="elder"/>
+    <item name="Shape Mastery" cost="12" note="elder"/>
+    <item name="Animal Swarm" cost="15" note="master"/>
+    <item name="Restore the Mortal Visage" cost="15" note="master"/>
+    <item name="Shape of the Beast's Wrath" cost="15" note="master"/>
+    <item name="Spectral Body" cost="15" note="master"/>
+    <item name="Mythic Form" cost="18" note="asc."/>
+    <item name="Purify the Impaled Breast" cost="18" note="asc."/>
+    <item name="Inward Focus" cost="21" note="meth."/>
+    <item name="Witness of Darkness" cost="3" note="basic, dark ages"/>
+    <item name="Talons of the Beast" cost="3" note="basic, dark ages"/>
+    <item name="Interred in Earth" cost="3" note="basic, dark ages"/>
+    <item name="Form of the Beast" cost="6" note="int., dark ages"/>
+    <item name="Body of Spirit" cost="9" note="adv., dark ages"/>
+    <item name="Blissful Slumber" cost="12" note="elder, dark ages"/>
+    <item name="Wolf Claws" cost="3" note="basic, 2nd ed."/>
+    <item name="Shadow of the Beast" cost="6" note="int., 2nd ed."/>
+    <item name="Form of Mist" cost="9" note="adv., 2nd ed."/>
+  </menu>
+  <menu name="Quietus" category="2" abc="no" autonote="yes" display="5">
+    <item name="Silence of Death" cost="3" note="basic"/>
+    <item name="Scorpion's Touch" cost="3" note="basic"/>
+    <item name="Dagon's Call" cost="6" note="int."/>
+    <item name="Baal's Caress" cost="6" note="int."/>
+    <item name="Taste of Death" cost="9" note="adv."/>
+    <item name="Blood Sweat" cost="12" note="elder"/>
+    <item name="Foul Blood" cost="12" note="elder"/>
+    <item name="Selective Silence" cost="12" note="elder"/>
+    <item name="Ripples of the Heart" cost="12" note="elder"/>
+    <item name="Purification" cost="12" note="elder"/>
+    <item name="Baal's Bloody Talons" cost="15" note="master"/>
+    <item name="Hinder the Cainite Vitae" cost="15" note="master"/>
+    <item name="Poison the Well of Life" cost="15" note="master"/>
+    <item name="Songs of Distant Vitae" cost="18" note="asc."/>
+    <item name="Condemn the Sins of the Father" cost="21" note="meth."/>
+    <item name="Silence of Fiery Blood" cost="3" note="basic, dark ages"/>
+    <item name="Blood Essence" cost="9" note="adv., dark ages"/>
+    <item name="Poison Blade" cost="6" note="int., 2nd ed."/>
+  </menu>
+  <menu name="Revenant" category="4" abc="yes" display="0">
+    <item name="Krevcheski"/>
+    <item name="Szantovich"/>
+    <item name="Vlasy"/>
+  </menu>
+  <menu name="Rituals" category="2" abc="no" required="yes" display="0">
+    <submenu name="Basic" link="Rituals, Basic"/>
+    <submenu name="Intermediate" link="Rituals, Intermediate"/>
+    <submenu name="Advanced" link="Rituals, Advanced"/>
+    <submenu name="Superior" link="Rituals, Superior"/>
+    <submenu name="Sabbat" link="Rituals, Sabbat"/>
+    <submenu name="Assamite" link="Rituals, Assamite"/>
+    <submenu name="Dark Thaumaturgy" link="Rituals, Dark Thaumaturgy"/>
+    <submenu name="Mortis" link="Rituals, Mortis"/>
+    <submenu name="Gargoyle" link="Rituals, Gargoyle"/>
+    <submenu name="Necromancy" link="Rituals, Necromancy"/>
+    <submenu name="Pisanob Necromancy"/>
+    <submenu name="Revenant Creation"/>
+  </menu>
+  <menu name="Rituals, Advanced" category="2" abc="yes" display="0">
+    <item name="Enact the Blood Contract" cost="6" note="adv."/>
+  </menu>
+  <menu name="Rituals, Basic" category="2" abc="yes" display="0">
+    <item name="Revelation of the Blood Lineage" cost="2" note="basic"/>
+  </menu>
+  <menu name="Rituals, Gargoyle" category="2" abc="no" autonote="yes" display="5">
+    <item name="Feather-Stone" cost="2" note="basic"/>
+    <item name="Know the Unnatural Beast" cost="2" note="basic"/>
+    <item name="Skin of the Chameleon" cost="2" note="basic"/>
+    <item name="Defender of the Haven" cost="2" note="int."/>
+    <item name="Rite of the Sorcerous Shield" cost="4" note="int."/>
+    <item name="Infusion of Earth" cost="4" note="int."/>
+    <item name="Transform the Skin to Stone" cost="6" note="adv."/>
+    <item name="Heart of Granite" cost="6" note="adv."/>
+    <item name="Gift of the Immobile Form" cost="6" note="adv."/>
+  </menu>
+  <menu name="Rituals, Intermediate" category="2" abc="yes" display="0">
+    <item name="Shaft of Belated Quintessence" cost="4" note="DELETE"/>
+    <item name="Shaft of Belated Quiescence" cost="4" note="int."/>
+    <item name="Ward Versus Cainites" cost="4" note="int."/>
+    <item name="Ward versus Kindred" cost="4" note="int."/>
+  </menu>
+  <menu name="Rituals, Mortis" category="2" abc="no" autonote="yes" display="5">
+    <item name="Final Sight" cost="2" note="basic"/>
+    <item name="Revivify the Cold Vitae" cost="2" note="basic"/>
+    <item name="Eyes of the Grave" cost="2" note="basic"/>
+    <item name="Walk Through the Shroud" cost="6" note="adv."/>
+  </menu>
+  <menu name="Sect" category="2" abc="yes" required="yes" display="0">
+    <item name="Anarch"/>
+    <item name="Autark"/>
+    <item name="Cainite Heresy"/>
+    <item name="Camarilla"/>
+    <item name="Furores"/>
+    <item name="Inconnu"/>
+    <item name="Order of Bitter Ashes"/>
+    <item name="Prometheans"/>
+    <item name="Sabbat"/>
+  </menu>
+  <menu name="Serpentis" category="2" abc="no" autonote="yes" display="5">
+    <item name="Eyes of the Serpent" cost="3" note="basic"/>
+    <item name="Tongue of the Asp" cost="3" note="basic"/>
+    <item name="Skin of the Adder" cost="6" note="int."/>
+    <item name="Form of the Cobra" cost="6" note="int."/>
+    <item name="Heart of Darkness" cost="9" note="adv."/>
+    <item name="Cobra Fangs" cost="12" note="elder"/>
+    <item name="Heart's Tempation" cost="12" note="elder"/>
+    <item name="Obsession" cost="12" note="elder"/>
+    <item name="Temptation" cost="12" note="elder"/>
+    <item name="Darkest Fear" cost="15" note="master"/>
+    <item name="Divine Image" cost="15" note="master"/>
+    <item name="Heart Thief" cost="18" note="asc."/>
+    <item name="Shadow of Apep" cost="21" note="meth."/>
+    <item name="Cheat the Scale of Anubis" cost="9" note="adv., dark ages"/>
+    <item name="Breathe the Sandstorm" cost="12" note="elder, dark ages"/>
+    <item name="Serpent's Tongue" cost="6" note="int., 2nd ed."/>
+    <item name="Form of the Serpent" cost="9" note="adv., 2nd ed."/>
+  </menu>
+  <menu name="Shadow Lords" category="3" abc="no" autonote="yes" display="5">
+    <item name="Raven's Wings" cost="6" note="int."/>
+  </menu>
+  <menu name="Sphere Levels" category="7" abc="no" autonote="yes" display="5">
+    <item name="Apprentice" cost="5" note="basic"/>
+    <item name="Initiate" cost="5" note="basic"/>
+    <item name="Disciple" cost="10" note="int."/>
+    <item name="Adept" cost="10" note="int."/>
+    <item name="Master" cost="15" note="adv."/>
+  </menu>
+  <menu name="Thaumaturgy" category="2" abc="no" display="0">
+    <submenu name="Perdo Materia" link="Hands of Destruction"/>
+    <submenu name="Rego Elementum" link="Elemental Mastery"/>
+    <submenu name="Rego Motus" link="Movement of the Mind"/>
+    <submenu name="Rego Tempestas" link="Weather Control"/>
+    <submenu name="Rego Vitae" link="Path of Blood"/>
+  </menu>
+  <menu name="Title, Vampire" category="2" abc="yes" required="yes" display="0">
+    <item name="Chamberlain"/>
+    <item name="Warleader"/>
+  </menu>
+  <menu name="Totems" category="3" abc="yes" required="yes" display="0">
+    <item name="Boar"/>
+  </menu>
+  <menu name="Valeren, Healer" category="2" abc="no" autonote="yes" display="5">
+    <item name="Sense Life" cost="3" note="basic"/>
+    <item name="Gift of Sleep" cost="3" note="basic"/>
+    <item name="Healing Touch" cost="6" note="int."/>
+    <item name="Shepherd's Watch" cost="6" note="int."/>
+    <item name="The Ailing Spirit" cost="9" note="adv."/>
+    <item name="Warding the Beast" cost="12" note="elder"/>
+    <item name="Safe Passage" cost="12" note="elder"/>
+  </menu>
+  <menu name="Valeren, Warrior" category="2" abc="no" autonote="yes" display="5">
+    <item name="Sense Death" cost="3" note="basic"/>
+    <item name="Morphean Blow" cost="3" note="basic"/>
+    <item name="Burning Touch" cost="6" note="int."/>
+    <item name="Armor of Caine's Fury" cost="6" note="int."/>
+    <item name="Vengeance of Samiel" cost="9" note="adv."/>
+    <item name="Fiery Agony" cost="12" note="elder"/>
+  </menu>
+  <menu name="Vicissitude" category="2" abc="no" autonote="yes" display="5">
+    <item name="Malleable Visage" cost="3" note="basic"/>
+    <item name="Fleshcraft" cost="3" note="basic"/>
+    <item name="Bonecraft" cost="6" note="int."/>
+    <item name="Horrid Form" cost="6" note="int."/>
+    <item name="Bloodform" cost="9" note="adv."/>
+    <item name="Blood of Acid" cost="12" note="elder"/>
+    <item name="Body Arsenal" cost="12" note="elder"/>
+    <item name="Chiropteran Marauder" cost="12" note="elder"/>
+    <item name="Ecstatic Agony" cost="12" note="elder"/>
+    <item name="Plasmic Form" cost="12" note="elder"/>
+    <item name="Cocoon" cost="15" note="master"/>
+    <item name="Breath of the Dragon" cost="18" note="asc."/>
+    <item name="Earth's Vast Haven" cost="21" note="meth."/>
+    <item name="Transmogrify the Mortal Clay" cost="3" note="basic, dark ages"/>
+    <item name="Rend the Osseus Frame" cost="6" note="int., dark ages"/>
+    <item name="Awaken the Zulo Shape" cost="6" note="int., dark ages"/>
+    <item name="Ascendancy of the Sanguine Humour" cost="9" note="adv., dark ages"/>
+    <item name="Changeling" cost="3" note="basic, 2nd ed."/>
+  </menu>
+  <menu name="Weather Control" category="2" abc="no" autonote="yes" display="5">
+    <item name="Fog" cost="3" note="basic"/>
+    <item name="Rain or Snow" cost="3" note="basic"/>
+    <item name="High Winds" cost="6" note="int."/>
+    <item name="Storm" cost="6" note="int."/>
+    <item name="Lightning Strike" cost="9" note="adv."/>
+    <item name="Cloak of Fog" cost="3" note="basic, dark ages"/>
+    <item name="Downpour" cost="3" note="basic, dark ages"/>
+    <item name="Tempest" cost="6" note="int., dark ages"/>
+    <item name="Hide the Burning Sun" cost="6" note="int., dark ages"/>
+    <item name="Call Lightning" cost="9" note="adv., dark ages"/>
+  </menu>
+</grapevinemenus>

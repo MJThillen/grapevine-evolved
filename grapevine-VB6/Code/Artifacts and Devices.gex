@@ -1,0 +1,342 @@
+<?xml version="1.0"?>
+<grapevine version="2.396">
+  <item name="Baby's New Shoes Dice" type="Artifact" level="2" bonus="0" amount="0" conceal="Pocket" lastmodified="11/19/2002 10:17:11 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 126]]>
+    </powers>
+  </item>
+  <item name="Carte Blanche" type="Artifact" level="3" bonus="0" amount="0" conceal="Pocket" lastmodified="11/19/2002 10:17:02 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 128]]>
+    </powers>
+  </item>
+  <item name="Claws" type="Device" subtype="Enhancement" level="2" bonus="1" damage="Lethal" amount="1" lastmodified="11/19/2002 11:54:34 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1">
+      <trait name="Technocracy"/>
+    </traitlist>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 136]]>
+    </powers>
+  </item>
+  <item name="Computer Coprocesser" type="Device" subtype="Enhancement" level="2" bonus="0" amount="0" lastmodified="11/19/2002 11:58:29 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 136]]>
+    </powers>
+  </item>
+  <item name="Dragon Pearl" type="Talisman" level="5" bonus="0" amount="0" lastmodified="11/19/2002 11:37:47 PM">
+    <traitlist name="Tempers" abc="yes" display="2">
+      <trait name="Arete" val="5"/>
+    </traitlist>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 134]]>
+    </powers>
+  </item>
+  <item name="Ebony Horse" type="Artifact" level="4" bonus="0" amount="0" lastmodified="11/19/2002 10:52:01 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 131]]>
+    </powers>
+  </item>
+  <item name="Efreet Bottle" type="Artifact" level="3" bonus="0" amount="0" lastmodified="11/19/2002 10:20:47 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 128]]>
+    </powers>
+  </item>
+  <item name="Environmental Adaptability" type="Device" subtype="Enhancement" level="3" bonus="0" amount="0" lastmodified="11/20/2002 12:00:03 AM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 136]]>
+    </powers>
+  </item>
+  <item name="Extra-Dimensional Backpack" type="Artifact" level="5" bonus="0" amount="0" conceal="None" lastmodified="11/19/2002 11:09:45 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 132]]>
+    </powers>
+  </item>
+  <item name="Extrasensory Access Device" type="Device" subtype="Enhancement" level="1" bonus="0" amount="0" lastmodified="11/19/2002 11:54:55 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1">
+      <trait name="Technocracy"/>
+    </traitlist>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 135]]>
+    </powers>
+  </item>
+  <item name="Folk Ward" type="Charm" level="1" bonus="0" amount="0" lastmodified="11/19/2002 11:14:09 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 133]]>
+    </powers>
+  </item>
+  <item name="Force Shield" type="Artifact" subtype="Periapt" level="3" bonus="0" damage="Armor Levels" amount="1" lastmodified="11/19/2002 10:13:09 PM">
+    <traitlist name="Tempers" abc="yes" display="2">
+      <trait name="Quintessence" val="5"/>
+    </traitlist>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 127]]>
+    </powers>
+  </item>
+  <item name="Fuel Pellet" type="Charm" level="1" bonus="0" amount="0" lastmodified="11/19/2002 10:02:55 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 126]]>
+    </powers>
+  </item>
+  <item name="Kali's Tongue" type="Artifact" subtype="Weapon" level="4" bonus="2" damage="Lethal" amount="2" conceal="Jacket" lastmodified="11/19/2002 10:54:21 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1">
+      <trait name="Speed"/>
+    </traitlist>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1">
+      <trait name="Short"/>
+    </traitlist>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 131]]>
+    </powers>
+  </item>
+  <item name="Laser Pistol" type="Device" subtype="Ranged Weapon" level="0" bonus="2" damage="Aggravated" amount="2" conceal="Jacket" lastmodified="10/17/2002">
+    <traitlist name="Tempers" abc="yes" display="2">
+      <trait name="Quintessence" val="10"/>
+    </traitlist>
+    <traitlist name="Abilities" abc="yes" display="1">
+      <trait name="Armor-Piercing"/>
+    </traitlist>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1">
+      <trait name="Clumsy"/>
+      <trait name="Loud"/>
+    </traitlist>
+    <traitlist name="Availability" abc="yes" display="1">
+      <trait name="Sons of Ether"/>
+      <trait name="Technocracy"/>
+    </traitlist>
+  </item>
+  <item name="Magic Eight Ball" type="Artifact" level="2" bonus="0" amount="0" conceal="Pocket" lastmodified="11/19/2002 10:15:50 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 128]]>
+    </powers>
+  </item>
+  <item name="Magnetic Shield" type="Device" subtype="Armor" level="0" bonus="0" damage="Armor Levels" amount="2" lastmodified="10/17/2002">
+    <traitlist name="Tempers" abc="yes" display="2">
+      <trait name="Quintessence" val="10"/>
+    </traitlist>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1">
+      <trait name="Technocracy"/>
+    </traitlist>
+  </item>
+  <item name="Mata Hari's Bobby Pin" type="Artifact" level="1" bonus="0" amount="0" conceal="Pocket" lastmodified="11/19/2002 10:17:40 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 126]]>
+    </powers>
+  </item>
+  <item name="Mercury Sword" type="Artifact" subtype="Weapon" level="2" bonus="0" amount="0" lastmodified="11/19/2002 10:10:31 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 127]]>
+    </powers>
+  </item>
+  <item name="Motion Sensor" type="Artifact" level="1" bonus="0" amount="0" lastmodified="11/19/2002 10:05:29 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+  </item>
+  <item name="Mr. Fusion's Atomic Sleep-Enhancing Mask" type="Artifact" level="3" bonus="0" amount="0" lastmodified="11/19/2002 10:23:58 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 129]]>
+    </powers>
+  </item>
+  <item name="Night Vision" type="Device" subtype="Enhancement" level="1" bonus="0" amount="0" lastmodified="11/19/2002 11:55:12 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1">
+      <trait name="Technocracy"/>
+    </traitlist>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 135]]>
+    </powers>
+  </item>
+  <item name="Night Vision Bifocals" type="Artifact" level="1" bonus="0" amount="0" lastmodified="11/19/2002 10:06:57 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 126]]>
+    </powers>
+  </item>
+  <item name="Ninja Smoke Bomb" type="Charm" level="2" bonus="0" amount="0" lastmodified="11/19/2002 11:19:04 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 133]]>
+    </powers>
+  </item>
+  <item name="Plasma Thrower" type="Device" subtype="Ranged Weapon" level="0" bonus="6" damage="Aggravated" amount="3" conceal="None" lastmodified="10/17/2002">
+    <traitlist name="Tempers" abc="yes" display="2">
+      <trait name="Quintessence" val="6"/>
+    </traitlist>
+    <traitlist name="Abilities" abc="yes" display="1">
+      <trait name="Incendiary"/>
+      <trait name="Mass-Trauma"/>
+      <trait name="Spray" note="5 targets, 10 ft."/>
+    </traitlist>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1">
+      <trait name="Clumsy"/>
+      <trait name="Heavy"/>
+      <trait name="Loud"/>
+    </traitlist>
+    <traitlist name="Availability" abc="yes" display="1">
+      <trait name="None"/>
+    </traitlist>
+  </item>
+  <item name="Questor's Map" type="Artifact" level="4" bonus="0" amount="0" lastmodified="11/19/2002 11:04:56 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 132]]>
+    </powers>
+  </item>
+  <item name="Sabot of Lud" type="Artifact" level="3" bonus="0" amount="0" lastmodified="11/19/2002 10:23:48 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 129]]>
+    </powers>
+  </item>
+  <item name="Silksteel Suit" type="Device" subtype="Armor" level="0" bonus="0" damage="Armor Levels" amount="1" lastmodified="10/17/2002">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1">
+      <trait name="Fire-Retardant"/>
+    </traitlist>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1">
+      <trait name="Technocracy"/>
+    </traitlist>
+  </item>
+  <item name="Skeletal Enhancement" type="Device" subtype="Enhancement" level="1" bonus="0" damage="Armor Levels" amount="1" lastmodified="11/19/2002 11:55:25 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1">
+      <trait name="Technocracy"/>
+    </traitlist>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 136]]>
+    </powers>
+  </item>
+  <item name="Spirit Rattle" type="Fetish" level="0" bonus="0" amount="0" lastmodified="11/19/2002 11:21:59 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 134]]>
+    </powers>
+  </item>
+  <item name="Universal Cookbook" type="Artifact" level="3" bonus="0" amount="0" lastmodified="11/19/2002 10:24:26 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 129]]>
+    </powers>
+  </item>
+  <item name="Vorpal Letter Opener" type="Artifact" level="3" bonus="0" amount="0" lastmodified="11/19/2002 10:26:56 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 130]]>
+    </powers>
+  </item>
+  <item name="Weapon of the Psyche" type="Artifact" subtype="Weapon" level="3" bonus="3" damage="Lethal" amount="1" lastmodified="11/19/2002 10:47:44 PM">
+    <traitlist name="Tempers" abc="yes" display="2"/>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 130]]>
+    </powers>
+  </item>
+  <item name="Wild Certamen Card" type="Artifact" subtype="Periapt" level="3" bonus="0" amount="0" lastmodified="11/19/2002 10:49:55 PM">
+    <traitlist name="Tempers" abc="yes" display="2">
+      <trait name="Quintessence" val="5"/>
+    </traitlist>
+    <traitlist name="Abilities" abc="yes" display="1"/>
+    <traitlist name="Negatives" abc="yes" negative="yes" display="1"/>
+    <traitlist name="Availability" abc="yes" display="1"/>
+    <powers>
+      <![CDATA[Laws of Ascension Companion p. 131]]>
+    </powers>
+  </item>
+</grapevine>

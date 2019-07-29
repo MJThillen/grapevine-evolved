@@ -1,0 +1,7 @@
+[Title]
+Character Roster
+[#Characters] Characters [col 50] [PrintDate]
+
+Name   [col 26] Race    [col 31] Group   [col 45] Subgroup   [col 55] Status/NPC                      [col 68] Player
+----   [col 26] ----    [col 31] -----   [col 45] --------   [col 55] ----------                      [col 68] ------[report characters]
+[Name] [col 26] [Race] [col 30]. [Group] [col 45] [Subgroup] [col 55] [PlayStatus][?NPC True] NPC[/?] [col 68] [Player][/report]

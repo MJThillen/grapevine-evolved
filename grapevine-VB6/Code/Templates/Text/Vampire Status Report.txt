@@ -1,0 +1,11 @@
+[Title]
+Vampire Status Report
+[#Characters] Characters
+
+Name                       [col 30] Title   [col 50] Clan
+----------------------------------------------------------------------[report characters]
+[Name]                     [col 30] [Title] [col 50] [Group]
+[divider ,][wrap 70]
+[#Status] Status:  [repeat] [Status][/repeat][wrap 0][divider]
+[#Boons] Boons:  [repeat]  [col 12][Boons]
+[/repeat]----------------------------------------------------------------------[/report]

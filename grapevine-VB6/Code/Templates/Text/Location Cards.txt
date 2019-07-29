@@ -1,0 +1,18 @@
+[wrap 70][report locations]
+----------------------------------------------------------------------
+[Name]
+[Type] [Tally Level]              [col 35] Owner: [Owner]
+
+Where: [Where]
+Appearance: [Appearance]
+
+Access: [Access]
+Security Traits: [SecurityTraits] [col 35] Security Retests: [SecurityRetests]
+Security: [Security]
+
+Affinity: [Affinity]		  [col 35] Totem: [Totem]
+Gauntlet/Shroud: [Gauntlet]
+Umbra/Shadowlands/Dreaming: [Umbra]
+Moon Bridges/Trods: [repeat][col 21][Links]
+[/repeat]----------------------------------------------------------------------
+[/report]

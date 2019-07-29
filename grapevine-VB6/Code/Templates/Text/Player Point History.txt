@@ -1,0 +1,18 @@
+[template player]======================================================================
+[Name]                            [col 35] PP History [dateformat mm/dd/yy][DateRange]
+----------------------------------------------------------------------
+Position: [Position]              [col 35] ID: [ID]
+Status: [PlayStatus]              [col 35] Player Points: [PPUnspent]/[PPEarned]
+Phone: [Phone]
+E-Mail: [Email]
+
+Address:
+[Address]
+[option notes]
+Notes:
+[Notes]
+[/option][option history]
+Player Point History
+-Date-----Change------Reason------------------------------------------[repeat]
+[Date]   [col 11][ChangeText][col 22] [Reason][/repeat][/option]
+======================================================================

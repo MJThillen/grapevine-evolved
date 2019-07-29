@@ -1,0 +1,491 @@
+<HTML>
+<!-- [template Character][divider <br>][dateformat yyyy-mmm-dd] -->
+
+<HEAD>
+  <TITLE>[Name] Character Sheet</TITLE>
+  <META NAME=Generator CONTENT="Grapevine LARP Administration Utility (www.GrapevineLARP.com)">
+  <STYLE TYPE="text/css">
+    <!--
+    H3 { font-family: Arial, sans-serif; margin-bottom: 0 };
+    B  { font-family: Arial, sans-serif };
+    TD { font-size: 75% };
+    TH { font-size: 75% ; font-family: Arial, sans-serif; background-color: #cccccc; text-align: center; border-bottom: solid 1px black };
+    -->
+  </STYLE>
+</HEAD>
+
+<BODY>
+
+  <CENTER>
+
+    <H3>[Name]</H3>
+
+    <TABLE NOBORDER WIDTH=100%>
+
+      <TR>
+        <TD WIDTH=17%></TD>
+        <TD WIDTH=17%></TD>
+        <TD WIDTH=16%></TD>
+        <TD WIDTH=16%></TD>
+        <TD WIDTH=17%></TD>
+        <TD WIDTH=17%></TD>
+      </TR>	
+    
+      <TR>
+        <TH COLSPAN=6>[Race] [?NPC True]NPC[/?]</TD>
+      <TR>
+
+      <TR>
+        <TD ALIGN=RIGHT><B>Player</B></TD>
+        <TD ALIGN=LEFT >[Player]</TD>
+        <TD ALIGN=RIGHT><B>XP&nbsp;Unspent</B></TD>
+        <TD ALIGN=LEFT >[XPUnspent]</TD>
+        <TD ALIGN=RIGHT><B>Status</B></TD>
+        <TD ALIGN=LEFT >[PlayStatus]</TD>
+      </TR>
+
+      <TR>
+        <TD ALIGN=RIGHT><B>Character&nbsp;ID</B></TD>
+        <TD ALIGN=LEFT >[ID]</TD>
+        <TD ALIGN=RIGHT><B>Total&nbsp;XP&nbsp;Earned</B></TD>
+        <TD ALIGN=LEFT >[XPEarned]</TD>
+        <TD ALIGN=RIGHT><B>Narrator</B></TD>
+        <TD ALIGN=LEFT >[Narrator]</TD>
+      </TR>
+
+      <TR>
+        <TD ALIGN=RIGHT><B></B></TD>
+        <TD ALIGN=LEFT ></TD>
+        <TD ALIGN=RIGHT><B></B></TD>
+        <TD ALIGN=LEFT ></TD>
+        <TD ALIGN=RIGHT><B>Last&nbsp;Modified</B></TD>
+        <TD ALIGN=LEFT >[LastModified]</TD>
+      </TR>
+
+      <TR>
+        <TH COLSPAN=6>&nbsp;</TD>
+      <TR>
+
+      <TR>
+        <TD ALIGN=RIGHT><B>Clan</B></TD>
+        <TD ALIGN=LEFT >[Clan]</TD>
+        <TD ALIGN=RIGHT><B>Generation</B></TD>
+        <TD ALIGN=LEFT >[Generation]</TD>
+        <TD ALIGN=RIGHT><B>Nature</B></TD>
+        <TD ALIGN=LEFT >[Nature]</TD>
+      </TR>
+
+      <TR>
+        <TD ALIGN=RIGHT><B>Sect</B></TD>
+        <TD ALIGN=LEFT >[Sect]</TD>
+        <TD ALIGN=RIGHT><B>Title</B></TD>
+        <TD ALIGN=LEFT >[Title]</TD>
+        <TD ALIGN=RIGHT><B>Demeanor</B></TD>
+        <TD ALIGN=LEFT >[Demeanor]</TD>
+      </TR>
+
+      <TR>
+        <TD ALIGN=RIGHT><B>Coterie/Pack</B></TD>
+        <TD ALIGN=LEFT >[Coterie]</TD>
+        <TD ALIGN=RIGHT><B>Sire</B></TD>
+        <TD ALIGN=LEFT >[Sire]</TD>
+        <TD ALIGN=RIGHT><B></B></TD>
+        <TD ALIGN=LEFT ></TD>
+      </TR>
+
+    </TABLE>
+
+    <TABLE NOBORDER WIDTH=100%>
+
+      <TR>
+        <TD WIDTH=33%></TD>
+        <TD WIDTH=33%></TD>
+        <TD WIDTH=33%></TD>
+      </TR>
+
+      <TR>
+        <TH>[Blood] Blood</TD>
+        <TH>Morality Path</TD>
+        <TH>[Conscience] Conscience/Conviction</TD>
+      </TR>
+
+      <TR> <!--[divider]-->
+        <TD VALIGN=TOP ALIGN=CENTER>[Tally Blood TempBlood]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[Path]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[Tally Conscience TempConscience]</TD>
+      </TR> <!--[divider <br>]-->
+
+      <TR>
+        <TH>[Willpower] Willpower</TD>
+        <TH>[PathTraits] Morality Traits</TD>
+        <TH>[SelfControl] Self-Control/Instinct</TD>
+      </TR>
+
+      <TR> <!--[divider]-->
+        <TD VALIGN=TOP ALIGN=CENTER>[Tally Willpower TempWillpower]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[Tally PathTraits TempPathTraits]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[Tally SelfControl TempSelfControl]</TD>
+      </TR> <!--[divider <br>]-->
+
+      <TR>
+        <TH></TD>
+        <TH>Aura</TD>
+        <TH>[Courage] Courage</TD>
+      </TR>
+
+      <TR> <!--[divider]-->
+        <TD></TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[Aura] [AuraBonus]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[Tally Courage TempCourage]</TD>
+      </TR> <!--[divider <br>]-->
+
+      <TR>
+        <TH>[#Physical] Physical</TD>
+        <TH>[#Social] Social</TD>
+        <TH>[#Mental] Mental</TD>
+      </TR>
+
+      <TR>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][Physical 2][/repeat]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][Social 2][/repeat]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][Mental 2][/repeat]</TD>
+	</TR>
+
+      <TR>
+        <TH>[#PhysicalNeg] Neg. Physical</TD>
+        <TH>[#SocialNeg] Neg. Social</TD>
+        <TH>[#MentalNeg] Neg. Mental</TD>
+      </TR>
+
+      <TR>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][PhysicalNeg][/repeat]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][SocialNeg][/repeat]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][MentalNeg][/repeat]</TD>
+      </TR>
+
+      <TR>
+        <TH>[#Abilities] Abilities</TD>
+        <TH COLSPAN=2>Disciplines</TD>
+      </TR>
+
+      <TR>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][Abilities 2][/repeat]</TD>
+        <TD VALIGN=TOP COLSPAN=2 ALIGN=LEFT>[repeat][Disciplines][/repeat]</TD>
+      </TR>
+
+      <TR>
+        <TH>[#Status] Status</TD>
+        <TH>[#Backgrounds] Backgrounds</TD>
+        <TH>Rituals</TD>
+      </TR>
+
+      <TR>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][Status 2][/repeat]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][Backgrounds 2][/repeat]</TD>
+        <TD VALIGN=TOP ALIGN=LEFT>[repeat][Rituals][/repeat]</TD>
+      </TR>
+
+      <TR>
+        <TH>[#Influences] Influences</TD>
+        <TH>Derangements</TD>
+        <TH>[#Miscellaneous] Miscellaneous Traits</TD>
+      </TR>
+
+      <TR>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][Influences][/repeat]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][Derangements][/repeat]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][Miscellaneous][/repeat]</TD>
+      </TR>
+
+      <TR>
+        <TH>Merits</TD>
+        <TH>Flaws</TD>
+        <TH>Blood Bonds/Vinculum</TD>
+      </TR>
+
+      <TR>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][Merits][/repeat]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][Flaws][/repeat]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][Bonds][/repeat]</TD>
+      </TR>
+
+      <TR>
+        <TH>Boons</TD>
+        <TH>Equipment</TD>
+        <TH>Health Levels</TD>
+      </TR>
+
+      <TR>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][Boons][/repeat]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][Equipment][/repeat]</TD>
+        <TD VALIGN=TOP ALIGN=CENTER>[repeat][HealthLevels 2][/repeat]</TD>
+      </TR>
+
+      <!--[option Notes]-->
+        <TR>
+          <TH COLSPAN=3>Notes</TD>
+        </TR>
+
+        <TR>
+          <TD VALIGN=TOP COLSPAN=3 ALIGN=LEFT>[Notes]</TD>
+	</TR>
+      <!--[/option]-->
+
+    </TABLE>
+
+    <!--[divider]-->
+
+    <!--[option has Items]-->
+
+    [pagebreak]
+
+    <!--[/option]-->
+
+    <!--[option Items]-->
+
+    <TABLE STYLE="width: 5in; height: 3in; border: solid 1px black">
+
+      <TR>
+        <TH ALIGN=LEFT COLSPAN=2>[Name]</TD>
+      </TR>
+
+      <TR>
+        <TD ALIGN=LEFT WIDTH=50%><B>[Type] [Tally Level]</B></TD>
+        <TD ALIGN=LEFT WIDTH=50%><B>[!Bonus 0]+[Bonus] Traits[/!]</B></TD>
+      </TR>
+
+      <TR>
+        <TD><B>[Subtype]</B></TD>
+        <TD><B>[!DamageType][DamageAmount] [DamageType][/!]</B></TD>
+      </TR>
+
+      <TR> <!--[divider <br>]-->
+        <TD VALIGN=TOP><B>[repeat][Tempers][/repeat]</B></TD>
+        <TD VALIGN=TOP>[!Conceal]<B>Concealability:</B> [Conceal][/!]</TD>
+      </TR>
+
+      <TR> 
+        <TD ALIGN=CENTER VALIGN=TOP>[repeat][Abilities][/repeat]</TD>
+        <TD ALIGN=CENTER VALIGN=TOP>[repeat][Negatives][/repeat]</TD>
+      </TR> <!--[divider]-->
+
+      <!--[!Appearance]-->
+        <TR>
+          <TD COLSPAN=2><B>Appearance:</B> [Appearance]</TD>
+        </TR>
+      <!--[/!]-->
+
+      <!--[!Powers]-->
+        <TR>
+          <TD COLSPAN=2><B>Powers:</B> [Powers]</TD>
+        </TR>
+      <!--[/!]-->
+
+      <TR HEIGHT=100%>
+        <TD VALIGN=BOTTOM ALIGN=LEFT >[PrintDate]</TD>
+        <TD VALIGN=BOTTOM ALIGN=RIGHT>[CharName]</TD>        
+      </TR>
+
+    </TABLE>
+
+    <!--[/option]-->
+
+    <!--[option has Locations]-->
+
+    [pagebreak]
+
+    <!--[/option]-->
+
+    <!--[option Locations]-->
+
+    <TABLE STYLE="width: 5in; height: 3in; border: solid 1px black">
+
+      <TR>
+        <TH ALIGN=LEFT COLSPAN=2>[Name]</TD>
+      </TR>
+
+      <TR>
+        <TD ALIGN=LEFT WIDTH=50%><B>[Type] [Tally Level]</B></TD>
+        <TD ALIGN=LEFT WIDTH=50%><B>Owner:</B> [Owner]</B></TD>
+      </TR>
+
+      <TR>
+        <TD><B>Access:</B> [Access]</TD>
+        <TD>[!Affinity]<B>Affinity:</B> [Affinity][/!]</TD>
+      </TR>
+
+      <TR>
+        <TD><B>[SecurityTraits] Security Traits</B></B></TD>
+        <TD>[!Totem]<B>Totem:</B> [Totem][/!]</TD>
+      </TR>
+
+      <TR>
+        <TD><B>[SecurityRetests] Security Retests</B></B></TD>
+        <TD><B>Gauntlet/Shroud:</B> [Gauntlet][/!]</TD>
+      </TR>
+
+      <!--[!Where]-->
+        <TR>
+          <TD COLSPAN=2><B>Where:</B> [Where]</TD>
+        </TR>
+      <!--[/!]-->
+
+      <!--[!Appearance]-->
+        <TR>
+          <TD COLSPAN=2><B>Appearance:</B> [Appearance]</TD>
+        </TR>
+      <!--[/!]-->
+
+      <!--[!Security]-->
+        <TR>
+          <TD COLSPAN=2><B>Security:</B> [Security]</TD>
+        </TR>
+      <!--[/!]-->
+
+      <!--[!Umbra]-->
+        <TR>
+          <TD COLSPAN=2><B>Umbra:</B> [Umbra]</TD>
+        </TR>
+      <!--[/!]-->
+
+      <TR>
+        <TD COLSPAN=2>
+          <!--[!#Links 0]-->
+            <B>Moon Bridges/Trods:</B>
+          <!--[/!]-->
+          [divider , ][repeat][Links][/repeat][divider]
+        </TD>
+      </TR>
+
+      <TR HEIGHT=100%>
+        <TD VALIGN=BOTTOM ALIGN=LEFT >[PrintDate]</TD>
+        <TD VALIGN=BOTTOM ALIGN=RIGHT>[CharName]</TD>        
+      </TR>
+
+    </TABLE>
+
+    <!--[/option]-->
+
+    <!--[dateformat mmmm d, yyyy]-->
+
+    <!--[option Actions]-->
+
+    <BR>
+    [pagebreak]
+    <BR>
+    <H3>[Name] Actions</H3>
+    [GameDate]
+    <BR>
+
+    <TABLE NOBORDER WIDTH=75%>
+
+       <!--[repeat]-->
+         <TR>
+           <TH COLSPAN=4><P ALIGN=LEFT>[Type] Actions</P></TD>
+         </TR>
+
+         <TR>
+           <TD WIDTH=25%><B>Level:</B> [Level]</TD>
+           <TD WIDTH=25%><B>Unused:</B> [Unused]</TD>
+           <TD WIDTH=25%><B>of Total:</B> [Total]</TD>
+           <TD WIDTH=25%><B>Growth:</B> [Growth]</TD>
+         </TR>
+
+         <TR>
+           <TD COLSPAN=4><B>Actions:</B> [Action]</TD>
+         </TR>
+
+         <TR>
+           <TD COLSPAN=4><B>Results:</B> [Result]</TD>
+         </TR>
+      <!--[/repeat]-->
+
+    </TABLE>
+
+    <!--[/option]-->
+
+    <!--[option has Rumors]-->
+
+    <BR>
+    [pagebreak]
+    <BR>
+    <H3>[Name] Rumors</H3>
+    [GameDate]
+    <BR>
+    
+    <TABLE NOBORDER WIDTH=75%>
+
+      <!--[/option]-->
+
+      <!--[option Rumors]-->
+        <TR>
+          <TH WIDTH=100%><P ALIGN=LEFT>[!Level]Level [Level] [/!][Title] Rumors</P></TD>
+        </TR>
+
+        <TR>
+          <TD COLSPAN=4>
+            <P>[Rumor]</P>
+            <P></P>
+          </TD>
+        </TR>
+
+      <!--[/option]-->
+
+    <!--[option has Rumors]-->
+
+    </TABLE>
+
+    <!--[/option]-->
+
+    <!--[option has History]-->
+
+    <BR>
+    [pagebreak]
+    <BR>
+    <H3>[Name] Experience History</H3>
+    [DateRange]
+
+    <!--[/option]-->
+
+    <!--[option History][dateformat yyyy-mmm-dd]-->
+
+      <TABLE NOBORDER WIDTH=75%>
+
+        <TR>
+          <TD WIDTH=20%></TD>
+          <TD WIDTH=20%></TD>
+          <TD WIDTH=10%></TD>
+          <TD WIDTH=50%></TD>
+        <TR>
+
+        <TR>
+          <TH COLSPAN=4>Current Experience ([PrintDate])</TD>
+        </TR>
+
+        <TR>
+          <TD COLSPAN=4 ALIGN=CENTER>[PPUnspent] Unspent / [PPEarned] Earned</TD>
+        </TR>
+
+        <TR>
+          <TH>Date</TD>
+          <TH>Change</TD>
+          <TH>U/E</TD>
+          <TH>Reason</TD>
+        </TR>
+        <!--[repeat]-->
+          <TR>
+            <TD ALIGN=LEFT  >[Date]</TD>
+            <TD ALIGN=LEFT  >[ChangeText]</TD>
+            <TD ALIGN=CENTER>[Unspent]/[Earned]</TD>
+            <TD ALIGN=LEFT  >[Reason]</TD>
+          </TR>
+        <!--[/repeat]-->
+
+      </TABLE>
+
+    <!--[/option]-->
+
+  </CENTER>
+
+</BODY>
+</HTML>

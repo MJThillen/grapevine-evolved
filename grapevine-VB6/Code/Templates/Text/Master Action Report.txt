@@ -1,0 +1,17 @@
+[Title]
+Master Action Report
+[#Actions] Actions
+
+[wrap 70][report actions]
+======================================================================
+[Name]                                           [col 50] [Date]
+[repeat]
+[Type] Action
+[col 9] Level [Level]  [col 20] Unused [Unused]  [col 32] Total [Total]  [col 43] Growth [Growth]
+---Action:
+[Action]
+---Result:
+[Result]
+----------------------------------------------------------------------[/repeat]
+[/report]
+======================================================================

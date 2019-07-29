@@ -1,0 +1,12 @@
+[template character]======================================================================
+[Name]                            [col 35] XP History [dateformat mm/dd/yy][DateRange]
+
+[Race]                            [col 35] Character ID: [ID]
+Player: [Player]                  [col 35] XP Unspent:   [XPUnspent]
+Status: [PlayStatus]              [col 35] XP Earned:    [XPEarned]
+                                  [col 35] Narrator: [Narrator]
+[option history]
+Experience History
+-Date-----Change------Reason------------------------------------------[repeat]
+[Date]   [col 11][ChangeText][col 22] [Reason][/repeat][/option]
+======================================================================

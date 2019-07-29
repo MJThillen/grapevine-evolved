@@ -1,0 +1,268 @@
+Merging the new file Grapevine Menu Update.gvu into the existing file Grapevine Menus.gvm
+Aggressive Merge: preference given to Grapevine Menu Update.gvu
+
+"Abilities, Vampire" Menu:
++ Added "Alertness" item (Cost=1, Note=)
++ Added "Commerce" item (Cost=1, Note=)
++ Added "Legerdemain" item (Cost=1, Note=)
++ Added "Theology" item (Cost=1, Note=)
+
+"Abombwe" Menu:
+- Deleted "Devil-Channel" item (Cost=12, Note=elder)
++ Added "Beast-Channel" item (Cost=6, Note=int.)
+* Changed "Taking the Skin" item (Cost=12, Note=elder) to "Taking the Skin" item (Cost=9, Note=adv.)
+* Re-Organized
+* Changed "Predator's Mastery" item (Cost=9, Note=adv.) to "Predator's Mastery" item (Cost=12, Note=elder)
+
+"Access" Menu:
++ Added Entire Menu
+
+"Animalism" Menu:
+* Changed "Drawing Out the Beast" item (Cost=3, Note=basic, long night) to "Drawing Out the Beast" item (Cost=3, Note=adv.)
+* Re-Organized
+* Changed "Embrace the Beast" item (Cost=9, Note=adv.) to "Embrace the Beast" item (Cost=9, Note=adv., 2nd ed.)
++ Added "Feral Speech" item (Cost=3, Note=basic, dark ages)
+* Changed "Noah's Call" item (Cost=3, Note=basic, long night) to "Noah's Call" item (Cost=3, Note=basic, dark ages)
+* Changed "Cowing the Beast" item (Cost=6, Note=int., long night) to "Cowing the Beast" item (Cost=6, Note=int., dark ages)
++ Added "Ride the Wild Mind" item (Cost=6, Note=int., dark ages)
+
+"Aura" Menu:
++ Added Entire Menu
+
+"Auspex" Menu:
+* Changed "Soulsight" item (Cost=1, Note=basic, long night) to "Soulsight" item (Cost=1, Note=basic, dark ages)
++ Added "Steal Secrets" item (Cost=3, Note=int., dark ages)
+* Changed "Anima Walk" item (Cost=1, Note=adv., long night) to "Anima Walk" item (Cost=1, Note=adv., dark ages)
++ Added "Farsight" item (Cost=12, Note=elder, dark ages)
+
+"Availability" Menu:
++ Added "Resources" item (Cost=1, Note=)
+
+"Backgrounds, Vampire" Menu:
++ Added "Domain" item (Cost=1, Note=)
+
+"Boons" Menu:
++ Added Entire Menu
+
+"Cadaverous Animation" Menu:
++ Added Entire Menu
+
+"Camps, Werewolf" Menu:
++ Added "Bringers of Eternal Peace" item (Cost=1, Note=)
++ Added "Gluskap's Lodge" item (Cost=1, Note=)
++ Added "Grandchildren of Fionn" item (Cost=1, Note=)
++ Added "Mother's Fundamentalists" item (Cost=1, Note=)
++ Added "Myeengun's Lodge" item (Cost=1, Note=)
++ Added "Renewalists" item (Cost=1, Note=)
++ Added "Seekers of the Lost Tribes" item (Cost=1, Note=)
++ Added "Wyld Children" item (Cost=1, Note=)
+
+"Chimerstry" Menu:
+- Deleted "Ingis Fatuus" item (Cost=3, Note=basic)
++ Added "Ignis Fatuus" item (Cost=3, Note=basic)
+* Re-Organized
+* Changed "Dweomer" item (Cost=3, Note=basic, long night) to "Dweomer" item (Cost=3, Note=basic, dark ages)
++ Added "Mass Horror" item (Cost=12, Note=elder, dark ages)
+
+"Corpse in the Monster" Menu:
++ Added Entire Menu
+
+"Daimoinon" Menu:
++ Added "Fear of the Void" item (Cost=3, Note=basic)
++ Added "Essence of the Netherworld" item (Cost=6, Note=int., dark ages)
++ Added "Curse" item (Cost=9, Note=adv., dark ages)
++ Added "Hell-Born Investiture" item (Cost=12, Note=elder, dark ages)
+
+"Dementation" Menu:
+* Changed "Incubus Passion" item (Cost=3, Note=basic, long night) to "Incubus Passion" item (Cost=3, Note=basic, dark ages)
+* Changed "Haunt the Soul" item (Cost=3, Note=basic, long night) to "Haunt the Soul" item (Cost=3, Note=basic, dark ages)
++ Added "Silence the Sane Mind" item (Cost=6, Note=int., dark ages)
+* Changed "Howling Lunacy" item (Cost=9, Note=adv., long night) to "Howling Lunacy" item (Cost=9, Note=adv., dark ages)
++ Added "Kiss of the Moon" item (Cost=12, Note=elder, dark ages)
+
+"Derangements" Menu:
++ Added "Possession" item (Cost=1, Note=)
++ Added "Saint Vitus's Dance" item (Cost=2, Note=)
++ Added "Visions" item (Cost=2, Note=)
+
+"Disciplines" Menu:
++ Added "Gargoyle Powers" submenu link (Link=Gargoyle Powers)
+
+"Dominate" Menu:
+* Changed "Observance of the Spoken Word" item (Cost=3, Note=basic, long night) to "Observance of the Spoken Word" item (Cost=3, Note=basic, dark ages)
++ Added "Murmur of the False Will" item (Cost=3, Note=basic, dark ages)
+* Changed "Reveler's Memory" item (Cost=3, Note=basic, long night) to "Reveler's Memory" item (Cost=6, Note=int., dark ages)
++ Added "Lure of Subtle Whispers" item (Cost=6, Note=int., dark ages)
+* Changed "Vessel" item (Cost=6, Note=int., long night) to "Vessel" item (Cost=9, Note=adv., dark ages)
+* Re-Organized
+* Changed "Fealty" item (Cost=6, Note=int., long night) to "Fealty" item (Cost=12, Note=elder, dark ages)
+
+"Elemental Mastery" Menu:
++ Added "Earth-Born Strength" item (Cost=3, Note=basic, dark ages)
+
+"Flaws, Vampire" Menu:
++ Added "Cannot Embrace" item (Cost=2, Note=)
++ Added "Diseased" item (Cost=1-5, Note=)
++ Added "Flesh Eater" item (Cost=4, Note=)
+* Changed "Leper" item (Cost=3, Note=) to "Leper" item (Cost=1-3, Note=)
++ Added "Ragged Bite" item (Cost=2, Note=)
++ Added "Religious Prohibition" item (Cost=2 or 4, Note=)
++ Added "Thirteenth Generation" item (Cost=2, Note=)
+
+"Flight" Menu:
+- Deleted "15 mph" item (Cost=3, Note=basic)
+- Deleted "30 mph" item (Cost=3, Note=basic)
+- Deleted "45 mph" item (Cost=6, Note=int.)
+- Deleted "60 mph" item (Cost=6, Note=int.)
+- Deleted "75 mph" item (Cost=9, Note=adv.)
++ Added "Glide" item (Cost=3, Note=basic)
++ Added "Fly" item (Cost=3, Note=basic)
+* Changed "Swoop" item (Cost=2, Note=) to "Swoop" item (Cost=6, Note=int.)
++ Added "Soar" item (Cost=6, Note=int.)
++ Added "Flight of the Eagle" item (Cost=9, Note=adv.)
++ Added "One with the Wind" item (Cost=12, Note=elder)
+* Re-Organized
++ Added "Dive" item (Cost=2, Note=)
+
+"Gargoyle Powers" Menu:
++ Added Entire Menu
+
+"Grave's Decay" Menu:
++ Added Entire Menu
+
+"Merits, Vampire" Menu:
+* Changed "Berserker" item (Cost=2, Note=) to "Berserker" item (Cost=2-3, Note=)
++ Added "Crusader" item (Cost=1, Note=)
+
+"Mortis" Menu:
++ Added "Grave's Decay" submenu link (Link=Grave's Decay)
++ Added "Corpse in the Monster" submenu link (Link=Corpse in the Monster)
++ Added "Cadaverous Animation" submenu link (Link=Cadaverous Animation)
++ Added "Four Humours" submenu link (Link=Four Humours)
+
+"Obtenebration" Menu:
+* Changed "Nocturne" item (Cost=3, Note=basic, long night) to "Nocturne" item (Cost=3, Note=basic, dark ages)
+* Changed "Arms of Ahriman" item (Cost=6, Note=int., long night) to "Arms of Ahriman" item (Cost=6, Note=int., dark ages)
++ Added "Nightshades" item (Cost=6, Note=int., dark ages)
++ Added "Tenebrous Avatar" item (Cost=9, Note=adv., dark ages)
++ Added "Walk the Abyss" item (Cost=12, Note=elder, dark ages)
+
+"Ogham" Menu:
+* Changed "Crimson Woad" item (Cost=6, Note=int.) to "Crimson Woad" item (Cost=3, Note=basic)
++ Added "Inscribe the Curse" item (Cost=6, Note=int.)
+* Changed "Moon and Sun" item (Cost=9, Note=adv.) to "Moon and Sun" item (Cost=6, Note=int.)
++ Added "Drink Dry the Earth" item (Cost=9, Note=adv.)
+
+"Path" Menu:
++ Added "Road of Bones" item (Cost=1, Note=)
++ Added "Road of Kings" item (Cost=1, Note=)
++ Added "Road of Metamorphosis" item (Cost=1, Note=)
++ Added "Road of Night" item (Cost=1, Note=)
++ Added "Road of Sin" item (Cost=1, Note=)
++ Added "Road of the Serpent" item (Cost=1, Note=)
+
+"Position, Werewolf" Menu:
++ Added "Pack Alpha" item (Cost=1, Note=)
++ Added "Pack Beta" item (Cost=1, Note=)
+
+"Presence" Menu:
++ Added "Passion" item (Cost=12, Note=elder, dark ages)
+
+"Protean" Menu:
++ Added "Witness of Darkness" item (Cost=3, Note=basic, dark ages)
+* Changed "Talons of the Beast" item (Cost=3, Note=basic, long night) to "Talons of the Beast" item (Cost=3, Note=basic, dark ages)
+* Changed "Interred in Earth" item (Cost=3, Note=basic, long night) to "Interred in Earth" item (Cost=3, Note=basic, dark ages)
+* Changed "Form of the Beast" item (Cost=6, Note=int., long night) to "Form of the Beast" item (Cost=6, Note=int., dark ages)
+* Changed "Body of Spirit" item (Cost=9, Note=adv., long night) to "Body of Spirit" item (Cost=9, Note=adv., dark ages)
++ Added "Blissful Slumber" item (Cost=12, Note=elder, dark ages)
+
+"Quietus" Menu:
++ Added "Silence of Fiery Blood" item (Cost=3, Note=basic, dark ages)
++ Added "Blood Essence" item (Cost=9, Note=adv., dark ages)
+
+"Revenant" Menu:
++ Added "Krevcheski" item (Cost=1, Note=)
++ Added "Szantovich" item (Cost=1, Note=)
++ Added "Vlasy" item (Cost=1, Note=)
+
+"Rituals" Menu:
+* Re-Organized
++ Added "Mortis" submenu link (Link=Rituals, Mortis)
++ Added "Gargoyle" submenu link (Link=Rituals, Gargoyle)
+
+"Rituals, Advanced" Menu:
++ Added "Enact the Blood Contract" item (Cost=6, Note=adv.)
+
+"Rituals, Basic" Menu:
++ Added "Revelation of the Blood Lineage" item (Cost=2, Note=basic)
+
+"Rituals, Gargoyle" Menu:
++ Added Entire Menu
+
+"Rituals, Intermediate" Menu:
+- Deleted "Shaft of Belated Quintessence" item (Cost=4, Note=int.)
++ Added "Shaft of Belated Quiescence" item (Cost=4, Note=int.)
++ Added "Ward Versus Cainites" item (Cost=4, Note=int.)
+* Changed "Ward versus Kindred" item (Cost=1, Note=) to "Ward versus Kindred" item (Cost=4, Note=int.)
+
+"Rituals, Mortis" Menu:
++ Added Entire Menu
+
+"Sect" Menu:
++ Added "Cainite Heresy" item (Cost=1, Note=)
++ Added "Furores" item (Cost=1, Note=)
++ Added "Inconnu" item (Cost=1, Note=)
++ Added "Order of Bitter Ashes" item (Cost=1, Note=)
++ Added "Prometheans" item (Cost=1, Note=)
+
+"Serpentis" Menu:
++ Added "Cheat the Scale of Anubis" item (Cost=9, Note=adv., dark ages)
++ Added "Breathe the Sandstorm" item (Cost=12, Note=elder, dark ages)
+
+"Shadow Lords" Menu:
+* Changed "Raven's Wings" item (Cost=1, Note=) to "Raven's Wings" item (Cost=6, Note=int.)
+
+"Sphere Levels" Menu:
+* Changed "Apprentice" item (Cost=3, Note=basic) to "Apprentice" item (Cost=5, Note=basic)
+* Changed "Initiate" item (Cost=3, Note=basic) to "Initiate" item (Cost=5, Note=basic)
+* Changed "Disciple" item (Cost=6, Note=int.) to "Disciple" item (Cost=10, Note=int.)
+* Changed "Adept" item (Cost=6, Note=int.) to "Adept" item (Cost=10, Note=int.)
+* Changed "Master" item (Cost=9, Note=adv.) to "Master" item (Cost=15, Note=adv.)
+
+"Thaumaturgy" Menu:
++ Added "Rego Elementum" submenu link (Link=Elemental Mastery)
++ Added "Rego Tempestas" submenu link (Link=Weather Control)
+
+"Title, Vampire" Menu:
++ Added "Chamberlain" item (Cost=1, Note=)
++ Added "Warleader" item (Cost=1, Note=)
+
+"Totems" Menu:
++ Added "Boar" item (Cost=1, Note=)
+
+"Valeren, Healer" Menu:
++ Added "Sense Life" item (Cost=3, Note=basic)
+* Re-Organized
+* Changed "Healing Touch" item (Cost=3, Note=basic) to "Healing Touch" item (Cost=6, Note=int.)
+
+"Valeren, Warrior" Menu:
++ Added "Sense Death" item (Cost=3, Note=basic)
++ Added "Morphean Blow" item (Cost=3, Note=basic)
+* Changed "Burning Touch" item (Cost=3, Note=basic) to "Burning Touch" item (Cost=6, Note=int.)
++ Added "Armor of Caine's Fury" item (Cost=6, Note=int.)
++ Added "Fiery Agony" item (Cost=12, Note=elder)
+
+"Vicissitude" Menu:
+* Changed "Transmogrify the Mortal Clay" item (Cost=3, Note=basic, long night) to "Transmogrify the Mortal Clay" item (Cost=3, Note=basic, dark ages)
+* Changed "Rend the Osseus Frame" item (Cost=6, Note=int., long night) to "Rend the Osseus Frame" item (Cost=6, Note=int., dark ages)
+* Changed "Awaken the Zulo Shape" item (Cost=9, Note=adv., long night) to "Awaken the Zulo Shape" item (Cost=6, Note=int., dark ages)
++ Added "Ascendancy of the Sanguine Humour" item (Cost=9, Note=adv., dark ages)
+* Re-Organized
+
+"Weather Control" Menu:
+* Changed "Cloak of Fog" item (Cost=3, Note=basic, 2nd ed.) to "Cloak of Fog" item (Cost=3, Note=basic, dark ages)
+* Changed "Downpour" item (Cost=3, Note=basic, 2nd ed.) to "Downpour" item (Cost=3, Note=basic, dark ages)
+* Changed "Tempest" item (Cost=6, Note=int., 2nd ed.) to "Tempest" item (Cost=6, Note=int., dark ages)
++ Added "Hide the Burning Sun" item (Cost=6, Note=int., dark ages)
+* Changed "Call Lightning" item (Cost=9, Note=adv., 2nd ed.) to "Call Lightning" item (Cost=9, Note=adv., dark ages)
+

@@ -1,0 +1,9 @@
+[wrap 70][report rotes]
+----------------------------------------------------------------------
+[Name]
+Level [Level][repeat]             [col 35] [Spheres]
+[/repeat]Duration: [Duration]
+Description: [Description]
+Grades of Success: [Grades]
+----------------------------------------------------------------------
+[/report]

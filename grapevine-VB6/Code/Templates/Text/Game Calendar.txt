@@ -1,0 +1,9 @@
+[Title]
+Game Calendar: [DateRange]
+[wrap 70]
+[report calendar][repeat]
+----------------------------------------------------------------------
+[dateformat dddd, mmmm d][Date], [dateformat h:mm AM/PM][Time]
+[Place]
+[/repeat][/report]
+----------------------------------------------------------------------

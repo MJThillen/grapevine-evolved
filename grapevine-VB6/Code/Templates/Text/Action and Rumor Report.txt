@@ -1,0 +1,25 @@
+[template character]======================================================================
+
+[Name] Action and Rumor Report
+[GameDate]
+[Wrap 70]
+ACTIONS ==============================================================
+[option actions]
+[repeat]
+[Type] Action
+[col 9] Level [Level]  [col 20] Unused [Unused]  [col 32] Total [Total]  [col 43] Growth [Growth]
+---Action:
+[Action]
+---Result:
+[Result]
+----------------------------------------------------------------------[/repeat]
+[/option]
+RUMORS ===============================================================
+[option rumors]
+[!Level 0]Level [Level] [/!][Title] Rumors
+
+[Rumor]
+
+----------------------------------------------------------------------
+[/option]
+======================================================================

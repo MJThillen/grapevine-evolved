@@ -1,0 +1,76 @@
+<HTML>
+<!-- [template Report] -->
+<HEAD>
+  <TITLE>[Title] Plot Report</TITLE>
+  <META NAME=Generator CONTENT="Grapevine LARP Administration Utility (www.GrapevineLARP.com)">
+  <STYLE TYPE="text/css">
+    <!--
+    H3 { font-family: Arial, sans-serif; margin-bottom: 0 };
+    B  { font-family: Arial, sans-serif };
+    TD { font-size: 75% };
+    TH { font-size: 75% ; font-family: Arial, sans-serif; background-color: #cccccc; text-align: center; border-bottom: solid 1px black };
+    -->
+  </STYLE>
+</HEAD>
+
+<BODY>
+
+  <CENTER>
+
+    <H3>[Title]<BR>Plot Development Report</H3>
+    [#Plots] Plots<BR>
+    [DateRange]
+    <P></P>
+
+    <!--[report Plots]-->
+
+      <TABLE WIDTH=75% STYLE="border:solid black 1px">
+
+        <TR>
+          <TH ALIGN=CENTER COLSPAN=4><H3>[Title]</H3></TD>
+        </TR>
+
+        <TR>
+          <TD WIDTH=25% ALIGN=RIGHT><B>Start Date</B></TD>
+          <TD WIDTH=25% ALIGN=LEFT >[?StartDate](none)[/?][StartDate]</TD>
+          <TD WIDTH=25% ALIGN=RIGHT><B>End Date</B></TD>
+          <TD WIDTH=25% ALIGN=LEFT >[?EndDate](none)[/?][EndDate]</TD>
+        </TR>
+
+        <TR>
+          <TD WIDTH=25% ALIGN=RIGHT><B>Narrator</B></TD>
+          <TD WIDTH=25% ALIGN=LEFT >[Narrator]</TD>
+          <TD WIDTH=25% ALIGN=RIGHT><B>[#KeyCharacters] Key Characters</B></TD>
+          <TD WIDTH=25% ALIGN=LEFT >[divider <BR>][repeat][KeyCharacters][/repeat][divider]</TD>
+        </TR>
+
+        <TR>
+          <TD COLSPAN=4><P><B>Outline:</B> [Outline]</P><P></P></TD>
+        </TR>
+
+        <!--[repeat]-->
+
+          <TR>
+            <TH COLSPAN=4><P ALIGN=LEFT>[DevDate] Development</P></TD>
+          </TR>
+
+          <TR>
+            <TD COLSPAN=4><P>[Development]</P><P></P></TD>
+          </TR>
+
+        <!--[/repeat]-->
+
+      <TR>
+        <TH ALIGN=CENTER COLSPAN=4>&nbsp;</TD>
+      </TR>
+
+      </TABLE>
+
+      <P></P>
+
+    <!--[/report]-->
+
+  </CENTER>
+
+</BODY>
+</HTML>

@@ -1,0 +1,56 @@
+<HTML>
+<!-- [template Report] -->
+
+<HEAD>
+  <TITLE>[Title] Character Roster</TITLE>
+  <META NAME=Generator CONTENT="Grapevine LARP Administration Utility (www.GrapevineLARP.com)">
+  <STYLE TYPE="text/css">
+    <!--
+    H3 { font-family: Arial, sans-serif; margin-bottom: 0 };
+    B  { font-family: Arial, sans-serif };
+    TD { font-size: 75% };
+    TH { font-size: 75% ; font-family: Arial, sans-serif; background-color: #cccccc; text-align: center; border-bottom: solid 1px black };
+    -->
+  </STYLE>
+</HEAD>
+
+<BODY>
+
+  <CENTER>
+
+    <H3>[Title]<BR>
+    Character Roster</H3>
+    [#Characters] Characters<BR>
+    [PrintDate]
+    <BR>
+
+    <TABLE WIDTH=100% NOBORDER>
+
+      <TR>
+        <TH>Name</TH>
+        <TH>Group</TH>
+        <TH>Subgroup</TH>
+        <TH>Status/NPC</TH>
+        <TH>Player</TH>
+      </TR>
+
+      <!--[report Characters]-->
+
+      <TR>
+        <TD>[Name]</TD>
+        <TD>[Group]</TD>
+        <TD>[Subgroup]</TD>
+        <TD>[PlayStatus][?NPC True] NPC[/?]</TD>
+        <TD>[Player]</TD>
+      </TR>
+    
+      <!--[/report]-->
+
+      <TR>
+        <TH COLSPAN=5>&nbsp;</TH>
+      </TR>
+
+    </TABLE>
+
+</BODY>
+</HTML>
