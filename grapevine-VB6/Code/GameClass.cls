@@ -30,7 +30,7 @@ Public GameFile As String               'full pathname of game file
 Public DataChanged As Boolean           '"dirty" flag
 
 Public ChronicleTitle As String         'Title of the Chronicle
-Public Website As String                'Game URL
+Public Website As String                'grapevine.Game URL
 Public EMail As String                  'Main E-Mail address
 Public Phone As String                  'Main Phone number
 Public UsualPlace As String             'Usual Place to show
@@ -137,7 +137,7 @@ Private Sub AddCharacterFromFile(Race As String, FileNum As Integer, _
         Case CStr(gvRaceDemon)
             Set NewCharacter = New DemonClass
         Case Else
-            Err.Raise vbObjectError + 9, "Game.AddCharacterFromFile", _
+            Err.Raise vbObjectError + 9, "grapevine.Game.AddCharacterFromFile", _
                 "Unexpected character type """ & Race & """ read."
     End Select
 
@@ -167,7 +167,7 @@ Private Sub AddDefaultTemplates()
 ' Description:  Add the default output templates to this game.
 '
 
-    Dim Template As TemplateClass
+    Dim grapevine.Template As TemplateClass
     Dim NameSet As Collection
     Dim Name As Variant
     Dim FileBase As String
@@ -209,17 +209,17 @@ Private Sub AddDefaultTemplates()
     NameSet.Add tnInfluenceReport
     
     For Each Name In NameSet
-        Set Template = New TemplateClass
-        Template.Name = Name
+        Set grapevine.Template = New TemplateClass
+        grapevine.Template.Name = Name
         FileBase = Name
-        Template.IsCharacterSheet = (InStr(FileBase, tnCharSheetSuffix) > 0)
-        If Template.IsCharacterSheet Then
+        grapevine.Template.IsCharacterSheet = (InStr(FileBase, tnCharSheetSuffix) > 0)
+        If grapevine.Template.IsCharacterSheet Then
             FileBase = Left(FileBase, InStr(FileBase, " ") - 1)
         End If
-        Template.SetFilename ofText, "Templates\Text\" & FileBase & ".txt"
-        Template.SetFilename ofRTF, "Templates\RTF\" & FileBase & ".rtf"
-        Template.SetFilename ofHTML, "Templates\HTML\" & FileBase & ".html"
-        TemplateList.InsertSorted Template
+        grapevine.Template.SetFilename ofText, "Templates\Text\" & FileBase & ".txt"
+        grapevine.Template.SetFilename ofRTF, "Templates\RTF\" & FileBase & ".rtf"
+        grapevine.Template.SetFilename ofHTML, "Templates\HTML\" & FileBase & ".html"
+        TemplateList.InsertSorted grapevine.Template
     Next Name
     
     Set NameSet = Nothing
@@ -416,7 +416,7 @@ Private Sub InsertDuplicate(List As LinkedList, NewEntry As Object, Optional Ren
         frmDuplicate.FixDuplicate NewEntry.Name, List, ExMod, InMod, Rename
         Screen.MousePointer = MouseState
         DuplicateAll = frmDuplicate.All
-        DuplicateAction = frmDuplicate.Action
+        DuplicateAction = frmDuplicate.grapevine.Action
         NewName = frmDuplicate.NewName
         Unload frmDuplicate
         Set frmDuplicate = Nothing
@@ -482,13 +482,13 @@ Public Sub LoadExchange(FileName As String)
             LoadExchangeV23 FileName
         Case gvBinaryMenu
             FileErrorMessage = ShortFile(FileName) & _
-                    " is a grapevine menu file: open it from Game -> Grapevine Menus."
+                    " is a grapevine menu file: open it from grapevine.Game -> Grapevine Menus."
         Case gvBinaryGame
             FileErrorMessage = ShortFile(FileName) & _
-                    " is a grapevine Game file: open it from File -> Open Game."
+                    " is a grapevine grapevine.Game file: open it from File -> Open grapevine.Game."
         Case gv23Game
             FileErrorMessage = ShortFile(FileName) & _
-                    " is a grapevine Game file: open it from File -> Open Game."
+                    " is a grapevine grapevine.Game file: open it from File -> Open grapevine.Game."
         Case gvInvalid
             FileErrorMessage = ShortFile(FileName) & _
                     " is not a grapevine game file."
@@ -557,7 +557,7 @@ Private Sub LoadExchangeBinary(FileName As String)
                       "?", vbYesNo + vbQuestion, "Load Calendar") = vbYes Then
                 Set Calendar = Nothing
                 Set Calendar = NewEntity
-                MergeResults = MergeResults & "Game Calendar" & vbCr & _
+                MergeResults = MergeResults & "grapevine.Game Calendar" & vbCr & _
                                "(replaced)" & vbCr
             End If
             Set NewEntity = Nothing
@@ -586,7 +586,7 @@ Private Sub LoadExchangeBinary(FileName As String)
                     Set PlotList = APREngine.PlotList
                     Set RumorList = APREngine.RumorList
                     
-                    MergeResults = MergeResults & "Action/Plot/Rumor Settings" & vbCr & _
+                    MergeResults = MergeResults & "grapevine.Action/Plot/Rumor Settings" & vbCr & _
                                    "(replaced)" & vbCr
                 End If
                 Set NewEntity = Nothing
@@ -781,7 +781,7 @@ Private Sub LoadExchangeBinary(FileName As String)
         NewEntity.InputFromBinary FileNum, Version
         RumorList.MoveTo NewEntity.Name
         If RumorList.Off Then
-            Game.APREngine.InsertSorted RumorList, NewEntity
+            grapevine.Game.APREngine.InsertSorted RumorList, NewEntity
             MergeResults = MergeResults & NewEntity.Name & vbCr & "(added)" & vbCr
         Else
             InsertDuplicate RumorList, NewEntity, False
@@ -949,7 +949,7 @@ Private Sub LoadExchangeXML(FileName As String)
                                       "?", vbYesNo + vbQuestion, "Load Calendar") = vbYes Then
                                 Set Calendar = Nothing
                                 Set Calendar = NewEntity
-                                MergeResults = MergeResults & "Game Calendar" & vbCr & _
+                                MergeResults = MergeResults & "grapevine.Game Calendar" & vbCr & _
                                                "(replaced)" & vbCr
                             End If
                             Set NewEntity = Nothing
@@ -975,7 +975,7 @@ Private Sub LoadExchangeXML(FileName As String)
                                 Set PlotList = APREngine.PlotList
                                 Set RumorList = APREngine.RumorList
                                 
-                                MergeResults = MergeResults & "Action/Plot/Rumor Settings" & vbCr & _
+                                MergeResults = MergeResults & "grapevine.Action/Plot/Rumor Settings" & vbCr & _
                                                "(replaced)" & vbCr
                             End If
                             Set NewEntity = Nothing
@@ -1119,7 +1119,7 @@ Public Sub Merge(MergeFile As String)
             Set Calendar = MergeGame.Calendar
             Set MergeGame.Calendar = Nothing
             Set MergeGame.Calendar = New CalendarClass
-            MergeResults = "Game Calendar" & vbCr & "(replaced)" & vbCr
+            MergeResults = "grapevine.Game Calendar" & vbCr & "(replaced)" & vbCr
         End If
         
         MergeLists PlayerList, MergeGame.PlayerList
@@ -1225,7 +1225,7 @@ Public Sub NewGame()
     MenuSet.OpenMenus SlashPath(App.Path) & DefaultMenuFile, False
     If MenuSet.FileError Then _
         MsgBox "Warning: " & MenuSet.FileErrorMessage, _
-        vbExclamation, "Open Game: Open Game Menus"
+        vbExclamation, "Open grapevine.Game: Open grapevine.Game Menus"
     
     LoadExchange SlashPath(App.Path) & DefaultInventoryFile
 
@@ -1260,7 +1260,7 @@ Public Sub OpenGame(FileName As String, Optional LoadMenu As Boolean = True)
             OpenGameV23 FileName, LoadMenu
         Case gvBinaryMenu
             FileErrorMessage = ShortFile(FileName) & _
-                    " is a grapevine menu file: open it from Game -> Grapevine Menus."
+                    " is a grapevine menu file: open it from grapevine.Game -> Grapevine Menus."
         Case gvBinaryExchange
             FileErrorMessage = ShortFile(FileName) & _
                     " is a grapevine exchange file: open it from File -> Data Exchange."
@@ -1377,7 +1377,7 @@ Private Sub OpenGameBinary(FileName As String, LoadMenu As Boolean)
     End If
     If MenuSet.FileError Then _
         MsgBox "Warning: " & MenuSet.FileErrorMessage, _
-        vbExclamation, "Open Game: Open Game Menus"
+        vbExclamation, "Open grapevine.Game: Open grapevine.Game Menus"
     
     FileErrorMessage = "Error reading calendar:"
     Calendar.InputFromBinary FileNum, Version
@@ -1619,7 +1619,7 @@ Private Sub OpenGameV23(FileName As String, LoadMenu As Boolean)
     End If
     If MenuSet.FileError Then _
         MsgBox "Warning: " & MenuSet.FileErrorMessage, _
-        vbExclamation, "Open Game: Open Game Menus"
+        vbExclamation, "Open grapevine.Game: Open grapevine.Game Menus"
     
     '
     ' Read the player list
@@ -1787,7 +1787,7 @@ Private Sub OpenGameXML(FileName As String, LoadMenu As Boolean)
                 End If
                 If MenuSet.FileError Then _
                     MsgBox "Warning: " & MenuSet.FileErrorMessage, _
-                    vbExclamation, "Open Game: Open Game Menus"
+                    vbExclamation, "Open grapevine.Game: Open grapevine.Game Menus"
                 
                 Do Until .Tag = "grapevine" And .Terminal
                     
@@ -2152,7 +2152,7 @@ Public Sub Rename(ObjType As QueryInventoryType, OldName As String, NewName As S
         Thing.LastModified = Now
         SourceList.InsertSorted Thing
         
-        Game.DataChanged = True
+        grapevine.Game.DataChanged = True
         
         Select Case ObjType
             Case qiCharacters
@@ -2651,9 +2651,9 @@ Public Sub SaveExchange(FileName As String, Format As FileFormatType, _
 ' Parameters:   FileName        the name of the file to save as
 '               Format          Format to save it in
 '               Master          A list of lists of entities to save, in the following order:
-'                               1. List of Game settings
+'                               1. List of grapevine.Game settings
 '                                   - If element 1 is not nothing, save Calendar.
-'                                   - If element 2 is not nothing, save Action/Rumor settings.
+'                                   - If element 2 is not nothing, save grapevine.Action/Rumor settings.
 '                                   - If element 3 is not nothing, save XP Awards.
 '                                   - If element 4 is not nothing, save Templates.
 '                               2. List of Players
@@ -2743,7 +2743,7 @@ Private Sub SaveExchangeBinary(FileName As String, ByRef Master As LinkedList)
     Set SubList = Master.Item               'deal with the game settings list first
     
     SubList.First
-    If SubList.Item = 1 Then     'Game Calendar
+    If SubList.Item = 1 Then     'grapevine.Game Calendar
         Put #FileNum, , 1
         Calendar.OutputToBinary FileNum
     Else
@@ -2771,7 +2771,7 @@ Private Sub SaveExchangeBinary(FileName As String, ByRef Master As LinkedList)
     End If
     
     SubList.MoveNext
-    If SubList.Item = 1 Then     'Template settings
+    If SubList.Item = 1 Then     'grapevine.Template settings
         Put #FileNum, , CInt(TemplateList.Count)
         TemplateList.First
         Do Until TemplateList.Off
@@ -2844,7 +2844,7 @@ Private Sub SaveExchangeXML(FileName As String, Master As LinkedList)
         Set SubList = Master.Item               'deal with the game settings list first
         
         SubList.First
-        If SubList.Item = 1 Then      'Game Calendar
+        If SubList.Item = 1 Then      'grapevine.Game Calendar
             Calendar.OutputToFile XML
         End If
         
@@ -2863,7 +2863,7 @@ Private Sub SaveExchangeXML(FileName As String, Master As LinkedList)
         End If
         
         SubList.MoveNext
-        If SubList.Item = 1 Then     'Template settings
+        If SubList.Item = 1 Then     'grapevine.Template settings
             TemplateList.First
             Do Until TemplateList.Off
                 TemplateList.Item.OutputToFile XML

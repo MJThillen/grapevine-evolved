@@ -284,7 +284,7 @@ Public Sub SetDefaultOutput()
 ' Description:  Initilize the OutputEngineClass with default output settings.
 '
     With OutputEngine
-        .Template = tnLocationCards
+        .grapevine.Template = tnLocationCards
         .SelectSet(osLocations).Clear
         .SelectSet(osLocations).StoreListView lvwList, True
         .GameDate = 0
@@ -318,7 +318,7 @@ Private Sub cmdAddNew_Click()
         LocationList.InsertSorted NewLocation
         
         mdiMain.AnnounceChanges Me, atLocations
-        Game.DataChanged = True
+        grapevine.Game.DataChanged = True
         RefreshList
     
         On Error Resume Next
@@ -353,7 +353,7 @@ Private Sub cmdDelete_Click()
             If Answer Then
                     
                 mdiMain.AnnounceChanges Me, atLocations
-                Game.DataChanged = True
+                grapevine.Game.DataChanged = True
     
                 For Each NormForm In Forms()
                     If NormForm.Caption = DelName And NormForm.Tag = "L" Then

@@ -1008,7 +1008,7 @@
       <![CDATA[Laws of Ascension Companion, p.151]]>
     </description>
   </rote>
-  <rote name="Multiple Action [Life]" level="2" duration="See Description" lastmodified="10/30/2002 2:10:14 PM">
+  <rote name="Multiple grapevine.Action [Life]" level="2" duration="See Description" lastmodified="10/30/2002 2:10:14 PM">
     <traitlist name="Spheres" abc="no" atomic="yes" display="5">
       <trait name="Life: Initiate" val="3" note="basic"/>
     </traitlist>
@@ -1016,7 +1016,7 @@
       <![CDATA[Laws of Ascension, p. 171]]>
     </description>
   </rote>
-  <rote name="Multiple Action [Time]" level="3" duration="See Description" lastmodified="10/30/2002 2:25:32 PM">
+  <rote name="Multiple grapevine.Action [Time]" level="3" duration="See Description" lastmodified="10/30/2002 2:25:32 PM">
     <traitlist name="Spheres" abc="no" atomic="yes" display="5">
       <trait name="Time: Disciple" val="6" note="int."/>
     </traitlist>

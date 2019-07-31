@@ -88,7 +88,7 @@ Public Sub SelectLink(ForDate As Date, IsEffect As Boolean)
     Me.Caption = "Select " & IIf(Effect, "Effect", "Cause")
     cboDate.Clear
     
-    With Game.Calendar
+    With grapevine.Game.Calendar
         .First
         Do Until .Off
             cboDate.AddItem Format(.GetGameDate, "mmmm d, yyyy")
@@ -112,7 +112,7 @@ Private Sub RefreshLinks()
     Dim TopNode As Node
     Dim TempNode As Node
     Dim TagNode As Node
-    Dim Action As ActionClass
+    Dim grapevine.Action As ActionClass
     Dim Plot As PlotClass
     Dim Rumor As RumorClass
     Dim Explain As String
@@ -123,7 +123,7 @@ Private Sub RefreshLinks()
     Set TopNode = tvwTree.Nodes.Add(Key:="Top", _
                   Text:=Format(When, "mmmm d") & IIf(Effect, " Effects", " Causes"))
     
-    Set TempNode = tvwTree.Nodes.Add("Top", tvwChild, "Actions", Explain & "an Action")
+    Set TempNode = tvwTree.Nodes.Add("Top", tvwChild, "Actions", Explain & "an grapevine.Action")
     TempNode.Sorted = True
     TempNode.Expanded = False
     Set TempNode = tvwTree.Nodes.Add("Top", tvwChild, "Plots", Explain & "a Plot")
@@ -136,24 +136,24 @@ Private Sub RefreshLinks()
         TempNode.Expanded = False
     End If
     
-    Game.APREngine.MoveToFirstDate ActionList, When
+    grapevine.Game.APREngine.MoveToFirstDate ActionList, When
     Do Until ActionList.Off
         
-        Set Action = ActionList.Item
-        Set TempNode = tvwTree.Nodes.Add("Actions", tvwChild, , Action.CharName)
+        Set grapevine.Action = ActionList.Item
+        Set TempNode = tvwTree.Nodes.Add("Actions", tvwChild, , grapevine.Action.CharName)
         
-        If Action.Count > 1 Then
-            Action.First
-            Do Until Action.Off
-                Set TagNode = tvwTree.Nodes.Add(TempNode.Index, tvwChild, , Action.SubAction.Name)
-                TagNode.Tag = "a" & Action.CharName & vbCr & Action.SubAction.Name
-                Action.MoveNext
+        If grapevine.Action.Count > 1 Then
+            grapevine.Action.First
+            Do Until grapevine.Action.Off
+                Set TagNode = tvwTree.Nodes.Add(TempNode.Index, tvwChild, , grapevine.Action.SubAction.Name)
+                TagNode.Tag = "a" & grapevine.Action.CharName & vbCr & grapevine.Action.SubAction.Name
+                grapevine.Action.MoveNext
             Loop
         Else
-            TempNode.Tag = "a" & Action.CharName & vbCr & BasicSubactionName
+            TempNode.Tag = "a" & grapevine.Action.CharName & vbCr & BasicSubactionName
         End If
         
-        Game.APREngine.MoveToNextDate ActionList, When
+        grapevine.Game.APREngine.MoveToNextDate ActionList, When
         
     Loop
     
@@ -174,7 +174,7 @@ Private Sub RefreshLinks()
     
     If Effect Then
     
-        Game.APREngine.MoveToFirstDate RumorList, When
+        grapevine.Game.APREngine.MoveToFirstDate RumorList, When
         Do Until RumorList.Off
             
             Set Rumor = RumorList.Item
@@ -192,7 +192,7 @@ Private Sub RefreshLinks()
                 TempNode.Tag = "r" & Rumor.Title & vbCr & "0"
             End If
             
-            Game.APREngine.MoveToNextDate RumorList, When
+            grapevine.Game.APREngine.MoveToNextDate RumorList, When
             
         Loop
     

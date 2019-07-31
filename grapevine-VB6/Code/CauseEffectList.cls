@@ -151,7 +151,7 @@ Public Sub AddLink(APR As APRType, When As Date, Item As String, Subitem As Stri
     Dim Linked As Object
 
     Append APR, When, Item, Subitem
-    Set Linked = Game.APREngine.GetLink(Link)
+    Set Linked = grapevine.Game.APREngine.GetLink(Link)
 
     If Not Linked Is Nothing Then
 
@@ -179,7 +179,7 @@ Public Sub RemoveLink()
 
         Dim Linked As Object
                     
-        Set Linked = Game.APREngine.GetLink(Link)
+        Set Linked = grapevine.Game.APREngine.GetLink(Link)
         
         If Not Linked Is Nothing Then
             On Error Resume Next
@@ -227,7 +227,7 @@ End Sub
 Private Sub Append(APR As APRType, When As Date, Item As String, Subitem As String)
 '
 ' Name:         Append
-' Parameters:   APR         whether this is Action, Plot or Rumor
+' Parameters:   APR         whether this is grapevine.Action, Plot or Rumor
 '               When        the date of the link
 '               Item        the name of the link
 '               Subitem     the topic of the link
@@ -539,7 +539,7 @@ Private Sub Class_Terminate()
 '               this method automatically.
 '
 
-    If Not Game Is Nothing Then
+    If Not grapevine.Game Is Nothing Then
         ClearLinks
     Else
         Clear

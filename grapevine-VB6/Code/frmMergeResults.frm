@@ -50,7 +50,7 @@ Begin VB.Form frmMergeResults
       BeginProperty ColumnHeader(2) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
          SubItemIndex    =   1
          Key             =   "action"
-         Text            =   "Action"
+         Text            =   "grapevine.Action"
          Object.Width           =   1764
       EndProperty
    End

@@ -1,15 +1,15 @@
 [template character]======================================================================
 
-[Name] Action and Rumor Report
+[Name] grapevine.Action and Rumor Report
 [GameDate]
 [Wrap 70]
 ACTIONS ==============================================================
 [option actions]
 [repeat]
-[Type] Action
+[Type] grapevine.Action
 [col 9] Level [Level]  [col 20] Unused [Unused]  [col 32] Total [Total]  [col 43] Growth [Growth]
----Action:
-[Action]
+---grapevine.Action:
+[grapevine.Action]
 ---Result:
 [Result]
 ----------------------------------------------------------------------[/repeat]

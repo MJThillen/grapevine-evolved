@@ -1,4 +1,4 @@
-package constants;
+package grapevine.constants;
 
 public enum ListDisplay {
     DEFAULT,

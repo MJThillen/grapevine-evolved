@@ -69,7 +69,7 @@ End Enum
 ' Description:      Values to signal to forms that data elsewhere in the program has changed
 ' Used In:          Forms that alter or display data
 '
-Public Enum AnnounceType            'Game components for use with AnnounceChanges and CheckForChanges
+Public Enum AnnounceType            'grapevine.Game components for use with AnnounceChanges and CheckForChanges
     atCharacters = 0                 'Changes to the list of characters (add, delete, name change)
     atPlayers = 1                    'Changes to the list of players (add, delete, name change)
     atQueries = 2                       'Changes to the list of queries

@@ -71,7 +71,7 @@ Public Sub CreateGVAssociation(AppPath As String)
   'This is what is displayed in Explorer against
   'for files with a xxx extension. Its type is
   'String (REG_SZ)
-   SetKeyValue "Grapevine.GameFile", "", "Grapevine Game File", REG_SZ
+   SetKeyValue "Grapevine.GameFile", "", "Grapevine grapevine.Game File", REG_SZ
    SetKeyValue "Grapevine.ExchangeFile", "", "Grapevine Exchange File", REG_SZ
    SetKeyValue "Grapevine.MenuFile", "", "Grapevine Menu File", REG_SZ
    SetKeyValue "Grapevine.MenuUpdate", "", "Grapevine Menu Update", REG_SZ

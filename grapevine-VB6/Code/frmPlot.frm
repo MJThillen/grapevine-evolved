@@ -446,7 +446,7 @@ Private Sub RefreshDates()
     If Plot.StartDate = 0 Then cboStartDate.ListIndex = 0
     If Plot.EndDate = 0 Then cboEndDate.ListIndex = 0
     
-    With Game.Calendar
+    With grapevine.Game.Calendar
     
         .First
         Do Until .Off
@@ -488,7 +488,7 @@ Public Sub RefreshNarrators()
     
     cboNarrator.Clear
     
-    With Game.QueryEngine
+    With grapevine.Game.QueryEngine
         .QueryList.MoveTo "Staff"
         If .QueryList.Off Then
             Set StaffQ = New QueryClass
@@ -500,7 +500,7 @@ Public Sub RefreshNarrators()
         .MakeQuery StaffQ
     End With
     
-    With Game.QueryEngine.Results
+    With grapevine.Game.QueryEngine.Results
         .First
         Do Until .Off
             cboNarrator.AddItem .Item.Name
@@ -557,7 +557,7 @@ Private Sub SetDataChanged()
 ' Description:  Do the upkeep associated with the plot's data changing.
 '
 
-    Game.DataChanged = True
+    grapevine.Game.DataChanged = True
     Plot.LastModified = Now
     lblLastModified.Caption = Format(Plot.LastModified, "mmmm d, yyyy")
 
@@ -569,7 +569,7 @@ Public Sub SetDefaultOutput()
 ' Description:  Initilize the OutputEngineClass with default output settings.
 '
     With OutputEngine
-        .Template = tnPlot
+        .grapevine.Template = tnPlot
         .SelectSet(osPlots).Clear
         .SelectSet(osPlots).Add Plot.Name
         .GameDate = 0
@@ -888,7 +888,7 @@ Private Sub lblTitle_Click()
             If Not (NewName = "" Or NewName = Plot.Name) Then
                 PlotList.MoveTo NewName
                 If PlotList.Off Then
-                    Game.APREngine.Reassign PlotList, Plot.Name, NewName
+                    grapevine.Game.APREngine.Reassign PlotList, Plot.Name, NewName
                     Me.Caption = Plot.Name
                     lblTitle.Caption = " " & Plot.Name
                     SetDataChanged

@@ -182,7 +182,7 @@ Begin VB.Form frmOutput
          Width           =   5415
       End
       Begin VB.Label lblLabels 
-         Caption         =   "Histories, Game Calendar, Plot Developments"
+         Caption         =   "Histories, grapevine.Game Calendar, Plot Developments"
          Height          =   255
          Index           =   7
          Left            =   120
@@ -752,7 +752,7 @@ Begin VB.Form frmOutput
          Width           =   2730
       End
       Begin VB.Label lblFormatLabel 
-         Caption         =   "&HTML Template File"
+         Caption         =   "&HTML grapevine.Template File"
          Height          =   255
          Index           =   2
          Left            =   3360
@@ -762,7 +762,7 @@ Begin VB.Form frmOutput
          Width           =   2415
       End
       Begin VB.Label lblFormatLabel 
-         Caption         =   "Rich Te&xt (RTF) Template File"
+         Caption         =   "Rich Te&xt (RTF) grapevine.Template File"
          Height          =   255
          Index           =   1
          Left            =   3360
@@ -911,7 +911,7 @@ Begin VB.Form frmOutput
       EndProperty
    End
    Begin VB.Label lblLabels 
-      Caption         =   "For this &Game Date:"
+      Caption         =   "For this &grapevine.Game Date:"
       Height          =   255
       Index           =   6
       Left            =   3720
@@ -1047,7 +1047,7 @@ Public Sub ShowOutput(Device As OutputDeviceType)
 '
 ' Name:         ShowOutput
 ' Parameters:   OFormat     Print, file or E-Mail
-'               Template    Name of template to prepare for
+'               grapevine.Template    Name of template to prepare for
 ' Description:  Prepare this window for the appropriate type of output.
 '
     
@@ -1086,17 +1086,17 @@ Public Sub ShowOutput(Device As OutputDeviceType)
         Case ofHTML:    optFormat(ofHTML).Value = True
     End Select
     
-    With Game.TemplateList
+    With grapevine.Game.TemplateList
         FindIndex = -1
         cboTemplate.AddItem "Character Sheets"
         .First
         Do Until .Off
             lstTemplates.AddItem .Item.Name
             If Not .Item.IsCharacterSheet Then cboTemplate.AddItem .Item.Name
-            If .Item.Name = OutputEngine.Template Then FindIndex = cboTemplate.NewIndex
+            If .Item.Name = OutputEngine.grapevine.Template Then FindIndex = cboTemplate.NewIndex
             .MoveNext
         Loop
-        cboTemplate.AddItem "Choose Template..."
+        cboTemplate.AddItem "Choose grapevine.Template..."
         OtherTemplateIndex = cboTemplate.NewIndex
         If FindIndex = -1 Then FindIndex = CharSheetIndex
         cboTemplate.ListIndex = FindIndex
@@ -1104,7 +1104,7 @@ Public Sub ShowOutput(Device As OutputDeviceType)
 
     Set tabTabs.SelectedItem = tabTabs.Tabs(1)
 
-    With Game.Calendar
+    With grapevine.Game.Calendar
         .First
         Do Until .Off
             cboDate.AddItem Format(.GetGameDate, "mmmm d, yyyy")
@@ -1119,7 +1119,7 @@ Public Sub ShowOutput(Device As OutputDeviceType)
         End If
     End With
 
-    With Game.QueryEngine.QueryList
+    With grapevine.Game.QueryEngine.QueryList
         .First
         Do Until .Off
             If .Item.Inventory = qiCharacters Then cboSearch.AddItem .Item.Name
@@ -1251,7 +1251,7 @@ Private Sub cboKey_Click()
     fraTraitDistribution.Visible = (cboKey.ItemData(cboKey.ListIndex) = qtTraitList) And _
         optGraph(OPT_DIST).Value
     If Not fraTraitDistribution.Visible Then optTraitDistribution(OPT_TOTAL).Value = True
-    OutputEngine.StatKey = Game.QueryEngine.TitlesToKeys(cboKey.Text)
+    OutputEngine.StatKey = grapevine.Game.QueryEngine.TitlesToKeys(cboKey.Text)
 
 End Sub
 
@@ -1289,7 +1289,7 @@ Private Sub cboTemplate_Click()
     Dim I As Integer
     Dim OldKey As String
     Dim Subject As Long
-    Dim Template As TemplateClass
+    Dim grapevine.Template As TemplateClass
     Dim OutFormat As OutputFormatType
     Dim NoFile As Boolean
     
@@ -1301,7 +1301,7 @@ Private Sub cboTemplate_Click()
     If cboTemplate.ListIndex = OtherTemplateIndex Then
             
         With cmnDialog
-            .DialogTitle = "Choose Template"
+            .DialogTitle = "Choose grapevine.Template"
             .FileName = ""
             .DefaultExt = IIf(OutFormat = ofText, "txt", IIf(OutFormat = ofRTF, "rtf", "html"))
             .FilterIndex = OutFormat + 1
@@ -1345,20 +1345,20 @@ Private Sub cboTemplate_Click()
         Case CharSheetIndex
             Subject = ooCharacters Or ooOptionMask
             CheckOptions CharSheetOptions
-            OutputEngine.Template = cboTemplate.Text
+            OutputEngine.grapevine.Template = cboTemplate.Text
         Case OtherTemplateIndex + 1
             Subject = CustomTemplate.GetSubject(MIN_OUTFORMAT)
             If Not Subject = ooFileError Then CheckOptions Subject
         Case Else
-            Game.TemplateList.MoveTo cboTemplate.Text
-            If Game.TemplateList.Off Then
+            grapevine.Game.TemplateList.MoveTo cboTemplate.Text
+            If grapevine.Game.TemplateList.Off Then
                 Subject = ooFileError
             Else
-                Set Template = Game.TemplateList.Item
-                Subject = Template.GetSubject(OutFormat)
-                NoFile = (Template.GetFilename(OutFormat) = "")
+                Set grapevine.Template = grapevine.Game.TemplateList.Item
+                Subject = grapevine.Template.GetSubject(OutFormat)
+                NoFile = (grapevine.Template.GetFilename(OutFormat) = "")
                 If Not Subject = ooFileError Then CheckOptions Subject
-                OutputEngine.Template = cboTemplate.Text
+                OutputEngine.grapevine.Template = cboTemplate.Text
             End If
     End Select
 
@@ -1379,7 +1379,7 @@ Private Sub cboTemplate_Click()
         Else
             MsgBox "Grapevine can't read the file associated with this report and format." & vbCrLf & _
                    "Please make sure the file name and location is correct.", vbInformation, _
-                   "Can't Read Template File"
+                   "Can't Read grapevine.Template File"
         End If
         
     Else
@@ -1437,13 +1437,13 @@ Private Sub cmdAddReport_Click()
     TemplateName = InputBox("Enter a name for the sheet or report:", "New Sheet or Report")
     
     If TemplateName <> "" Then
-        Game.TemplateList.MoveTo TemplateName
-        If Game.TemplateList.Off Then
+        grapevine.Game.TemplateList.MoveTo TemplateName
+        If grapevine.Game.TemplateList.Off Then
             
-            Dim Template As TemplateClass
-            Set Template = New TemplateClass
-            Template.Name = TemplateName
-            Game.TemplateList.InsertSorted Template
+            Dim grapevine.Template As TemplateClass
+            Set grapevine.Template = New TemplateClass
+            grapevine.Template.Name = TemplateName
+            grapevine.Game.TemplateList.InsertSorted grapevine.Template
             lstTemplates.AddItem TemplateName
             lstTemplates.ListIndex = lstTemplates.NewIndex
             For I = CharSheetIndex + 1 To OtherTemplateIndex
@@ -1453,7 +1453,7 @@ Private Sub cmdAddReport_Click()
                 End If
             Next I
             OtherTemplateIndex = OtherTemplateIndex + 1
-            Game.DataChanged = True
+            grapevine.Game.DataChanged = True
             
         Else
             MsgBox "That name is in use -- enter a different one.", , "Name in Use"
@@ -1478,12 +1478,12 @@ Private Sub cmdDeleteReport_Click()
 ' Description:  Delete the selected template.
 '
 
-    Game.TemplateList.MoveTo lstTemplates.Text
-    If Not Game.TemplateList.Off Then
+    grapevine.Game.TemplateList.MoveTo lstTemplates.Text
+    If Not grapevine.Game.TemplateList.Off Then
         If MsgBox("Are you sure you want to delete this template from the list?", vbQuestion + vbYesNo, _
-                  "Delete Template") = vbYes Then
+                  "Delete grapevine.Template") = vbYes Then
                   
-            Game.TemplateList.Remove
+            grapevine.Game.TemplateList.Remove
                   
             If cboTemplate.Text = lstTemplates.Text Then
                 cboTemplate.RemoveItem cboTemplate.ListIndex
@@ -1499,7 +1499,7 @@ Private Sub cmdDeleteReport_Click()
             OtherTemplateIndex = OtherTemplateIndex - 1
             lstTemplates.ListIndex = lstTemplates.ListIndex - 1
             lstTemplates.RemoveItem lstTemplates.ListIndex + 1
-            Game.DataChanged = True
+            grapevine.Game.DataChanged = True
             
         End If
     End If
@@ -1521,19 +1521,19 @@ Private Sub cmdFormat_Click(Index As Integer)
 ' Description:  Prompt the user for the filename to associate with this format in this template.
 '
 
-    Game.TemplateList.MoveTo lstTemplates.Text
-    If Not Game.TemplateList.Off Then
+    grapevine.Game.TemplateList.MoveTo lstTemplates.Text
+    If Not grapevine.Game.TemplateList.Off Then
     
         Dim FullName As String
         Dim Path As String
         Dim ShortName As String
         
-        FullName = FindFile(Game.TemplateList.Item.GetFilename(CLng(Index)))
+        FullName = FindFile(grapevine.Game.TemplateList.Item.GetFilename(CLng(Index)))
         ShortName = ShortFile(FullName)
         Path = Left(FullName, Len(FullName) - Len(ShortName))
         
         With cmnDialog
-            .DialogTitle = "Find " & lblFormatLabel(Index).Caption & " Template"
+            .DialogTitle = "Find " & lblFormatLabel(Index).Caption & " grapevine.Template"
             .FileName = ShortName
             .DefaultExt = IIf(Index = ofText, "txt", IIf(Index = ofRTF, "rtf", "html"))
             .FilterIndex = Index + 1
@@ -1546,10 +1546,10 @@ Private Sub cmdFormat_Click(Index As Integer)
         If Err = 0 Then
             On Error GoTo 0
             FullName = cmnDialog.FileName
-            ShortName = GetRelativeName(FullName, Game.GameFile)
-            Game.TemplateList.Item.SetFilename CLng(Index), ShortName
+            ShortName = GetRelativeName(FullName, grapevine.Game.GameFile)
+            grapevine.Game.TemplateList.Item.SetFilename CLng(Index), ShortName
             txtFormat(Index).Text = ShortName
-            Game.DataChanged = True
+            grapevine.Game.DataChanged = True
             If cboTemplate.Text = lstTemplates.Text Then
                 cboTemplate_Click
                 Set tabTabs.SelectedItem = tabTabs.Tabs(LIST_TEMPLATES)
@@ -1586,9 +1586,9 @@ Private Sub cmdOutput_Click(Index As Integer)
             ESubject = SendTemplate.GetSubject(OutputEngine.OutputFormat)
             ESubjLine = SendTemplate.Name
         Case Else
-            Game.TemplateList.MoveTo cboTemplate.Text
-            If Not Game.TemplateList.Off Then
-                Set SendTemplate = Game.TemplateList.Item
+            grapevine.Game.TemplateList.MoveTo cboTemplate.Text
+            If Not grapevine.Game.TemplateList.Off Then
+                Set SendTemplate = grapevine.Game.TemplateList.Item
                 ESubject = SendTemplate.GetSubject(OutputEngine.OutputFormat)
                 ESubjLine = SendTemplate.Name
             Else
@@ -1783,7 +1783,7 @@ Private Sub cmdSelectOnly_Click()
     
     Set SSet = New StringSet
     
-    With Game.QueryEngine
+    With grapevine.Game.QueryEngine
     
         .QueryList.MoveTo cboSelectOnly.Text
         If .QueryList.Off Then
@@ -1855,18 +1855,18 @@ Private Sub lstTemplates_Click()
 '
 
     Dim ShowFormats As Boolean
-    Dim Template As TemplateClass
+    Dim grapevine.Template As TemplateClass
     Dim I As Integer
     
-    Game.TemplateList.MoveTo lstTemplates.Text
-    ShowFormats = Not Game.TemplateList.Off
+    grapevine.Game.TemplateList.MoveTo lstTemplates.Text
+    ShowFormats = Not grapevine.Game.TemplateList.Off
     
     If ShowFormats Then
-        Set Template = Game.TemplateList.Item
-        txtFormat(ofText).Text = Template.GetFilename(ofText)
-        txtFormat(ofRTF).Text = Template.GetFilename(ofRTF)
-        txtFormat(ofHTML).Text = Template.GetFilename(ofHTML)
-        cmdDeleteReport.Enabled = Not Template.IsCharacterSheet
+        Set grapevine.Template = grapevine.Game.TemplateList.Item
+        txtFormat(ofText).Text = grapevine.Template.GetFilename(ofText)
+        txtFormat(ofRTF).Text = grapevine.Template.GetFilename(ofRTF)
+        txtFormat(ofHTML).Text = grapevine.Template.GetFilename(ofHTML)
+        cmdDeleteReport.Enabled = Not grapevine.Template.IsCharacterSheet
     End If
     
     For I = MIN_OUTFORMAT To MAX_OUTFORMAT
@@ -1925,12 +1925,12 @@ Private Sub optGraph_Click(Index As Integer)
     
     If Index = OPT_DIST Or cboKey.ListCount = 0 Then
         cboKey.Clear
-        For I = 1 To Game.QueryEngine.TitlesToKeys.Count
-            Key = Game.QueryEngine.TitlesToKeys(I)
-            KeyType = Game.QueryEngine.KeysToTypes(Key)
-            Include = CLng(Game.QueryEngine.KeysToInventories(Key)) And qiCharacters
+        For I = 1 To grapevine.Game.QueryEngine.TitlesToKeys.Count
+            Key = grapevine.Game.QueryEngine.TitlesToKeys(I)
+            KeyType = grapevine.Game.QueryEngine.KeysToTypes(Key)
+            Include = CLng(grapevine.Game.QueryEngine.KeysToInventories(Key)) And qiCharacters
             If ((Index = OPT_DIST) Or (KeyType = qtTraitList) Or (KeyType = qtNumber)) And Include Then
-                cboKey.AddItem Game.QueryEngine.KeysToTitles(Key)
+                cboKey.AddItem grapevine.Game.QueryEngine.KeysToTitles(Key)
                 cboKey.ItemData(cboKey.NewIndex) = KeyType
                 If cboKey.List(cboKey.NewIndex) = Store Then cboKey.ListIndex = cboKey.NewIndex
             End If
@@ -1954,7 +1954,7 @@ Private Sub optGraph_Click(Index As Integer)
     If cboKey.ListIndex = -1 Then
         InfIndex = 0
         For I = 0 To cboKey.ListCount - 1
-            Key = Game.QueryEngine.TitlesToKeys(cboKey.List(I))
+            Key = grapevine.Game.QueryEngine.TitlesToKeys(cboKey.List(I))
             If Key = OutputEngine.StatKey Then
                 cboKey.ListIndex = I
                 Exit For
@@ -2070,7 +2070,7 @@ Private Sub tabTabs_Click()
                     Set PopList = LocationList
                     SetIndex = osLocations
                 Case LIST_ACTIONS
-                    IconKey = "Action"
+                    IconKey = "grapevine.Action"
                     cmdSelectSame(SAME_DATE).Visible = True
                     lstList.Columns = 1
                     Set PopList = ActionList
@@ -2112,7 +2112,7 @@ Private Sub tabTabs_Click()
                 chkNot.Visible = False
             Else
                 cboSelectOnly.Clear
-                With Game.QueryEngine.QueryList
+                With grapevine.Game.QueryEngine.QueryList
                     .First
                     Do Until .Off
                         If .Item.Inventory = SelectOnlyType Then
@@ -2162,9 +2162,9 @@ Private Sub txtFormat_KeyUp(Index As Integer, KeyCode As Integer, Shift As Integ
 '
 
     If KeyCode = vbKeyDelete Then
-        Game.TemplateList.MoveTo lstTemplates.Text
-        If Not Game.TemplateList.Off Then
-            Game.TemplateList.Item.SetFilename CLng(Index), ""
+        grapevine.Game.TemplateList.MoveTo lstTemplates.Text
+        If Not grapevine.Game.TemplateList.Off Then
+            grapevine.Game.TemplateList.Item.SetFilename CLng(Index), ""
             txtFormat(Index).Text = "(none)"
         End If
     End If

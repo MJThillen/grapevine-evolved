@@ -438,7 +438,7 @@ Private Sub SetCharacter(CharRace As RaceType)
             CharacterName = txtName.Text
             Race = CharRace
             If RandomGen Then
-                Game.RandomTraits = txtRandom(tiPrimary).Text & "," & txtRandom(tiSecondary).Text & _
+                grapevine.Game.RandomTraits = txtRandom(tiPrimary).Text & "," & txtRandom(tiSecondary).Text & _
                               "," & txtRandom(tiTertiary).Text & "," & txtRandom(tiNegatives).Text & _
                               "," & txtRandom(tiAbilities).Text & "," & txtRandom(tiBackgrounds).Text & _
                               "," & txtRandom(tiFree).Text
@@ -468,7 +468,7 @@ Private Sub chkRandom_Click()
     
     RandomGen = (chkRandom.Value = vbChecked)
     If RandomGen Then
-        RT = Game.RandomTraits & ","
+        RT = grapevine.Game.RandomTraits & ","
         For I = 0 To 6
             C = InStr(RT, ",")
             If C > 0 Then txtRandom(I).Text = Mid(RT, 1, C - 1)

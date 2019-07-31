@@ -173,7 +173,7 @@ Private Sub ConvertHealth(Extend As Boolean)
         
     Loop
 
-    Game.DataChanged = True
+    grapevine.Game.DataChanged = True
 
 End Sub
 
@@ -222,8 +222,8 @@ Private Sub cmdClose_Click()
 ' Name:         cmdClose_Click
 ' Description:  Close window, saving changes.
 '
-    Game.DataChanged = Game.DataChanged Or (optExtended = Not Game.ExtendedHealth)
-    Game.ExtendedHealth = optExtended
+    grapevine.Game.DataChanged = grapevine.Game.DataChanged Or (optExtended = Not grapevine.Game.ExtendedHealth)
+    grapevine.Game.ExtendedHealth = optExtended
     Unload Me
     
 End Sub
@@ -233,7 +233,7 @@ Private Sub Form_Load()
 ' Name:         Form_Load
 ' Description:  Initialize option values.
 '
-    optExtended = Game.ExtendedHealth
-    optAbbreviated = Not Game.ExtendedHealth
+    optExtended = grapevine.Game.ExtendedHealth
+    optAbbreviated = Not grapevine.Game.ExtendedHealth
 
 End Sub

@@ -118,11 +118,11 @@ Public Function GetStatus(Optional NowDate As Date = 0) As String
 '
 
     If NowDate = 0 Then
-        Game.Calendar.MoveToCloseGame
-        If Game.Calendar.Off Then
+        grapevine.Game.Calendar.MoveToCloseGame
+        If grapevine.Game.Calendar.Off Then
             NowDate = Date
         Else
-            NowDate = Game.Calendar.GetGameDate
+            NowDate = grapevine.Game.Calendar.GetGameDate
         End If
     End If
     

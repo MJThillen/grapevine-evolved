@@ -92,7 +92,7 @@ Begin VB.Form frmGetAPRInfo
       Width           =   240
    End
    Begin VB.Label lblDate 
-      Caption         =   "Previous Game:"
+      Caption         =   "Previous grapevine.Game:"
       Height          =   255
       Index           =   0
       Left            =   2520
@@ -101,7 +101,7 @@ Begin VB.Form frmGetAPRInfo
       Width           =   1215
    End
    Begin VB.Label lblDate 
-      Caption         =   "Next Game:"
+      Caption         =   "Next grapevine.Game:"
       Height          =   255
       Index           =   1
       Left            =   2520
@@ -186,7 +186,7 @@ Public Function GetNewRumorTitle(RumorDate As Date)
     lblLabel.Caption = " &Select or type in a title for the rumor:"
     Me.Caption = "Add Rumor"
     
-    With Game.APREngine.RumorList
+    With grapevine.Game.APREngine.RumorList
         .First
         Do Until .Off
             If Not .Item.Category = rtInfluence Then
@@ -244,13 +244,13 @@ Public Function GetNewRumorDate(RumorTitle As String)
     
     SelSession = 0
     
-    Game.APREngine.MoveToFirstTitle RumorList, RumorTitle
+    grapevine.Game.APREngine.MoveToFirstTitle RumorList, RumorTitle
     Do Until RumorList.Off
         InUseSet.Add CStr(RumorList.Item.RumorDate)
-        Game.APREngine.MoveToNextTitle RumorList, RumorTitle
+        grapevine.Game.APREngine.MoveToNextTitle RumorList, RumorTitle
     Loop
     
-    With Game.Calendar
+    With grapevine.Game.Calendar
     
         .MoveToCloseGame
         If Not .Off Then SelSession = .GetGameDate
@@ -295,7 +295,7 @@ Public Function GetNewPlotTitle(PlotDate As Date)
     lblLabel.Caption = " &Select a plot to develop:"
     Me.Caption = "Add Plot Development"
     
-    With Game.APREngine.PlotList
+    With grapevine.Game.APREngine.PlotList
         .First
         Do Until .Off
             Set Plot = .Item
@@ -355,7 +355,7 @@ Public Function GetNewPlotDate(PlotTitle As String)
         PlotList.MoveNext
     End If
     
-    With Game.Calendar
+    With grapevine.Game.Calendar
     
         .MoveToCloseGame
         If Not .Off Then SelSession = .GetGameDate
@@ -382,7 +382,7 @@ End Function
 Public Function GetNewActionChar(ActDate As Date)
 '
 ' Name:         GetNewAction
-' Parameters:   ActDate     Date for which to create this Action
+' Parameters:   ActDate     Date for which to create this grapevine.Action
 ' Description:  Determine a new action to be created with the given date and selected character.
 '
 
@@ -399,15 +399,15 @@ Public Function GetNewActionChar(ActDate As Date)
     lstChars.Visible = True
 
     lblLabel.Caption = " &Select the character who performs the action:"
-    Me.Caption = "Add Action"
+    Me.Caption = "Add grapevine.Action"
     
-    Game.APREngine.MoveToFirstDate ActionList, ActDate
+    grapevine.Game.APREngine.MoveToFirstDate ActionList, ActDate
     Do Until ActionList.Off
         InUseSet.Add ActionList.Item.CharName
-        Game.APREngine.MoveToNextDate ActionList, ActDate
+        grapevine.Game.APREngine.MoveToNextDate ActionList, ActDate
     Loop
     
-    With Game.QueryEngine.QueryList
+    With grapevine.Game.QueryEngine.QueryList
         .First
         Do Until .Off
             If .Item.Inventory = qiCharacters Then cboSearches.AddItem .Item.Name
@@ -450,17 +450,17 @@ Public Function GetNewActionDate(ActChar As String)
     lstDates.Visible = True
     
     lblLabel.Caption = " &Select a date for the character's action:"
-    Me.Caption = "Add Action"
+    Me.Caption = "Add grapevine.Action"
     
-    Game.APREngine.MoveToFirstTitle ActionList, ActChar
+    grapevine.Game.APREngine.MoveToFirstTitle ActionList, ActChar
     Do Until ActionList.Off
         InUseSet.Add CStr(ActionList.Item.ActDate)
-        Game.APREngine.MoveToNextTitle ActionList, ActChar
+        grapevine.Game.APREngine.MoveToNextTitle ActionList, ActChar
     Loop
     
     SelSession = 0
     
-    With Game.Calendar
+    With grapevine.Game.Calendar
     
         If .HasNextGame Then SelSession = .NextGameDate
         If SelSession = 0 And .HasPreviousGame Then SelSession = .PreviousGameDate
@@ -494,7 +494,7 @@ Private Sub UpdateCaption()
     Dim SDate As String
     
     Select Case Target
-        Case aprAction: Cap = "Action:"
+        Case aprAction: Cap = "grapevine.Action:"
         Case aprPlot:   Cap = "Plot:"
         Case aprRumor:  Cap = "Rumor:"
     End Select
@@ -524,12 +524,12 @@ Private Sub cboSearches_Click()
     
     lstChars.Clear
     
-    Game.QueryEngine.QueryList.MoveTo cboSearches.Text
-    If Game.QueryEngine.QueryList.Off Then
+    grapevine.Game.QueryEngine.QueryList.MoveTo cboSearches.Text
+    If grapevine.Game.QueryEngine.QueryList.Off Then
         Set Source = CharacterList
     Else
-        Game.QueryEngine.MakeQuery Game.QueryEngine.QueryList.Item
-        Set Source = Game.QueryEngine.Results
+        grapevine.Game.QueryEngine.MakeQuery grapevine.Game.QueryEngine.QueryList.Item
+        Set Source = grapevine.Game.QueryEngine.Results
     End If
     
     Source.First
@@ -614,10 +614,10 @@ Private Sub cmdOK_Click()
             End If
         Else
             If Target = aprAction Then
-                Game.APREngine.MoveToPair ActionList, NewDate, NewItem
+                grapevine.Game.APREngine.MoveToPair ActionList, NewDate, NewItem
                 Found = Not ActionList.Off
             Else
-                Game.APREngine.MoveToPair RumorList, NewDate, NewItem
+                grapevine.Game.APREngine.MoveToPair RumorList, NewDate, NewItem
                 Found = Not RumorList.Off
             End If
         End If
@@ -645,7 +645,7 @@ Private Sub Form_Load()
 ' Description:  Populate the game dates when the form loads.
 '
 
-    With Game.Calendar
+    With grapevine.Game.Calendar
     
         If .HasNextGame Then
             lblNext.Caption = Format(.NextGameDate, "mmmm d, yyyy")

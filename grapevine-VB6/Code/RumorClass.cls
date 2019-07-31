@@ -243,7 +243,7 @@ Public Sub PrepareRecipients()
     
     If Not (Q Is Nothing) Then
         
-        Game.QueryEngine.MakeQuery Q
+        grapevine.Game.QueryEngine.MakeQuery Q
         
         First
         Do Until Off
@@ -257,8 +257,8 @@ Public Sub PrepareRecipients()
             Dim CharData As Variant
             Dim I As Integer
             
-            With Game.QueryEngine
-                With Game.QueryEngine.Results
+            With grapevine.Game.QueryEngine
+                With grapevine.Game.QueryEngine.Results
                     .First
                     Do Until .Off
                         .Item.GetValue MultiKey, CharData
@@ -282,7 +282,7 @@ Public Sub PrepareRecipients()
             
         Else
             First
-            With Game.QueryEngine.Results
+            With grapevine.Game.QueryEngine.Results
                 .First
                 Do Until .Off
                     SubRumor.RecipientSet.Add .Item.Name

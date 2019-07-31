@@ -3,7 +3,7 @@ Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmGameInfo 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Game Settings"
+   Caption         =   "grapevine.Game Settings"
    ClientHeight    =   6135
    ClientLeft      =   45
    ClientTop       =   330
@@ -262,7 +262,7 @@ Begin VB.Form frmGameInfo
       Visible         =   0   'False
       Width           =   8175
       Begin VB.CheckBox chkRumors 
-         Caption         =   "Copy &Unused Values from Previous Action"
+         Caption         =   "Copy &Unused Values from Previous grapevine.Action"
          Height          =   375
          Index           =   9
          Left            =   2160
@@ -400,7 +400,7 @@ Begin VB.Form frmGameInfo
       End
       Begin VB.Label lblLabel 
          Alignment       =   1  'Right Justify
-         Caption         =   "Detailed Action Settings"
+         Caption         =   "Detailed grapevine.Action Settings"
          Height          =   255
          Index           =   1
          Left            =   -120
@@ -410,7 +410,7 @@ Begin VB.Form frmGameInfo
       End
       Begin VB.Label lblLabel 
          Alignment       =   1  'Right Justify
-         Caption         =   "Total &Personal Action Value"
+         Caption         =   "Total &Personal grapevine.Action Value"
          Height          =   255
          Index           =   2
          Left            =   -120
@@ -420,7 +420,7 @@ Begin VB.Form frmGameInfo
       End
       Begin VB.Label lblLabel 
          Alignment       =   1  'Right Justify
-         Caption         =   "Action Values per &Level of Influence or Background"
+         Caption         =   "grapevine.Action Values per &Level of Influence or Background"
          Height          =   495
          Index           =   3
          Left            =   -120
@@ -430,7 +430,7 @@ Begin VB.Form frmGameInfo
       End
       Begin VB.Label lblLabel 
          Alignment       =   1  'Right Justify
-         Caption         =   "Backgrounds &with Action Values"
+         Caption         =   "Backgrounds &with grapevine.Action Values"
          Height          =   495
          Index           =   5
          Left            =   -120
@@ -439,7 +439,7 @@ Begin VB.Form frmGameInfo
          Width           =   2175
       End
       Begin VB.Label lblLabel 
-         Caption         =   "Action &Value"
+         Caption         =   "grapevine.Action &Value"
          Height          =   255
          Index           =   4
          Left            =   4680
@@ -591,7 +591,7 @@ Begin VB.Form frmGameInfo
       End
       Begin VB.Label lblLabels 
          Alignment       =   2  'Center
-         Caption         =   "&Game Dates"
+         Caption         =   "&grapevine.Game Dates"
          Height          =   255
          Index           =   13
          Left            =   120
@@ -887,7 +887,7 @@ Begin VB.Form frmGameInfo
             ImageVarType    =   2
          EndProperty
          BeginProperty Tab4 {1EFB659A-857C-11D1-B16A-00C0F0283628} 
-            Caption         =   "Action Settings"
+            Caption         =   "grapevine.Action Settings"
             Key             =   "Actions"
             ImageVarType    =   2
          EndProperty
@@ -1009,7 +1009,7 @@ Public Sub SetDefaultOutput()
 ' Description:  Initilize the OutputEngineClass with default output settings.
 '
     With OutputEngine
-        .Template = tnGameCalendar
+        .grapevine.Template = tnGameCalendar
         .GameDate = 0
     End With
     
@@ -1073,8 +1073,8 @@ Private Sub chkEnforce_Click()
                     
                     CharacterList.MoveNext
                 Loop
-                Game.DataChanged = True
-                Game.EnforceHistory = True
+                grapevine.Game.DataChanged = True
+                grapevine.Game.EnforceHistory = True
                 
             Else
             
@@ -1083,8 +1083,8 @@ Private Sub chkEnforce_Click()
             End If
             
         Else
-            Game.DataChanged = True
-            Game.EnforceHistory = False
+            grapevine.Game.DataChanged = True
+            grapevine.Game.EnforceHistory = False
         End If
         Populating = False
         
@@ -1101,8 +1101,8 @@ Private Sub chkPreferences_Click(Index As Integer)
     If Not Populating Then
         Select Case Index
             Case ciTraitMax
-                Game.LinkTraitMaxes = Not (chkPreferences(ciTraitMax).Value = vbChecked)
-                Game.DataChanged = True
+                grapevine.Game.LinkTraitMaxes = Not (chkPreferences(ciTraitMax).Value = vbChecked)
+                grapevine.Game.DataChanged = True
             Case ciAutosave
                 If chkPreferences(ciAutosave).Value = vbChecked Then
                     mdiMain.AutosaveTime = Int(Val(txtInfo(tiAutosave).Text))
@@ -1144,15 +1144,15 @@ Private Sub cmdDeleteDate_Click()
                 End If
             Next NormForm
             
-            Game.Calendar.MoveTo CDate(lstDates.Text)
-            If Not Game.Calendar.Off Then
-                Game.Calendar.Remove
-                Game.DataChanged = True
-                Game.Calendar.LastModified = Now
+            grapevine.Game.Calendar.MoveTo CDate(lstDates.Text)
+            If Not grapevine.Game.Calendar.Off Then
+                grapevine.Game.Calendar.Remove
+                grapevine.Game.DataChanged = True
+                grapevine.Game.Calendar.LastModified = Now
                 mdiMain.AnnounceChanges Me, atDates
             End If
             
-            Game.APREngine.DeleteDate CDate(lstDates.Text)
+            grapevine.Game.APREngine.DeleteDate CDate(lstDates.Text)
             
             StorePos = lstDates.ListIndex
             lstDates.RemoveItem StorePos
@@ -1189,12 +1189,12 @@ Private Sub cmdDeleteOld_Click()
                 End If
             Next NormForm
             
-            With Game.Calendar
+            With grapevine.Game.Calendar
                 
                 .MoveTo CDate(lstDates.Text)
                 .MovePrevious
                 Do Until .Off
-                    Game.APREngine.DeleteDate .GetGameDate
+                    grapevine.Game.APREngine.DeleteDate .GetGameDate
                     .MovePrevious
                 Loop
             
@@ -1207,8 +1207,8 @@ Private Sub cmdDeleteOld_Click()
                 
             End With
             
-            Game.DataChanged = True
-            Game.Calendar.LastModified = Now
+            grapevine.Game.DataChanged = True
+            grapevine.Game.Calendar.LastModified = Now
             mdiMain.AnnounceChanges Me, atDates
 
         End If
@@ -1285,7 +1285,7 @@ Private Sub ConvertHealth(Extend As Boolean)
         
     Loop
 
-    Game.DataChanged = True
+    grapevine.Game.DataChanged = True
 
 End Sub
 
@@ -1364,26 +1364,26 @@ Private Sub Form_Load()
     
     Populating = True
     
-    txtInfo(tiTitle).Text = Game.ChronicleTitle
-    txtInfo(tiWebPage).Text = Game.Website
-    txtInfo(tiEMail).Text = Game.EMail
-    txtInfo(tiPhone).Text = Game.Phone
-    txtInfo(tiUsualPlace).Text = Game.UsualPlace
-    txtInfo(tiUsualTime).Text = Game.UsualTime
-    txtInfo(tiDescription).Text = Game.Description
-    txtInfo(tiHideStart).Text = Game.STCommentStart
-    txtInfo(tiHideEnd).Text = Game.STCommentEnd
+    txtInfo(tiTitle).Text = grapevine.Game.ChronicleTitle
+    txtInfo(tiWebPage).Text = grapevine.Game.Website
+    txtInfo(tiEMail).Text = grapevine.Game.EMail
+    txtInfo(tiPhone).Text = grapevine.Game.Phone
+    txtInfo(tiUsualPlace).Text = grapevine.Game.UsualPlace
+    txtInfo(tiUsualTime).Text = grapevine.Game.UsualTime
+    txtInfo(tiDescription).Text = grapevine.Game.Description
+    txtInfo(tiHideStart).Text = grapevine.Game.STCommentStart
+    txtInfo(tiHideEnd).Text = grapevine.Game.STCommentEnd
     
     RefreshStaffList
     
-    optExtended.Value = Game.ExtendedHealth
-    optAbbreviated.Value = Not Game.ExtendedHealth
-    chkEnforce.Value = IIf(Game.EnforceHistory, vbChecked, vbUnchecked)
-    chkPreferences(ciTraitMax).Value = IIf(Game.LinkTraitMaxes, vbUnchecked, vbChecked)
+    optExtended.Value = grapevine.Game.ExtendedHealth
+    optAbbreviated.Value = Not grapevine.Game.ExtendedHealth
+    chkEnforce.Value = IIf(grapevine.Game.EnforceHistory, vbChecked, vbUnchecked)
+    chkPreferences(ciTraitMax).Value = IIf(grapevine.Game.LinkTraitMaxes, vbUnchecked, vbChecked)
     chkPreferences(ciAutosave).Value = IIf(mdiMain.AutosaveTime > 0, vbChecked, vbUnchecked)
     txtInfo(tiAutosave).Text = CStr(IIf(mdiMain.AutosaveTime > 0, mdiMain.AutosaveTime, 10))
     
-    lblMenuFile.Caption = Game.MenuSet.FileName
+    lblMenuFile.Caption = grapevine.Game.MenuSet.FileName
     mvwCalendar.Value = Date
     
     fraDateFields.Left = mvwCalendar.Left + mvwCalendar.Width + 105
@@ -1396,7 +1396,7 @@ Private Sub Form_Load()
     txtInfo(8).Width = fraDateFields.Width
     txtInfo(9).Width = fraDateFields.Width
     
-    With Game.Calendar
+    With grapevine.Game.Calendar
         .Last
         Do Until .Off
             lstDates.AddItem Format(.GetGameDate, "mmmm d, yyyy")
@@ -1405,7 +1405,7 @@ Private Sub Form_Load()
         If .Count > 0 Then lstDates.ListIndex = 0
     End With
     
-    With Game.APREngine
+    With grapevine.Game.APREngine
     
         For I = 1 To 10
             .ActionsPerLevel.MoveTo CStr(I)
@@ -1472,7 +1472,7 @@ Private Sub lstDates_Click()
     
         lblDate.Caption = lstDates.Text
         
-        With Game.Calendar
+        With grapevine.Game.Calendar
             .MoveTo CDate(lstDates.Text)
             If Not .Off Then
                 txtInfo(tiDateTime).Text = .GetGameTime
@@ -1503,11 +1503,11 @@ Private Sub mvwCalendar_DateClick(ByVal DateClicked As Date)
     mvwCalendar.Value = DateClicked
     DateIndex = 0
     StringDate = Format(DateClicked, "mmmm d, yyyy")
-    Game.Calendar.MoveTo DateClicked
+    grapevine.Game.Calendar.MoveTo DateClicked
 
-    If Game.Calendar.Off Then
+    If grapevine.Game.Calendar.Off Then
     
-        Game.Calendar.Insert DateClicked, Game.UsualTime, Game.UsualPlace, ""
+        grapevine.Game.Calendar.Insert DateClicked, grapevine.Game.UsualTime, grapevine.Game.UsualPlace, ""
         
         Do Until DateIndex >= lstDates.ListCount
             If CDate(lstDates.List(DateIndex)) < DateClicked Then Exit Do
@@ -1515,7 +1515,7 @@ Private Sub mvwCalendar_DateClick(ByVal DateClicked As Date)
         Loop
         lstDates.AddItem StringDate, DateIndex
         lstDates.ListIndex = DateIndex
-        Game.DataChanged = True
+        grapevine.Game.DataChanged = True
         mdiMain.AnnounceChanges Me, atDates
         
     Else
@@ -1550,8 +1550,8 @@ Private Sub optAbbreviated_Click()
 '
 
     If Not Populating Then
-        Game.DataChanged = True
-        Game.ExtendedHealth = False
+        grapevine.Game.DataChanged = True
+        grapevine.Game.ExtendedHealth = False
     End If
     
 End Sub
@@ -1563,8 +1563,8 @@ Private Sub optExtended_Click()
 '
 
     If Not Populating Then
-        Game.DataChanged = True
-        Game.ExtendedHealth = True
+        grapevine.Game.DataChanged = True
+        grapevine.Game.ExtendedHealth = True
     End If
 
 End Sub
@@ -1618,75 +1618,75 @@ Private Sub txtInfo_Validate(Index As Integer, Cancel As Boolean)
 
     Select Case Index
         Case tiTitle
-            If Value <> Game.ChronicleTitle Then
-                Game.ChronicleTitle = Value
+            If Value <> grapevine.Game.ChronicleTitle Then
+                grapevine.Game.ChronicleTitle = Value
                 If Value = "" Then
                     mdiMain.Caption = GrapevineCaption
                 Else
                     mdiMain.Caption = GrapevineCaption & ": " & Value
                 End If
-                Game.DataChanged = True
+                grapevine.Game.DataChanged = True
             End If
         Case tiWebPage
-            If Game.Website <> Value Then
-                Game.Website = Value
-                Game.DataChanged = True
+            If grapevine.Game.Website <> Value Then
+                grapevine.Game.Website = Value
+                grapevine.Game.DataChanged = True
             End If
         Case tiEMail
-            If Game.EMail <> Value Then
-                Game.EMail = Value
-                Game.DataChanged = True
+            If grapevine.Game.EMail <> Value Then
+                grapevine.Game.EMail = Value
+                grapevine.Game.DataChanged = True
             End If
         Case tiPhone
-            If Game.Phone <> Value Then
-                Game.Phone = Value
-                Game.DataChanged = True
+            If grapevine.Game.Phone <> Value Then
+                grapevine.Game.Phone = Value
+                grapevine.Game.DataChanged = True
             End If
         Case tiUsualTime
-            If Game.UsualTime <> Value Then
-                Game.UsualTime = Value
-                Game.DataChanged = True
+            If grapevine.Game.UsualTime <> Value Then
+                grapevine.Game.UsualTime = Value
+                grapevine.Game.DataChanged = True
             End If
         Case tiUsualPlace
-            If Game.UsualPlace <> Value Then
-                Game.UsualPlace = Value
-                Game.DataChanged = True
+            If grapevine.Game.UsualPlace <> Value Then
+                grapevine.Game.UsualPlace = Value
+                grapevine.Game.DataChanged = True
             End If
         Case tiDescription
-            If Game.Description <> Value Then
-                Game.Description = Value
-                Game.DataChanged = True
+            If grapevine.Game.Description <> Value Then
+                grapevine.Game.Description = Value
+                grapevine.Game.DataChanged = True
             End If
         Case tiDateTime
-            Game.Calendar.MoveTo CDate(lblDate.Caption)
-            If Game.Calendar.GetGameTime <> Value Then
-                Game.Calendar.SetGameTime Value
-                Game.Calendar.LastModified = Now
-                Game.DataChanged = True
+            grapevine.Game.Calendar.MoveTo CDate(lblDate.Caption)
+            If grapevine.Game.Calendar.GetGameTime <> Value Then
+                grapevine.Game.Calendar.SetGameTime Value
+                grapevine.Game.Calendar.LastModified = Now
+                grapevine.Game.DataChanged = True
             End If
         Case tiDatePlace
-            Game.Calendar.MoveTo CDate(lblDate.Caption)
-            If Game.Calendar.GetGamePlace <> Value Then
-                Game.Calendar.SetGamePlace Value
-                Game.Calendar.LastModified = Now
-                Game.DataChanged = True
+            grapevine.Game.Calendar.MoveTo CDate(lblDate.Caption)
+            If grapevine.Game.Calendar.GetGamePlace <> Value Then
+                grapevine.Game.Calendar.SetGamePlace Value
+                grapevine.Game.Calendar.LastModified = Now
+                grapevine.Game.DataChanged = True
             End If
         Case tiDateNotes
-            Game.Calendar.MoveTo CDate(lblDate.Caption)
-            If Game.Calendar.GetGameNotes <> Value Then
-                Game.Calendar.SetGameNotes Value
-                Game.Calendar.LastModified = Now
-                Game.DataChanged = True
+            grapevine.Game.Calendar.MoveTo CDate(lblDate.Caption)
+            If grapevine.Game.Calendar.GetGameNotes <> Value Then
+                grapevine.Game.Calendar.SetGameNotes Value
+                grapevine.Game.Calendar.LastModified = Now
+                grapevine.Game.DataChanged = True
             End If
         Case tiHideStart
-            If Game.STCommentStart <> Value Then
-                Game.STCommentStart = Value
-                Game.DataChanged = True
+            If grapevine.Game.STCommentStart <> Value Then
+                grapevine.Game.STCommentStart = Value
+                grapevine.Game.DataChanged = True
             End If
         Case tiHideEnd
-            If Game.STCommentEnd <> Value Then
-                Game.STCommentEnd = Value
-                Game.DataChanged = True
+            If grapevine.Game.STCommentEnd <> Value Then
+                grapevine.Game.STCommentEnd = Value
+                grapevine.Game.DataChanged = True
             End If
         Case tiAutosave
             If Int(Val(Value)) < 1 Then txtInfo(tiAutosave).Text = "1"
@@ -1705,7 +1705,7 @@ Private Sub chkRumors_Click(Index As Integer)
 
     If Not Populating Then
     
-        With Game.APREngine
+        With grapevine.Game.APREngine
         
             .PublicRumors = (chkRumors(ciPublic).Value = vbChecked)
             .PersonalRumors = (chkRumors(ciPersonal).Value = vbChecked)
@@ -1720,7 +1720,7 @@ Private Sub chkRumors_Click(Index As Integer)
         
         End With
     
-        Game.DataChanged = True
+        grapevine.Game.DataChanged = True
     
     End If
 
@@ -1742,8 +1742,8 @@ Private Sub cmdAddBackground_Click()
     If NewBackground <> "" Then
     
         lstBackgrounds.AddItem NewBackground
-        Game.APREngine.BackgroundActions.Insert NewBackground
-        Game.DataChanged = True
+        grapevine.Game.APREngine.BackgroundActions.Insert NewBackground
+        grapevine.Game.DataChanged = True
         
     End If
     
@@ -1757,11 +1757,11 @@ Private Sub cmdDeleteBackground_Click()
 
     If lstBackgrounds.ListIndex > -1 Then
     
-        Game.APREngine.BackgroundActions.MoveTo lstBackgrounds.Text
-        Game.APREngine.BackgroundActions.RemoveTrait
+        grapevine.Game.APREngine.BackgroundActions.MoveTo lstBackgrounds.Text
+        grapevine.Game.APREngine.BackgroundActions.RemoveTrait
         lstBackgrounds.RemoveItem lstBackgrounds.ListIndex
         If lstBackgrounds.ListCount > 0 Then lstBackgrounds.ListIndex = 0
-        Game.DataChanged = True
+        grapevine.Game.DataChanged = True
         
     End If
 
@@ -1773,7 +1773,7 @@ Private Sub lvwLevels_ItemClick(ByVal Item As MSComctlLib.ListItem)
 ' Description:  Move to a new action level, making it available to edit.
 '
     
-    With Game.APREngine.ActionsPerLevel
+    With grapevine.Game.APREngine.ActionsPerLevel
         .MoveToPlace (Item.Index - 1)
         If Not .Off Then
             Populating = True
@@ -1791,8 +1791,8 @@ Private Sub txtPersonal_Change()
 '
 
     If Not Populating Then
-        Game.APREngine.PersonalActions = Val(txtPersonal.Text)
-        Game.DataChanged = True
+        grapevine.Game.APREngine.PersonalActions = Val(txtPersonal.Text)
+        grapevine.Game.DataChanged = True
     End If
     
 End Sub
@@ -1814,7 +1814,7 @@ Private Sub txtValue_Change()
     
     If Not (Populating Or lvwLevels.SelectedItem Is Nothing) Then
     
-        With Game.APREngine.ActionsPerLevel
+        With grapevine.Game.APREngine.ActionsPerLevel
             .MoveToPlace (lvwLevels.SelectedItem.Index - 1)
             If Not .Off Then
                 .Trait.Total = Val(txtValue.Text)

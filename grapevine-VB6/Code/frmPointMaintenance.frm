@@ -727,10 +727,10 @@ Private Sub RefreshLists()
             Dim SelKey As String
                         
             If Not lvwList.SelectedItem Is Nothing Then SelKey = lvwList.SelectedItem.Key
-            Game.XPAwardList.MoveTo cboAwards(INDEX_VIEW).Text
+            grapevine.Game.XPAwardList.MoveTo cboAwards(INDEX_VIEW).Text
             lvwList.ListItems.Clear
             
-            If IsDate(cboDate(INDEX_VIEW).Text) And Not Game.XPAwardList.Off Then
+            If IsDate(cboDate(INDEX_VIEW).Text) And Not grapevine.Game.XPAwardList.Off Then
             
                 Dim Results As LinkedList
                 Dim NewItem As ListItem
@@ -742,16 +742,16 @@ Private Sub RefreshLists()
                 lblAttendance.Caption = cboAwards(INDEX_VIEW).Text & ", " & cboDate(INDEX_VIEW).Text
                 
                 AwardDate = CDate(cboDate(INDEX_VIEW).Text)
-                Set Award = Game.XPAwardList.Item
+                Set Award = grapevine.Game.XPAwardList.Item
                 lvwList.ColumnHeaders(3).Text = Format(AwardDate, "mmmm") & " Total"
                 
-                Game.QueryEngine.QueryList.MoveTo cboSearches(INDEX_VIEW).Text
-                If Game.QueryEngine.QueryList.Off Then
+                grapevine.Game.QueryEngine.QueryList.MoveTo cboSearches(INDEX_VIEW).Text
+                If grapevine.Game.QueryEngine.QueryList.Off Then
                     Set Results = CharacterList
                 Else
-                    Game.QueryEngine.MakeQuery Game.QueryEngine.QueryList.Item, _
+                    grapevine.Game.QueryEngine.MakeQuery grapevine.Game.QueryEngine.QueryList.Item, _
                                                , optSelect(OPT_NOTVIEW).Value
-                    Set Results = Game.QueryEngine.Results
+                    Set Results = grapevine.Game.QueryEngine.Results
                 End If
                 
                 Results.First
@@ -805,7 +805,7 @@ Private Sub RefreshDates()
 
         If Not IsDate(Cursor) Then
             Cursor = Format(Now, "mmmm d, yyyy")
-            With Game.Calendar
+            With grapevine.Game.Calendar
                 .MoveToCloseGame
                 If Not .Off Then
                     If .GetGameDate > Now Then .MovePrevious
@@ -816,7 +816,7 @@ Private Sub RefreshDates()
                 
         cboDate(Index).Clear
         
-        With Game.Calendar
+        With grapevine.Game.Calendar
             .First
             Do Until .Off
                 cboDate(Index).AddItem Format(.GetGameDate, "mmmm d, yyyy")
@@ -848,7 +848,7 @@ Private Sub RefreshAwards()
             Cursor = cboAwards(Index).Text
             cboAwards(Index).Clear
             
-            With Game.XPAwardList
+            With grapevine.Game.XPAwardList
                 .First
                 Do Until .Off
                     If .Item.XP = (PointType = pmExperience) Then cboAwards(Index).AddItem .Item.Name
@@ -866,7 +866,7 @@ Private Sub RefreshAwards()
         
             lvwXPAwards.ListItems.Clear
             
-            With Game.XPAwardList
+            With grapevine.Game.XPAwardList
                 .First
                 Do Until .Off
                     If .Item.XP = (PointType = pmExperience) Then
@@ -908,7 +908,7 @@ Public Sub RefreshSearches()
     cboSearches(INDEX_GROUP).Clear
     cboSearches(INDEX_VIEW).Clear
     
-    With Game.QueryEngine.QueryList
+    With grapevine.Game.QueryEngine.QueryList
         .First
         Do Until .Off
             If .Item.Inventory = SearchType Then
@@ -934,14 +934,14 @@ Private Sub StoreAward()
 '
 
     If Not lvwXPAwards.SelectedItem Is Nothing And Not Populating Then
-        With Game.XPAwardList
+        With grapevine.Game.XPAwardList
             .MoveTo lvwXPAwards.SelectedItem.Text
             If Not .Off Then
                 .Item.ChangeType = cboChange(INDEX_AWARD).ItemData(cboChange(INDEX_AWARD).ListIndex)
                 .Item.Change = CSng(Val(txtNumber(INDEX_AWARD).Text))
                 lvwXPAwards.SelectedItem.ListSubItems(1).Text = .Item.ChangeTypeText
                 .Item.Reason = Trim(txtReason(INDEX_AWARD).Text)
-                Game.DataChanged = True
+                grapevine.Game.DataChanged = True
             End If
         End With
     End If
@@ -954,7 +954,7 @@ Public Sub SetDefaultOutput()
 ' Description:  Initilize the OutputEngineClass with default output settings.
 '
     With OutputEngine
-        .Template = tnSignIn
+        .grapevine.Template = tnSignIn
         .SelectSet(osCharacters).Clear
         .SelectSet(osCharacters).StoreListView lvwList, True
         .GameDate = 0
@@ -974,7 +974,7 @@ Private Sub cboAwards_Click(Index As Integer)
 
         Select Case Index
             Case INDEX_GROUP
-                With Game.XPAwardList
+                With grapevine.Game.XPAwardList
                     .MoveTo cboAwards(INDEX_GROUP).Text
                     If Not .Off Then
                         For I = 0 To cboChange(INDEX_GROUP).ListCount - 1
@@ -1087,7 +1087,7 @@ Private Sub cboSearches_Click(Index As Integer)
         Populating = True
         Select Case Index
             Case INDEX_GROUP
-                Game.QueryEngine.SelectQueryResults cboSearches(Index).Text, lstMany, optSelect(OPT_NOT).Value
+                grapevine.Game.QueryEngine.SelectQueryResults cboSearches(Index).Text, lstMany, optSelect(OPT_NOT).Value
             Case INDEX_VIEW
                 RefreshLists
         End Select
@@ -1129,7 +1129,7 @@ Private Sub cmdAddXPAward_Click()
     NewAward = Trim(NewAward)
     
     If NewAward <> "" Then
-        With Game.XPAwardList
+        With grapevine.Game.XPAwardList
             .MoveTo NewAward
             If .Off Then
                 Set Award = New ExperienceAwardClass
@@ -1143,7 +1143,7 @@ Private Sub cmdAddXPAward_Click()
                 NewItem.ListSubItems.Add Text:="earn 1"
                 Set lvwXPAwards.SelectedItem = NewItem
                 Call lvwXPAwards_ItemClick(NewItem)
-                Game.DataChanged = True
+                grapevine.Game.DataChanged = True
             Else
                 MsgBox "That name is in use.", vbExclamation + vbOKOnly, "Duplicate Name"
             End If
@@ -1268,7 +1268,7 @@ Private Sub cmdChange_Click()
         If Changed Then RefreshLists
                 
         Set Selected = Nothing
-        Game.DataChanged = Game.DataChanged Or Changed
+        grapevine.Game.DataChanged = grapevine.Game.DataChanged Or Changed
         Screen.MousePointer = vbDefault
     
     End If
@@ -1282,7 +1282,7 @@ Private Sub cmdDeleteXPAward_Click()
 '
     
     If Not lvwXPAwards.SelectedItem Is Nothing Then
-        With Game.XPAwardList
+        With grapevine.Game.XPAwardList
             .MoveTo lvwXPAwards.SelectedItem.Text
             If Not .Off Then .Remove
         End With
@@ -1371,9 +1371,9 @@ Private Sub Form_Activate()
     If mdiMain.CheckForChanges(Me, atDates) Then RefreshDates
     If mdiMain.CheckForChanges(Me, atQueries) Then RefreshSearches
     
-    chkRecord.Value = IIf(Game.EnforceHistory, vbGrayed, _
+    chkRecord.Value = IIf(grapevine.Game.EnforceHistory, vbGrayed, _
             IIf(chkRecord.Value = vbUnchecked, vbUnchecked, vbChecked))
-    chkRecord.Enabled = Not Game.EnforceHistory
+    chkRecord.Enabled = Not grapevine.Game.EnforceHistory
     
     Screen.MousePointer = vbDefault
     
@@ -1388,7 +1388,7 @@ Private Sub Form_Load()
     Dim DataState As Boolean
     Dim Combo As ComboBox
     
-    DataState = Game.DataChanged
+    DataState = grapevine.Game.DataChanged
     CurrentJob = MANAGE_GROUP
     
     Screen.MousePointer = vbHourglass
@@ -1418,7 +1418,7 @@ Private Sub Form_Load()
     Next Combo
     Populating = False
     
-    Game.DataChanged = DataState
+    grapevine.Game.DataChanged = DataState
     
     mdiMain.OrientForm Me
     
@@ -1497,9 +1497,9 @@ Private Sub lvwList_ItemCheck(ByVal Item As MSComctlLib.ListItem)
         Set lvwList.SelectedItem = Item
     
         MaintenanceList.MoveTo Item.Text
-        Game.XPAwardList.MoveTo cboAwards(INDEX_VIEW).Text
+        grapevine.Game.XPAwardList.MoveTo cboAwards(INDEX_VIEW).Text
         
-        If Not (MaintenanceList.Off Or Game.XPAwardList.Off Or _
+        If Not (MaintenanceList.Off Or grapevine.Game.XPAwardList.Off Or _
                 Not IsDate(cboDate(INDEX_VIEW).Text)) Then
         
             Dim XP As ExperienceClass
@@ -1508,7 +1508,7 @@ Private Sub lvwList_ItemCheck(ByVal Item As MSComctlLib.ListItem)
             
             Set XP = MaintenanceList.Item.Experience
             AwardDate = CDate(cboDate(INDEX_VIEW).Text)
-            Set Award = Game.XPAwardList.Item
+            Set Award = grapevine.Game.XPAwardList.Item
             
             If Item.Checked Then    'Add Award
             
@@ -1531,7 +1531,7 @@ Private Sub lvwList_ItemCheck(ByVal Item As MSComctlLib.ListItem)
             End If
             
             Item.ListSubItems(2).Text = CStr(XP.GetMonthXP(AwardDate))
-            Game.DataChanged = True
+            grapevine.Game.DataChanged = True
             MaintenanceList.Item.LastModified = Now
             
         End If
@@ -1553,7 +1553,7 @@ Private Sub lvwXPAwards_ItemClick(ByVal Item As MSComctlLib.ListItem)
         Dim I As Integer
         
         Populating = True
-        With Game.XPAwardList
+        With grapevine.Game.XPAwardList
             .MoveTo Item.Text
             If Not .Off Then
                 lblAward.Caption = .Item.Name & " Award"

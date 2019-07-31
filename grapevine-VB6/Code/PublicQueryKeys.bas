@@ -2,7 +2,7 @@ Attribute VB_Name = "PublicQueryKeys"
 '
 ' File:             PublicQueryKeys.bas
 ' Author:           Adam Cerling
-' Description:      Create the constants by which Grapevine refers to character data.
+' Description:      Create the grapevine.constants by which Grapevine refers to character data.
 '
 Option Explicit
 

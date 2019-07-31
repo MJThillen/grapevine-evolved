@@ -86,7 +86,7 @@ Begin VB.Form frmActionList
          Width           =   1695
       End
       Begin VB.CommandButton cmdAddNew 
-         Caption         =   "&Add New Action"
+         Caption         =   "&Add New grapevine.Action"
          Height          =   375
          Left            =   0
          TabIndex        =   8
@@ -94,7 +94,7 @@ Begin VB.Form frmActionList
          Width           =   1695
       End
       Begin VB.CommandButton cmdShow 
-         Caption         =   "&Show Action"
+         Caption         =   "&Show grapevine.Action"
          Default         =   -1  'True
          Height          =   375
          Left            =   0
@@ -103,7 +103,7 @@ Begin VB.Form frmActionList
          Width           =   1695
       End
       Begin VB.CommandButton cmdDelete 
-         Caption         =   "&Delete Action"
+         Caption         =   "&Delete grapevine.Action"
          Height          =   375
          Left            =   0
          TabIndex        =   9
@@ -263,7 +263,7 @@ Private Sub RefreshList(Optional SelGame As Boolean = False)
     If CategoryDate Then
     
         If SelGame Then
-            With Game.Calendar
+            With grapevine.Game.Calendar
                 If .HasNextGame Then
                     SelDate = .NextGameDate
                 ElseIf .HasPreviousGame Then
@@ -272,15 +272,15 @@ Private Sub RefreshList(Optional SelGame As Boolean = False)
             End With
         End If
         
-        Game.Calendar.Last
-        Do Until Game.Calendar.Off
-            lstCategory.AddItem Format(Game.Calendar.GetGameDate, "mmmm d, yyyy")
+        grapevine.Game.Calendar.Last
+        Do Until grapevine.Game.Calendar.Off
+            lstCategory.AddItem Format(grapevine.Game.Calendar.GetGameDate, "mmmm d, yyyy")
             If SelGame Then
-                If SelDate = Game.Calendar.GetGameDate Then
+                If SelDate = grapevine.Game.Calendar.GetGameDate Then
                     StoreCategory = lstCategory.NewIndex
                 End If
             End If
-            Game.Calendar.MovePrevious
+            grapevine.Game.Calendar.MovePrevious
         Loop
     
     Else
@@ -327,21 +327,21 @@ Public Sub SetDefaultOutput()
     
     If Not lstCategory.Text = "" Then
         If CategoryDate Then
-            Game.APREngine.MoveToFirstDate ActionList, CDate(lstCategory.Text)
+            grapevine.Game.APREngine.MoveToFirstDate ActionList, CDate(lstCategory.Text)
         Else
-            Game.APREngine.MoveToFirstTitle ActionList, lstCategory.Text
+            grapevine.Game.APREngine.MoveToFirstTitle ActionList, lstCategory.Text
         End If
         With OutputEngine
             .SelectSet(osActions).Clear
             Do Until ActionList.Off
                 .SelectSet(osActions).Add ActionList.Item.Name
                 If CategoryDate Then
-                    Game.APREngine.MoveToNextDate ActionList, CDate(lstCategory.Text)
+                    grapevine.Game.APREngine.MoveToNextDate ActionList, CDate(lstCategory.Text)
                 Else
-                    Game.APREngine.MoveToNextTitle ActionList, lstCategory.Text
+                    grapevine.Game.APREngine.MoveToNextTitle ActionList, lstCategory.Text
                 End If
             Loop
-            .Template = tnMasterAction
+            .grapevine.Template = tnMasterAction
             .GameDate = 0
         End With
     End If
@@ -378,10 +378,10 @@ Private Sub cmdAddNew_Click()
             
             Set NewAction = New ActionClass
             NewAction.Initialize NewName, NewDate
-            Game.APREngine.InsertSorted ActionList, NewAction
+            grapevine.Game.APREngine.InsertSorted ActionList, NewAction
             
             mdiMain.AnnounceChanges Me, atActions
-            Game.DataChanged = True
+            grapevine.Game.DataChanged = True
             Call lstCategory_Click
         
             On Error Resume Next
@@ -418,18 +418,18 @@ Private Sub cmdDelete_Click()
             DelName = lstCategory.Text
         End If
         
-        Game.APREngine.MoveToPair ActionList, DelDate, DelName
+        grapevine.Game.APREngine.MoveToPair ActionList, DelDate, DelName
     
         If Not ActionList.Off Then
     
             Answer = ShiftDown
             If Not Answer Then Answer = (MsgBox("This will PERMANENTLY remove this action" & _
                     " from the game. Are you sure you want to delete it?", _
-                    vbYesNo + vbQuestion, "Delete Action") = vbYes)
+                    vbYesNo + vbQuestion, "Delete grapevine.Action") = vbYes)
             If Answer Then
                     
                 mdiMain.AnnounceChanges Me, atActions
-                Game.DataChanged = True
+                grapevine.Game.DataChanged = True
     
                 For Each NormForm In Forms()
                     If NormForm.Caption = ActionList.Item.Name And NormForm.Tag = "A" Then
@@ -464,10 +464,10 @@ Private Sub cmdDeleteAll_Click()
     If CategoryDate Then
         If Not IsDate(lstCategory.Text) Then Exit Sub
         DelDate = CDate(lstCategory.Text)
-        Game.APREngine.MoveToFirstDate ActionList, DelDate
+        grapevine.Game.APREngine.MoveToFirstDate ActionList, DelDate
     Else
         DelName = lstCategory.Text
-        Game.APREngine.MoveToFirstTitle ActionList, DelName
+        grapevine.Game.APREngine.MoveToFirstTitle ActionList, DelName
     End If
         
     If Not ActionList.Off Then
@@ -478,7 +478,7 @@ Private Sub cmdDeleteAll_Click()
         If Answer Then
                 
             mdiMain.AnnounceChanges Me, atActions
-            Game.DataChanged = True
+            grapevine.Game.DataChanged = True
 
             For Each NormForm In Forms()
                 If NormForm.Tag = "A" Then
@@ -489,9 +489,9 @@ Private Sub cmdDeleteAll_Click()
             Do
                 ActionList.Remove
                 If CategoryDate Then
-                    Game.APREngine.MoveToFirstDate ActionList, DelDate
+                    grapevine.Game.APREngine.MoveToFirstDate ActionList, DelDate
                 Else
-                    Game.APREngine.MoveToFirstTitle ActionList, DelName
+                    grapevine.Game.APREngine.MoveToFirstTitle ActionList, DelName
                 End If
             Loop Until ActionList.Off
             RefreshList
@@ -638,7 +638,7 @@ Private Sub lstCategory_Click()
             
             lvwActions.SortOrder = lvwAscending
             SelDate = CDate(lstCategory.Text)
-            Game.APREngine.MoveToFirstDate ActionList, SelDate
+            grapevine.Game.APREngine.MoveToFirstDate ActionList, SelDate
             
             Do Until ActionList.Off
                 CurName = ActionList.Item.CharName
@@ -647,7 +647,7 @@ Private Sub lstCategory_Click()
                 Call NewItem.ListSubItems.Add(Text:=IIf(ActionList.Item.Done, "X", ""), Key:="done")
                 Call NewItem.ListSubItems.Add(Text:=CurName, Key:="sortkey")
                 
-                Game.APREngine.MoveToNextDate ActionList, SelDate
+                grapevine.Game.APREngine.MoveToNextDate ActionList, SelDate
             Loop
             
         Else
@@ -657,7 +657,7 @@ Private Sub lstCategory_Click()
             
             lvwActions.SortOrder = lvwDescending
             SelName = lstCategory.Text
-            Game.APREngine.MoveToFirstTitle ActionList, SelName
+            grapevine.Game.APREngine.MoveToFirstTitle ActionList, SelName
             
             Do Until ActionList.Off
                 CurDate = ActionList.Item.ActDate
@@ -667,7 +667,7 @@ Private Sub lstCategory_Click()
                 Call NewItem.ListSubItems.Add(Text:=IIf(ActionList.Item.Done, "X", ""), Key:="done")
                 Call NewItem.ListSubItems.Add(Text:=Format(CurDate, "yyyy-mm-dd"), Key:="sortkey")
                 
-                Game.APREngine.MoveToNextTitle ActionList, SelName
+                grapevine.Game.APREngine.MoveToNextTitle ActionList, SelName
             Loop
             
         End If
@@ -736,7 +736,7 @@ Private Sub lvwActions_ItemClick(ByVal Item As MSComctlLib.ListItem)
             ShowName = lstCategory.Text
         End If
         
-        Game.APREngine.MoveToPair ActionList, ShowDate, ShowName
+        grapevine.Game.APREngine.MoveToPair ActionList, ShowDate, ShowName
         If Not ActionList.Off Then
             lblName.Caption = ActionList.Item.Name
             lblDate.Caption = Format(ActionList.Item.LastModified, "Short Date")

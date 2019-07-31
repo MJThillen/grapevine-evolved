@@ -825,7 +825,7 @@ Private Sub Form_Load()
 
     cboDate.AddItem Format(Now, "mmmm d, yyyy")
     
-    With Game.Calendar
+    With grapevine.Game.Calendar
         .Last
         Do Until .Off
             cboDate.AddItem Format(.GetGameDate, "mmmm d, yyyy")

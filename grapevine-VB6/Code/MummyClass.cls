@@ -870,7 +870,7 @@ Private Sub Class_Initialize()
         .Append StdHealth(4)
         .Append "Dead"
         .Append "Dead"
-        If Game.ExtendedHealth Then
+        If grapevine.Game.ExtendedHealth Then
             .Append StdHealth(0)
             .Append StdHealth(1)
             .Append StdHealth(1)

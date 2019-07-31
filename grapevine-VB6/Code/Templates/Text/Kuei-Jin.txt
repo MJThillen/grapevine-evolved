@@ -94,10 +94,10 @@ Moon Bridges/Trods: [repeat][col 21][Links]
 [/repeat]----------------------------------------------------------------------
 [/option][option actions][repeat]
 ----------------------------------------------------------------------
-[Type] Action                     [col 50] [Date]
+[Type] grapevine.Action                     [col 50] [Date]
 [col 9] Level [Level]  [col 20] Unused [Unused]  [col 32] Total [Total]  [col 43] Growth [Growth]
----Action:
-[Action]
+---grapevine.Action:
+[grapevine.Action]
 ---Result:
 [Result]
 [/repeat]

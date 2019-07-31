@@ -308,8 +308,8 @@ Private Sub RefreshCategories(Optional SelGame As Boolean = False)
     If CategoryDate Then
     
         If SelGame Then
-            Game.Calendar.MoveToCloseGame
-            If Not Game.Calendar.Off Then SelDate = Game.Calendar.GetGameDate
+            grapevine.Game.Calendar.MoveToCloseGame
+            If Not grapevine.Game.Calendar.Off Then SelDate = grapevine.Game.Calendar.GetGameDate
         End If
     
         StoreCategory = lstDates.ListIndex
@@ -317,15 +317,15 @@ Private Sub RefreshCategories(Optional SelGame As Boolean = False)
         
         lstDates.AddItem OutlineItem
         
-        Game.Calendar.Last
-        Do Until Game.Calendar.Off
-            lstDates.AddItem Format(Game.Calendar.GetGameDate, "mmmm d, yyyy")
+        grapevine.Game.Calendar.Last
+        Do Until grapevine.Game.Calendar.Off
+            lstDates.AddItem Format(grapevine.Game.Calendar.GetGameDate, "mmmm d, yyyy")
             If SelGame Then
-                If Game.Calendar.GetGameDate = SelDate Then
+                If grapevine.Game.Calendar.GetGameDate = SelDate Then
                     StoreCategory = lstDates.NewIndex
                 End If
             End If
-            Game.Calendar.MovePrevious
+            grapevine.Game.Calendar.MovePrevious
         Loop
     
         If StoreCategory >= lstDates.ListCount Then StoreCategory = lstDates.ListCount - 1
@@ -449,8 +449,8 @@ Private Sub RefreshDevelopments()
         If Not lvwTitles.SelectedItem Is Nothing Then
             
             If lvwTitles.Tag <> lvwTitles.SelectedItem.Text Then
-                Game.Calendar.MoveToCloseGame
-                If Not Game.Calendar.Off Then SelDate = Game.Calendar.GetGameDate
+                grapevine.Game.Calendar.MoveToCloseGame
+                If Not grapevine.Game.Calendar.Off Then SelDate = grapevine.Game.Calendar.GetGameDate
             End If
             
             lvwTitles.Tag = lvwTitles.SelectedItem.Text
@@ -518,7 +518,7 @@ Public Sub SetDefaultOutput()
 '
     
     With OutputEngine
-        .Template = tnPlot
+        .grapevine.Template = tnPlot
         .GameDate = 0
         .SelectSet(osPlots).Clear
         If CategoryDate Then
@@ -555,7 +555,7 @@ Private Sub cmdAddPlot_Click()
         PlotList.InsertSorted NewPlot
         
         mdiMain.AnnounceChanges Me, atPlots
-        Game.DataChanged = True
+        grapevine.Game.DataChanged = True
         
         If CategoryDate And Not lstDates.ListIndex = 0 Then
             lstDates.ListIndex = 0
@@ -600,7 +600,7 @@ Private Sub cmdDeletePlot_Click()
             If Answer Then
                     
                 mdiMain.AnnounceChanges Me, atPlots
-                Game.DataChanged = True
+                grapevine.Game.DataChanged = True
     
                 For Each NormForm In Forms()
                     If NormForm.Tag = "P" And NormForm.Caption = DelName Then
@@ -635,8 +635,8 @@ Private Sub cmdDevActive_Click()
     If CategoryDate And lstDates.ListIndex > 0 Then
         DevDate = CDate(lstDates.Text)
     Else
-        Game.Calendar.MoveToCloseGame
-        If Not Game.Calendar.Off Then DevDate = Game.Calendar.GetGameDate
+        grapevine.Game.Calendar.MoveToCloseGame
+        If Not grapevine.Game.Calendar.Off Then DevDate = grapevine.Game.Calendar.GetGameDate
     End If
 
     If Not DevDate = 0 Then

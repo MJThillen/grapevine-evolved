@@ -21,7 +21,7 @@ Public Const GrapevineCaption = "Grapevine 3.0"
 Public Const ThisVersion As Double = 3#
 
 '
-' Constants:        APR constants
+' Constants:        APR grapevine.constants
 ' Description:      Important strings dealing with actions and rumors
 ' Used in:          APREngineClass, ActionClass, frmAction
 '
@@ -55,19 +55,19 @@ Public Const URLHelpPage = "http://www.GrapevineLARP.com/help.shtml"
 ' Used In:          GameClass, MenuSetClass
 '
 Public Const DefaultMenuFile = "Grapevine Menus.gvm"
-Public Const DefaultInventoryFile = "New Game Items.gex"
+Public Const DefaultInventoryFile = "New grapevine.Game Items.gex"
 
 '
-' Constants:        Game File Versions
+' Constants:        grapevine.Game File Versions
 ' Description:      The headers to the evolving file formats of Grapevine
 ' Used In:          GameClass, various OldInputFromFile routines
 '
-Public Const GameFileVersionTag0 = "<-Grapevine II Game File->"
-Public Const GameFileVersionTag1 = "<-Grapevine 2.0 Game File / Format 1->"
-Public Const GameFileVersionTag2 = "<-Grapevine 2.0 Game File / Format 2->"
-Public Const GameFileVersionTag3 = "<-Grapevine 2.1 Game File / Format 1->"
-Public Const GameFileVersionTag4 = "<-Grapevine 2.2 Game File / Format 1->"
-Public Const GameFileVersionTag5 = "<-Grapevine 2.3 Game File / Format 1->"
+Public Const GameFileVersionTag0 = "<-Grapevine II grapevine.Game File->"
+Public Const GameFileVersionTag1 = "<-Grapevine 2.0 grapevine.Game File / Format 1->"
+Public Const GameFileVersionTag2 = "<-Grapevine 2.0 grapevine.Game File / Format 2->"
+Public Const GameFileVersionTag3 = "<-Grapevine 2.1 grapevine.Game File / Format 1->"
+Public Const GameFileVersionTag4 = "<-Grapevine 2.2 grapevine.Game File / Format 1->"
+Public Const GameFileVersionTag5 = "<-Grapevine 2.3 grapevine.Game File / Format 1->"
 
 Public Const ExchangeFileVersionTag0 = "<-Exchange File / Grapevine 2.2 / Format 1 ->"
 Public Const ExchangeFileVersionTag1 = "<-Exchange File / Grapevine 2.3 / Format 1 ->"
@@ -89,7 +89,7 @@ Public Const pmExperience = "E"
 Public Const pmPlayerPoints = "P"
 
 '
-' Constants:        Health Level constants
+' Constants:        Health Level grapevine.constants
 ' Description:      Values of standard health leves
 ' Used In:          clsCharSheetEngine, Character Classes, Root
 '
@@ -102,7 +102,7 @@ Public Const hlMinHealth = 0
 Public Const hlMaxHealth = 4
 
 '
-' Constants:        Plot Status constants
+' Constants:        Plot Status grapevine.constants
 ' Description:      Statuses for plot objects
 ' Used In:          PlotClass, associated forms
 '
@@ -142,14 +142,14 @@ Public Const osSearch = 9
 Public Const osStatistics = 10
 
 '
-' Constants:        Standard Template Names
+' Constants:        Standard grapevine.Template Names
 ' Description:      Names of the standard templates Grapevine expects to see
 ' Used In:          TemplateClass, OutputEngineClass, output forms, all forms
 '                   with a SetDefaultOutput method
 '
 Public Const tnCharSheetSuffix = " Character Sheet"
-Public Const tnActionRumor = "Action and Rumor Report"
-Public Const tnMasterAction = "Master Action Report"
+Public Const tnActionRumor = "grapevine.Action and Rumor Report"
+Public Const tnMasterAction = "Master grapevine.Action Report"
 Public Const tnMasterRumor = "Master Rumor Report"
 Public Const tnPlot = "Plot Report"
 Public Const tnCharacterSheets = "Character Sheets"
@@ -162,7 +162,7 @@ Public Const tnLocationCards = "Location Cards"
 Public Const tnXPHistory = "Experience History"
 Public Const tnPPHistory = "Player Point History"
 Public Const tnPlayerRoster = "Player Roster"
-Public Const tnGameCalendar = "Game Calendar"
+Public Const tnGameCalendar = "grapevine.Game Calendar"
 Public Const tnSearch = "Search Report"
 Public Const tnStatistics = "Statistics Report"
 Public Const tnVampireStatus = "Vampire Status Report"

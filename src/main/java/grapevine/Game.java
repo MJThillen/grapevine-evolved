@@ -1,5 +1,7 @@
-import constants.FileFormat;
-import constants.Race;
+package grapevine;
+
+import grapevine.constants.FileFormat;
+import grapevine.constants.Race;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -21,11 +23,11 @@ public class Game {
     private String gameFilename; //full pathname of game file
 
     private String chronicleTitle; //Title of the Chronicle
-    private String website; //Game URL
+    private String website; //grapevine.Game URL
     private String email; //Main ST Email address
     private String phone; //Main Phone Number
-    private String usualSite; //Usual Game Site
-    private String usualTime; //Usual Game Start Time
+    private String usualSite; //Usual grapevine.Game Site
+    private String usualTime; //Usual grapevine.Game Start Time
     private Calendar calendar; //Calendar of game dates
     private String description; //Description of your game
     private boolean extendedHealth; //whether this game uses abbreviated or extended health levels

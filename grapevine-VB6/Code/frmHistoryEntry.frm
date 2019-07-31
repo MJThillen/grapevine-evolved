@@ -171,7 +171,7 @@ Public Sub MakeEntry(Experience As ExperienceClass, NewEntry As Boolean, Caption
     cboChange.AddItem "Comment"
     cboChange.ItemData(cboChange.NewIndex) = ecComment
     
-    With Game.Calendar
+    With grapevine.Game.Calendar
         cboDate.Clear
         .First
         Do Until .Off
@@ -219,7 +219,7 @@ Public Sub MakeEntry(Experience As ExperienceClass, NewEntry As Boolean, Caption
         If Not (NewEntry Or Experience.Off) Then Experience.Remove
         
         Experience.Insert NewChange, NewChangeType, NewDate, NewReason
-        Game.DataChanged = True
+        grapevine.Game.DataChanged = True
         
     End If
     

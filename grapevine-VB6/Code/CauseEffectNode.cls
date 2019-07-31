@@ -37,7 +37,7 @@ Public Function ShortDesc(CompDate As Date) As String
             If I = 0 Then I = Len(Item) + 1
             Name = Left(Item, I - 1)
             
-            ShortDesc = Name & " " & Subitem & " Action"
+            ShortDesc = Name & " " & Subitem & " grapevine.Action"
             
         Case aprPlot
             

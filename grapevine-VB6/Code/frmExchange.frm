@@ -196,7 +196,7 @@ Begin VB.Form frmExchange
       BeginProperty Tabs {1EFB6598-857C-11D1-B16A-00C0F0283628} 
          NumTabs         =   10
          BeginProperty Tab1 {1EFB659A-857C-11D1-B16A-00C0F0283628} 
-            Caption         =   "Game Settings"
+            Caption         =   "grapevine.Game Settings"
             Key             =   "game"
             ImageVarType    =   2
          EndProperty
@@ -305,10 +305,10 @@ Private Sub PopulateList(Index As Integer)
     
     Select Case Index
         Case LIST_GAME
-            lstList(Index).AddItem "Game Calendar"
-            lstList(Index).AddItem "Action/Rumor Settings"
+            lstList(Index).AddItem "grapevine.Game Calendar"
+            lstList(Index).AddItem "grapevine.Action/Rumor Settings"
             lstList(Index).AddItem "XP and PP Awards"
-            lstList(Index).AddItem "Template Settings"
+            lstList(Index).AddItem "grapevine.Template Settings"
         Case LIST_PLAYERS:      Set List = PlayerList
         Case LIST_CHARACTERS:   Set List = CharacterList
         Case LIST_ITEMS:        Set List = ItemList
@@ -317,7 +317,7 @@ Private Sub PopulateList(Index As Integer)
         Case LIST_ACTIONS:      Set List = ActionList
         Case LIST_PLOTS:        Set List = PlotList
         Case LIST_RUMORS:       Set List = RumorList
-        Case LIST_SEARCHES:     Set List = Game.QueryEngine.QueryList
+        Case LIST_SEARCHES:     Set List = grapevine.Game.QueryEngine.QueryList
     End Select
     
     If Not List Is Nothing Then
@@ -342,7 +342,7 @@ Private Sub ReportCounts()
 
     txtReport.Alignment = 0
     txtReport.Text = "Selected:" & vbCrLf
-    txtReport.Text = txtReport.Text & "     " & CStr(lstList(1).SelCount) & " Game Settings" & vbCrLf
+    txtReport.Text = txtReport.Text & "     " & CStr(lstList(1).SelCount) & " grapevine.Game Settings" & vbCrLf
     txtReport.Text = txtReport.Text & "     " & CStr(lstList(2).SelCount) & " Players" & vbCrLf
     txtReport.Text = txtReport.Text & "     " & CStr(lstList(3).SelCount) & " Characters" & vbCrLf
     txtReport.Text = txtReport.Text & "     " & CStr(lstList(4).SelCount) & " Items" & vbCrLf
@@ -382,7 +382,7 @@ Private Function CreateSelectedList(Index As Integer) As LinkedList
         Case LIST_ACTIONS:      Set InvList = ActionList
         Case LIST_PLOTS:        Set InvList = PlotList
         Case LIST_RUMORS:       Set InvList = RumorList
-        Case LIST_SEARCHES:     Set InvList = Game.QueryEngine.QueryList
+        Case LIST_SEARCHES:     Set InvList = grapevine.Game.QueryEngine.QueryList
     End Select
 
     If Not InvList Is Nothing Then
@@ -448,10 +448,10 @@ Private Sub cmdLoad_Click()
     Screen.MousePointer = vbHourglass
     
     SaveSetting App.Title, "Files", "ExchangeDir", CurDir
-    Game.LoadExchange cmnDialog.FileName
+    grapevine.Game.LoadExchange cmnDialog.FileName
     
-    If Game.FileError Then
-        MsgBox Game.FileErrorMessage, vbExclamation, "Load Exchange File"
+    If grapevine.Game.FileError Then
+        MsgBox grapevine.Game.FileErrorMessage, vbExclamation, "Load Exchange File"
     End If
     
     For I = MIN_LIST To MAX_LIST
@@ -462,8 +462,8 @@ Private Sub cmdLoad_Click()
     
     Screen.MousePointer = vbDefault
     
-    If Not Game.FileError Then
-        frmMergeResults.ShowResults Game.MergeResults, Me
+    If Not grapevine.Game.FileError Then
+        frmMergeResults.ShowResults grapevine.Game.MergeResults, Me
     End If
     
     GoTo cmdLoad_Finish
@@ -489,7 +489,7 @@ Private Sub cmdSave_Click()
     cmnDialog.Flags = cdlOFNPathMustExist + cdlOFNNoReadOnlyReturn + cdlOFNOverwritePrompt
     cmnDialog.Filter = "Grapevine Exchange File [Binary Format] (*.gex)|*.gex|" & _
                        "Grapevine Exchange File [XML Format] (*.gex)|*.gex|All Files|*.*"
-    cmnDialog.FilterIndex = IIf(Game.FileFormat = gvXML, 2, 1)
+    cmnDialog.FilterIndex = IIf(grapevine.Game.FileFormat = gvXML, 2, 1)
     
     On Error GoTo cmdSave_AnyError
     cmnDialog.ShowSave
@@ -513,7 +513,7 @@ Private Sub cmdSave_Click()
     MainList.Append CreateSelectedList(LIST_PLOTS)
     MainList.Append CreateSelectedList(LIST_RUMORS)
 
-    Game.SaveExchange cmnDialog.FileName, IIf(cmnDialog.FilterIndex = 1, gvBinaryExchange, gvXML), _
+    grapevine.Game.SaveExchange cmnDialog.FileName, IIf(cmnDialog.FilterIndex = 1, gvBinaryExchange, gvXML), _
                       MainList, (chkHideST.Value = vbChecked)
     
     MainList.Clear
@@ -521,8 +521,8 @@ Private Sub cmdSave_Click()
     
     Screen.MousePointer = vbDefault
     
-    If Game.FileError Then _
-            MsgBox Game.FileErrorMessage, vbExclamation, "Save Exchange File"
+    If grapevine.Game.FileError Then _
+            MsgBox grapevine.Game.FileErrorMessage, vbExclamation, "Save Exchange File"
     
     GoTo cmdSave_Finish
     
@@ -603,10 +603,10 @@ Private Sub cmdSelectAssoc_Click()
                             TempList.MoveNext
                         Loop
                     End If
-                    Game.APREngine.MoveToFirstTitle ActionList, CharacterList.Item.Name
+                    grapevine.Game.APREngine.MoveToFirstTitle ActionList, CharacterList.Item.Name
                     Do Until ActionList.Off
                         SixthSet.Add ActionList.Item.Name
-                        Game.APREngine.MoveToNextTitle ActionList, CharacterList.Item.Name
+                        grapevine.Game.APREngine.MoveToNextTitle ActionList, CharacterList.Item.Name
                     Loop
                 End If
                 CharacterList.MoveNext
@@ -619,15 +619,15 @@ Private Sub cmdSelectAssoc_Click()
             
         Case LIST_ACTIONS
         
-            Dim Action As ActionClass
+            Dim grapevine.Action As ActionClass
             ActionList.First
             Do Until ActionList.Off
                 If FirstSet.Has(ActionList.Item.Name) Then
-                    Set Action = ActionList.Item
-                    SecondSet.Add Action.Name
-                    Action.First
-                    Do Until Action.Off
-                        With Action.SubAction.Causes
+                    Set grapevine.Action = ActionList.Item
+                    SecondSet.Add grapevine.Action.Name
+                    grapevine.Action.First
+                    Do Until grapevine.Action.Off
+                        With grapevine.Action.SubAction.Causes
                             .First
                             Do Until .Off
                                 Select Case .Link.Target
@@ -638,7 +638,7 @@ Private Sub cmdSelectAssoc_Click()
                                 .MoveNext
                             Loop
                         End With
-                        With Action.SubAction.Effects
+                        With grapevine.Action.SubAction.Effects
                             .First
                             Do Until .Off
                                 Select Case .Link.Target
@@ -649,7 +649,7 @@ Private Sub cmdSelectAssoc_Click()
                                 .MoveNext
                             Loop
                         End With
-                        Action.MoveNext
+                        grapevine.Action.MoveNext
                     Loop
                 End If
                 ActionList.MoveNext
@@ -835,7 +835,7 @@ Private Sub cmdSelectOnly_Click()
     
     Set SSet = New StringSet
     
-    With Game.QueryEngine
+    With grapevine.Game.QueryEngine
         .QueryList.MoveTo cboSelectOnly.Text
         If .QueryList.Off Then
             Set Q = New QueryClass
@@ -950,7 +950,7 @@ Private Sub tabTabs_Click()
             IconKey = "Lantern"
         Case LIST_ACTIONS
             AssocStr = "(Plots, Rumors)"
-            IconKey = "Action"
+            IconKey = "grapevine.Action"
             cmdSelectSame(SAME_DATE).Visible = True
         Case LIST_PLOTS:
             AssocStr = "(Actions, Rumors)"
@@ -978,7 +978,7 @@ Private Sub tabTabs_Click()
         chkNot.Visible = False
     Else
         cboSelectOnly.Clear
-        With Game.QueryEngine.QueryList
+        With grapevine.Game.QueryEngine.QueryList
             .First
             Do Until .Off
                 If .Item.Inventory = SelectOnlyType Then cboSelectOnly.AddItem .Item.Name

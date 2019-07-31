@@ -1,9 +1,8 @@
-import javax.xml.bind.annotations;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-import javax.xml.stream.XMLStreamWriter;
+package grapevine;
 
-@XMLRootElement
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Template {
     private String name;
     private boolean isCharacterSheet;
@@ -50,22 +49,5 @@ public class Template {
                 this.fileName[2] = fileName;
         }
     }
-
-    //TODO: Check XML writing best practices.
-
-    /**
-     * Write the object to an XML file.
-     * @param xml The XML Stream Writer (that just wrote the opening tag)
-     */
-    public void outputToFile(XMLStreamWriter xml) throws XMLStreamException {
-    }
-
-    /**
-     * Read the object from an XML file
-     * @param xml The XML Stream Reader (That just read the opening tag)
-     * @param version Version of the file Format
-     */
-    public void inputFromFile(XMLStreamReader xml, double version) {
-        if (xml.hasNext() && xml.n)
-    }
+    
 }

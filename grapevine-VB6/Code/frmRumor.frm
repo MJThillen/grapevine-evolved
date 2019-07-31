@@ -460,8 +460,8 @@ Private Sub RefreshLists()
         Set Query = Rumor.Query
     End If
 
-    Game.QueryEngine.MakeQuery Query
-    With Game.QueryEngine.Results
+    grapevine.Game.QueryEngine.MakeQuery Query
+    With grapevine.Game.QueryEngine.Results
         .First
         Do Until .Off
             If .Item.Status = "Active" Then lstRecipients.AddItem .Item.Name
@@ -527,7 +527,7 @@ Public Sub SetDefaultOutput()
 ' Description:  Initilize the OutputEngineClass with default output settings.
 '
     With OutputEngine
-        .Template = tnActionRumor
+        .grapevine.Template = tnActionRumor
         .SelectSet(osRumors).Clear
         .SelectSet(osRumors).Add Rumor.Name
         .GameDate = Rumor.RumorDate
@@ -543,7 +543,7 @@ Private Sub chkDone_Click()
 
     If Rumor.Done <> (chkDone.Value = vbChecked) Then
         Rumor.Done = (chkDone.Value = vbChecked)
-        Game.DataChanged = True
+        grapevine.Game.DataChanged = True
         Rumor.LastModified = Now
         mdiMain.AnnounceChanges Me, atRumors
     End If
@@ -563,7 +563,7 @@ Private Sub cmdAddCause_Click()
                                 frmSelectLink.Item, frmSelectLink.Subitem
         SubRumor.Causes.PopulateList lstCauses, Rumor.RumorDate
         Rumor.LastModified = Now
-        Game.DataChanged = True
+        grapevine.Game.DataChanged = True
         
     End If
 
@@ -578,7 +578,7 @@ Private Sub cmdAddTerm_Click()
     frmQueryTerm.AddQueryTerm Rumor.Query
     RefreshTerms
     RefreshLists
-    Game.DataChanged = True
+    grapevine.Game.DataChanged = True
     Rumor.LastModified = Now
     
 End Sub
@@ -593,7 +593,7 @@ Private Sub cmdDeleteTerm_Click()
         Rumor.Query.Remove lstTerms.ListIndex
         RefreshTerms
         RefreshLists
-        Game.DataChanged = True
+        grapevine.Game.DataChanged = True
         Rumor.LastModified = Now
     End If
 
@@ -620,7 +620,7 @@ Private Sub cmdRemoveCause_Click()
         SubRumor.Causes.RemoveLink
         SubRumor.Causes.PopulateList lstCauses, Rumor.RumorDate
         Rumor.LastModified = Now
-        Game.DataChanged = True
+        grapevine.Game.DataChanged = True
         
     End If
 
@@ -654,16 +654,16 @@ Private Sub Form_Activate()
         
         Screen.MousePointer = vbHourglass
         
-        Game.QueryEngine.QueryList.MoveTo "Active Characters"
-        If Game.QueryEngine.QueryList.Off Then
+        grapevine.Game.QueryEngine.QueryList.MoveTo "Active Characters"
+        If grapevine.Game.QueryEngine.QueryList.Off Then
             Set Query = New QueryClass
             Query.Inventory = qiCharacters
             Query.AddClause qkPlayStatus, "Active", 0, qcEquals, False
         Else
-            Set Query = Game.QueryEngine.QueryList.Item
+            Set Query = grapevine.Game.QueryEngine.QueryList.Item
         End If
         
-        With Game.QueryEngine
+        With grapevine.Game.QueryEngine
             .GetStatistics stMaxima, Query, Rumor.MultiKey
             
             Max = 0
@@ -729,9 +729,9 @@ Private Sub lblMainTitle_Click()
     
     If Not (NewName = "" Or (NewName = Rumor.Title And NewDate = Rumor.RumorDate)) Then
     
-        Game.APREngine.MoveToPair RumorList, NewDate, NewName
+        grapevine.Game.APREngine.MoveToPair RumorList, NewDate, NewName
         If RumorList.Off Then
-            Game.APREngine.Reassign RumorList, Rumor.Title, NewName, Rumor.RumorDate, NewDate
+            grapevine.Game.APREngine.Reassign RumorList, Rumor.Title, NewName, Rumor.RumorDate, NewDate
             ShortDate = Format(Rumor.RumorDate, "Short Date")
             Me.Caption = Rumor.Name
             lblMainTitle.Caption = " " & Rumor.Title
@@ -744,7 +744,7 @@ Private Sub lblMainTitle_Click()
                 lblSubTitle.Caption = ShortDate & " " & Rumor.Title & " &Rumor"
             End If
             Rumor.LastModified = Now
-            Game.DataChanged = True
+            grapevine.Game.DataChanged = True
             mdiMain.AnnounceChanges Me, atRumors
         Else
             MsgBox "A rumor already exists under that title for that date.", _
@@ -821,7 +821,7 @@ Private Sub lstTerms_DblClick()
         frmQueryTerm.EditQueryTerm Rumor.Query
         RefreshTerms
         RefreshLists
-        Game.DataChanged = True
+        grapevine.Game.DataChanged = True
         Rumor.LastModified = Now
     End If
 
@@ -837,7 +837,7 @@ Private Sub optAnyAll_Click(Index As Integer)
         Rumor.Query.MatchAll = (Index = OPT_ALL)
         RefreshTerms
         RefreshLists
-        Game.DataChanged = True
+        grapevine.Game.DataChanged = True
         Rumor.LastModified = Now
     End If
 
@@ -892,7 +892,7 @@ Private Sub txtRumor_Validate(Cancel As Boolean)
         End If
         chkDone.Value = IIf(Rumor.Done, vbChecked, vbUnchecked)
         If Not OldDone = Rumor.Done Then mdiMain.AnnounceChanges Me, atRumors
-        Game.DataChanged = True
+        grapevine.Game.DataChanged = True
         Rumor.LastModified = Now
     
     End If

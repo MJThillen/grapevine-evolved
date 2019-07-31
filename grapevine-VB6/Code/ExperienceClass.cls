@@ -333,7 +333,7 @@ Public Sub Insert(Change As Single, ChangeType As ExperienceChangeType, When As 
     NewNode.PropogateChange
     NodeCount = NodeCount + 1
     
-    If Game.EnforceHistory Then
+    If grapevine.Game.EnforceHistory Then
         Last
         Earned = Cursor.Earned
         Unspent = Cursor.Unspent
@@ -390,7 +390,7 @@ Public Sub Remove()
         If Not Cursor Is Nothing Then Cursor.PropogateChange
         NodeCount = NodeCount - 1
     
-        If Game.EnforceHistory And Not IsEmpty Then
+        If grapevine.Game.EnforceHistory And Not IsEmpty Then
             Last
             Earned = Cursor.Earned
             Unspent = Cursor.Unspent

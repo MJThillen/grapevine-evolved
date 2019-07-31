@@ -699,7 +699,7 @@ PrintError:
 TemplateError:
     Screen.MousePointer = vbDefault
     MsgBox "Error working with template RTF file: " & Err.Description, vbCritical + vbOKOnly, _
-            "Template file error"
+            "grapevine.Template file error"
     Close
     Resume PrintFinish
     

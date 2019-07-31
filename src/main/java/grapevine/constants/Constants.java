@@ -1,4 +1,4 @@
-package constants;
+package grapevine.constants;
 
 public final class Constants {
 
@@ -40,15 +40,15 @@ public final class Constants {
 
     //Filenames for default files
     public static final String DEFAULT_MENU_FILE = "Grapevine Menus.gvm";
-    public static final String DEFAULT_ITEMS_FILE = "New Game Items.gex";
+    public static final String DEFAULT_ITEMS_FILE = "New grapevine.Game Items.gex";
 
-    //Game File Version Headers for each file format.
-    public static final String GAME_FILE_VERSION_0 = "<-Grapevine II Game File->";
-    public static final String GAME_FILE_2_0 = "<-Grapevine 2.0 Game File / Format 1->";
-    public static final String GAME_FILE_2_0V2 = "<-Grapevine 2.0 Game File / Format 2->";
-    public static final String GAME_FILE_2_1 = "<-Grapevine 2.1 Game File / Format 1->";
-    public static final String GAME_FILE_2_2 = "<-Grapevine 2.2 Game File / Format 1->";
-    public static final String GAME_FILE_2_3 = "<-Grapevine 2.3 Game File / Format 1->";
+    //grapevine.Game File Version Headers for each file format.
+    public static final String GAME_FILE_VERSION_0 = "<-Grapevine II grapevine.Game File->";
+    public static final String GAME_FILE_2_0 = "<-Grapevine 2.0 grapevine.Game File / Format 1->";
+    public static final String GAME_FILE_2_0V2 = "<-Grapevine 2.0 grapevine.Game File / Format 2->";
+    public static final String GAME_FILE_2_1 = "<-Grapevine 2.1 grapevine.Game File / Format 1->";
+    public static final String GAME_FILE_2_2 = "<-Grapevine 2.2 grapevine.Game File / Format 1->";
+    public static final String GAME_FILE_2_3 = "<-Grapevine 2.3 grapevine.Game File / Format 1->";
 
     public static final String EXCHANGE_FILE_2_2 = "<-Exchange File / Grapevine 2.2 / Format 1 ->";
     public static final String EXCHANGE_FILE_2_3 = "<-Exchange File / Grapevine 2.3 / Format 1 ->";
@@ -69,10 +69,10 @@ public final class Constants {
     public static final int MIN_HEALTH = 0;
     public static final int MAX_HEALTH = 4;
 
-    //Standard Template Names
+    //Standard grapevine.Template Names
     public static final String TN_CHARACTER_SHEET_SUFFIX = " Character Sheet";
-    public static final String TN_ACTION_RUMOR = "Action and Rumor Report";
-    public static final String TN_MASTER_ACTION = "Master Action Report";
+    public static final String TN_ACTION_RUMOR = "grapevine.Action and Rumor Report";
+    public static final String TN_MASTER_ACTION = "Master grapevine.Action Report";
     public static final String TN_MASTER_RUMOR = "Master Rumor Report";
     public static final String TN_PLOT = "Plot Report";
     public static final String TN_CHARACTER_SHEETS = "Character Sheets";
@@ -85,7 +85,7 @@ public final class Constants {
     public static final String TN_XP_HISTORY = "Experience History";
     public static final String TN_PP_HISTORY = "Player Point History";
     public static final String TN_PLAYER_ROSTER = "Player Roster";
-    public static final String TN_GAME_CALENDAR = "Game Calendar";
+    public static final String TN_GAME_CALENDAR = "grapevine.Game Calendar";
     public static final String TN_SEARCH = "Search Report";
     public static final String TN_STATISTICS = "Statistics Report";
     public static final String TN_MERITS_FLAWS = "Merits and Flaws Report";

@@ -61,7 +61,7 @@ Public Function Description() As String
     End If
     
     On Error Resume Next
-    Description = Game.QueryEngine.KeysToTitles(Key) & " " & Description
+    Description = grapevine.Game.QueryEngine.KeysToTitles(Key) & " " & Description
     On Error GoTo 0
         
 End Function

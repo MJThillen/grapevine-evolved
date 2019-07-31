@@ -16,19 +16,19 @@ Sub Main()
 '               initialize the global references.  Load and show the mdiMain window.
 '
 
-    Set Game = New GameClass
+    Set grapevine.Game = New GameClass
     Set OutputEngine = New OutputEngineClass
     
-    Set PlayerList = Game.PlayerList
-    Set CharacterList = Game.CharacterList
-    Set ItemList = Game.ItemList
-    Set RoteList = Game.RoteList
-    Set LocationList = Game.LocationList
-    Set ActionList = Game.APREngine.ActionList
-    Set PlotList = Game.APREngine.PlotList
-    Set RumorList = Game.APREngine.RumorList
-    Set AllRumorLists = Game.AllRumorLists
-    Set InfluenceUseList = Game.InfluenceUseList
+    Set PlayerList = grapevine.Game.PlayerList
+    Set CharacterList = grapevine.Game.CharacterList
+    Set ItemList = grapevine.Game.ItemList
+    Set RoteList = grapevine.Game.RoteList
+    Set LocationList = grapevine.Game.LocationList
+    Set ActionList = grapevine.Game.APREngine.ActionList
+    Set PlotList = grapevine.Game.APREngine.PlotList
+    Set RumorList = grapevine.Game.APREngine.RumorList
+    Set AllRumorLists = grapevine.Game.AllRumorLists
+    Set InfluenceUseList = grapevine.Game.InfluenceUseList
     
     CharacterList.Name = "Characters"
     PlayerList.Name = "Players"
@@ -63,7 +63,7 @@ Public Sub CleanUp()
     Set InfluenceUseList = Nothing
 
     Set OutputEngine = Nothing
-    Set Game = Nothing
+    Set grapevine.Game = Nothing
     
     If Dir(App.Path & "\~GVPrint.html") <> "" Then Kill App.Path & "\~GVPrint.html"
     
@@ -249,8 +249,8 @@ Public Function FindFile(TryFile As String, Optional Default As String = "") As 
             TryFile = SlashPath(App.Path) & BaseFile
             Found = (Dir(TryFile) <> "")
             
-            If Not Found And InStr(Game.GameFile, "\") > 0 Then
-                TryFile = Left(Game.GameFile, InStrRev(Game.GameFile, "\")) & BaseFile
+            If Not Found And InStr(grapevine.Game.GameFile, "\") > 0 Then
+                TryFile = Left(grapevine.Game.GameFile, InStrRev(grapevine.Game.GameFile, "\")) & BaseFile
                 Found = (Dir(TryFile) <> "")
             End If
             
@@ -383,7 +383,7 @@ Public Sub PutStrB(FileNum As Integer, ByVal StrVal As String)
     
     Dim L As Long
 
-    If HideSTFromFile Then StrVal = Game.STFilter(StrVal)
+    If HideSTFromFile Then StrVal = grapevine.Game.STFilter(StrVal)
 
     L = Len(StrVal)
     If L > 32767 Then

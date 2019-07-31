@@ -1,3 +1,5 @@
+package grapevine;
+
 public class Action {
     public String charName;
     public Date actDate;

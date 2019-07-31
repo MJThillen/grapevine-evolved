@@ -27,10 +27,10 @@ Private NodeCount As Integer
 Private Sub Class_Initialize()
 '
 ' Name:         Class_Initialize
-' Description:  Create the list and default Action node.
+' Description:  Create the list and default grapevine.Action node.
 '
 
-    Add BasicSubactionName, 0, Game.APREngine.PersonalActions, Game.APREngine.PersonalActions, 0
+    Add BasicSubactionName, 0, grapevine.Game.APREngine.PersonalActions, grapevine.Game.APREngine.PersonalActions, 0
     LastModified = Now
     
 End Sub
@@ -50,20 +50,20 @@ Public Sub Initialize(CName As String, ADate As Date)
     
     MoveTo BasicSubactionName
     If Off Then
-        Add BasicSubactionName, 0, Game.APREngine.PersonalActions, Game.APREngine.PersonalActions, 0
+        Add BasicSubactionName, 0, grapevine.Game.APREngine.PersonalActions, grapevine.Game.APREngine.PersonalActions, 0
     End If
         
-    Game.APREngine.MoveToEarlierTitle ActionList, CharName, ActDate
+    grapevine.Game.APREngine.MoveToEarlierTitle ActionList, CharName, ActDate
     If Not ActionList.Off Then
         Set PrevAct = ActionList.Item
         PrevAct.MoveTo BasicSubactionName
         If Not PrevAct.Off Then
-            If Game.APREngine.CarryUnused Then SubAction.Unused = PrevAct.SubAction.Unused
+            If grapevine.Game.APREngine.CarryUnused Then SubAction.Unused = PrevAct.SubAction.Unused
             SubAction.Growth = PrevAct.SubAction.Growth
         End If
     End If
 
-    If Game.APREngine.AddCommon Then AddCommonActions
+    If grapevine.Game.APREngine.AddCommon Then AddCommonActions
 
 End Sub
 
@@ -115,7 +115,7 @@ Public Sub GetValue(Key As String, ObjData As Variant)
         Case qkUnused:          If Not Off Then ObjData = SubAction.Unused
         Case qkTotal:           If Not Off Then ObjData = SubAction.Total
         Case qkGrowth:          If Not Off Then ObjData = SubAction.Growth
-        Case qkAction:          If Not Off Then ObjData = SubAction.Action
+        Case qkAction:          If Not Off Then ObjData = SubAction.grapevine.Action
         Case qkResult:          If Not Off Then ObjData = SubAction.Result
         Case Else:              ObjData = Null
     End Select
@@ -131,12 +131,12 @@ Public Sub AddCommonActions()
 
     Dim PrevAct As ActionClass
     
-    Game.APREngine.MoveToEarlierTitle ActionList, CharName, ActDate
+    grapevine.Game.APREngine.MoveToEarlierTitle ActionList, CharName, ActDate
     If Not ActionList.Off Then Set PrevAct = ActionList.Item
 
     MoveTo BasicSubactionName
     If Off Then
-        Add BasicSubactionName, 0, Game.APREngine.PersonalActions, Game.APREngine.PersonalActions, 0
+        Add BasicSubactionName, 0, grapevine.Game.APREngine.PersonalActions, grapevine.Game.APREngine.PersonalActions, 0
     End If
     
     CharacterList.MoveTo CharName
@@ -161,7 +161,7 @@ Public Sub AddCommonActions()
                     ActValue = 2 * TraitList.Trait.Number
                     PrevGrowth = 0
                 
-                    With Game.APREngine.ActionsPerLevel
+                    With grapevine.Game.APREngine.ActionsPerLevel
                         .MoveTo CStr(TraitList.Trait.Total)
                         If Not .Off Then
                             ActValue = .Trait.Number
@@ -173,7 +173,7 @@ Public Sub AddCommonActions()
                     If Not PrevAct Is Nothing Then
                         PrevAct.MoveTo TraitList.Trait.Name
                         If Not PrevAct.Off Then
-                            If Game.APREngine.CarryUnused Then PrevUnused = PrevAct.SubAction.Unused
+                            If grapevine.Game.APREngine.CarryUnused Then PrevUnused = PrevAct.SubAction.Unused
                             PrevGrowth = PrevAct.SubAction.Growth
                         End If
                     End If
@@ -194,8 +194,8 @@ Public Sub AddCommonActions()
             TraitList.First
             Do Until TraitList.Off
             
-                Game.APREngine.BackgroundActions.MoveTo TraitList.Trait.Name
-                If Not Game.APREngine.BackgroundActions.Off Then
+                grapevine.Game.APREngine.BackgroundActions.MoveTo TraitList.Trait.Name
+                If Not grapevine.Game.APREngine.BackgroundActions.Off Then
             
                     MoveTo TraitList.Trait.Name
                     If Off Then
@@ -203,7 +203,7 @@ Public Sub AddCommonActions()
                         ActValue = 2 * TraitList.Trait.Number
                         PrevGrowth = 0
                     
-                        With Game.APREngine.ActionsPerLevel
+                        With grapevine.Game.APREngine.ActionsPerLevel
                             .MoveTo CStr(TraitList.Trait.Total)
                             If Not .Off Then
                                 ActValue = .Trait.Number
@@ -215,7 +215,7 @@ Public Sub AddCommonActions()
                         If Not PrevAct Is Nothing Then
                             PrevAct.MoveTo TraitList.Trait.Name
                             If Not PrevAct.Off Then
-                                If Game.APREngine.CarryUnused Then PrevUnused = PrevAct.SubAction.Unused
+                                If grapevine.Game.APREngine.CarryUnused Then PrevUnused = PrevAct.SubAction.Unused
                                 PrevGrowth = PrevAct.SubAction.Growth
                             End If
                         End If
@@ -246,7 +246,7 @@ Public Sub IfDoneSetDone()
     
     First
     Do Until SubAction Is Nothing
-        Done = Done And (SubAction.Action <> "")
+        Done = Done And (SubAction.grapevine.Action <> "")
         Done = Done And (SubAction.Result <> "")
         MoveNext
     Loop

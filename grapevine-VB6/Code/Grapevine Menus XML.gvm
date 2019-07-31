@@ -1714,7 +1714,7 @@
     <item name="Generation Hex"/>
     <item name="Genetic Irregulars"/>
     <item name="Ghost Dance"/>
-    <item name="Glass Bead Game Players"/>
+    <item name="Glass Bead grapevine.Game Players"/>
     <item name="Gleaming Eye"/>
     <item name="Glorious Fist of Wotan"/>
     <item name="Gluskap's Lodge"/>
@@ -7420,7 +7420,7 @@
   <menu name="Psychic Hypnosis" category="4" abc="no" autonote="yes" display="5">
     <item name="Trance State" cost="3" note="basic"/>
     <item name="Sideshow Suggestion" cost="3" note="basic"/>
-    <item name="Delayed Action" cost="6" note="int."/>
+    <item name="Delayed grapevine.Action" cost="6" note="int."/>
     <item name="Fast Trance" cost="6" note="int."/>
     <item name="Manchurian Candidate" cost="9" note="adv."/>
   </menu>
@@ -7899,7 +7899,7 @@
     <item name="Jingle-Geasa"/>
     <item name="Poof Begone"/>
     <item name="Riadstradh"/>
-    <item name="Riddle-Game"/>
+    <item name="Riddle-grapevine.Game"/>
     <item name="Scuttle"/>
     <item name="Sense Banality"/>
     <item name="Steal Glamour"/>

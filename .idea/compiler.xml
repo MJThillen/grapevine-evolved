@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="grapevine-evolved" target="1.5" />
+      <module name="grapevine-evolved" target="1.11" />
     </bytecodeTargetLevel>
   </component>
 </project>

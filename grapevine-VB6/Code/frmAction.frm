@@ -3,7 +3,7 @@ Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmAction 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Action"
+   Caption         =   "grapevine.Action"
    ClientHeight    =   4845
    ClientLeft      =   45
    ClientTop       =   330
@@ -487,7 +487,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Private Action As ActionClass               'the action object this window manipulates
+Private grapevine.Action As ActionClass               'the action object this window manipulates
 Private SubAction As ActionNode             'the subaction object presently under scrutiny
 Private ShortDate As String
 Private Populating As Boolean
@@ -517,20 +517,20 @@ Public Sub ShowAction(Act As ActionClass)
 '               Ready the form for its arrival.
 '
 
-    Set Action = Act
+    Set grapevine.Action = Act
     
-    Me.Caption = Action.Name
-    ShortDate = Format(Action.ActDate, "Short Date")
-    lblTitle(liMainTitle).Caption = " " & Action.Name
-    chkDone.Value = IIf(Action.Done, vbChecked, vbUnchecked)
+    Me.Caption = grapevine.Action.Name
+    ShortDate = Format(grapevine.Action.ActDate, "Short Date")
+    lblTitle(liMainTitle).Caption = " " & grapevine.Action.Name
+    chkDone.Value = IIf(grapevine.Action.Done, vbChecked, vbUnchecked)
     
-    If Action.Count = 0 Then
-        Action.Add BasicSubactionName, 0, Game.APREngine.PersonalActions, Game.APREngine.PersonalActions, 0
+    If grapevine.Action.Count = 0 Then
+        grapevine.Action.Add BasicSubactionName, 0, grapevine.Game.APREngine.PersonalActions, grapevine.Game.APREngine.PersonalActions, 0
     End If
     
     RefreshSubactionList
     
-    If Action.Count > 1 Then
+    If grapevine.Action.Count > 1 Then
         chkAdvanced.Value = vbChecked
     Else
         chkAdvanced.Value = vbUnchecked
@@ -576,14 +576,14 @@ Public Sub RefreshSubactionList()
     If Not lvwActions.SelectedItem Is Nothing Then StoreIndex = lvwActions.SelectedItem.Index
     lvwActions.ListItems.Clear
 
-    Action.First
-    Do Until Action.Off
-        Set NewItem = lvwActions.ListItems.Add(Key:="k" & Action.SubAction.Name, Text:=Action.SubAction.Name)
-        NewItem.ListSubItems.Add , "done", IIf(Action.SubAction.IsComplete, "X", "-")
-        NewItem.ListSubItems.Add , "level", CStr(Action.SubAction.Level)
-        NewItem.ListSubItems.Add , "use", CStr(Action.SubAction.Unused) & "/" & CStr(Action.SubAction.Total)
-        NewItem.ListSubItems.Add , "growth", CStr(Action.SubAction.Growth)
-        Action.MoveNext
+    grapevine.Action.First
+    Do Until grapevine.Action.Off
+        Set NewItem = lvwActions.ListItems.Add(Key:="k" & grapevine.Action.SubAction.Name, Text:=grapevine.Action.SubAction.Name)
+        NewItem.ListSubItems.Add , "done", IIf(grapevine.Action.SubAction.IsComplete, "X", "-")
+        NewItem.ListSubItems.Add , "level", CStr(grapevine.Action.SubAction.Level)
+        NewItem.ListSubItems.Add , "use", CStr(grapevine.Action.SubAction.Unused) & "/" & CStr(grapevine.Action.SubAction.Total)
+        NewItem.ListSubItems.Add , "growth", CStr(grapevine.Action.SubAction.Growth)
+        grapevine.Action.MoveNext
     Loop
 
     If StoreIndex > lvwActions.ListItems.Count Then StoreIndex = lvwActions.ListItems.Count
@@ -598,10 +598,10 @@ Public Sub SetDefaultOutput()
 ' Description:  Initilize the OutputEngineClass with default output settings.
 '
     With OutputEngine
-        .Template = tnActionRumor
+        .grapevine.Template = tnActionRumor
         .SelectSet(osActions).Clear
-        .SelectSet(osActions).Add Action.Name
-        .GameDate = Action.ActDate
+        .SelectSet(osActions).Add grapevine.Action.Name
+        .GameDate = grapevine.Action.ActDate
     End With
 
 End Sub
@@ -612,10 +612,10 @@ Private Sub chkDone_Click()
 ' Description:  Set the Done status of this action.
 '
 
-    If Action.Done <> (chkDone.Value = vbChecked) Then
-        Action.Done = (chkDone.Value = vbChecked)
-        Game.DataChanged = True
-        Action.LastModified = Now
+    If grapevine.Action.Done <> (chkDone.Value = vbChecked) Then
+        grapevine.Action.Done = (chkDone.Value = vbChecked)
+        grapevine.Game.DataChanged = True
+        grapevine.Action.LastModified = Now
         mdiMain.AnnounceChanges Me, atActions
     End If
     
@@ -629,14 +629,14 @@ Private Sub cmdAddAction_Click()
 
     Dim NewAct As String
     
-    NewAct = InputBox("Enter a name for the new subaction:", "Add Action")
+    NewAct = InputBox("Enter a name for the new subaction:", "Add grapevine.Action")
     NewAct = Trim(NewAct)
-    Action.MoveTo NewAct
-    If NewAct <> "" And Action.Off Then
-        Action.Add NewAct, 0, 0, 0, 0
+    grapevine.Action.MoveTo NewAct
+    If NewAct <> "" And grapevine.Action.Off Then
+        grapevine.Action.Add NewAct, 0, 0, 0, 0
         RefreshSubactionList
-        Action.LastModified = Now
-        Game.DataChanged = True
+        grapevine.Action.LastModified = Now
+        grapevine.Game.DataChanged = True
     End If
 
 End Sub
@@ -646,10 +646,10 @@ Private Sub cmdAddCommon_Click()
 ' Name:         cmdAddCommon_Click
 ' Description:  Add the common subactions to this action.
 '
-    Action.AddCommonActions
+    grapevine.Action.AddCommonActions
     RefreshSubactionList
-    Action.LastModified = Now
-    Game.DataChanged = True
+    grapevine.Action.LastModified = Now
+    grapevine.Game.DataChanged = True
     
 End Sub
 
@@ -659,7 +659,7 @@ Private Sub cmdAddLink_Click(Index As Integer)
 ' Description:  Add a cause or effect link to the subaction.
 '
 
-    frmSelectLink.SelectLink Action.ActDate, (Index = ceEffect)
+    frmSelectLink.SelectLink grapevine.Action.ActDate, (Index = ceEffect)
     If Not frmSelectLink.ChoiceType = aprNone Then
     
         If Index = ceCause Then
@@ -670,11 +670,11 @@ Private Sub cmdAddLink_Click(Index As Integer)
                                      frmSelectLink.Item, frmSelectLink.Subitem
         End If
     
-        SubAction.Causes.PopulateList lstLinks(ceCause), Action.ActDate
-        SubAction.Effects.PopulateList lstLinks(ceEffect), Action.ActDate
+        SubAction.Causes.PopulateList lstLinks(ceCause), grapevine.Action.ActDate
+        SubAction.Effects.PopulateList lstLinks(ceEffect), grapevine.Action.ActDate
         
-        Action.LastModified = Now
-        Game.DataChanged = True
+        grapevine.Action.LastModified = Now
+        grapevine.Game.DataChanged = True
         
     End If
 
@@ -696,11 +696,11 @@ Private Sub cmdDeleteAction_Click()
         If MsgBox("Are you sure you want to delete this subaction?", _
                    vbYesNo + vbQuestion, "Delete Subaction") = vbYes Then
             
-            Action.MoveTo lvwActions.SelectedItem.Text
-            Action.Remove
+            grapevine.Action.MoveTo lvwActions.SelectedItem.Text
+            grapevine.Action.Remove
             RefreshSubactionList
-            Action.LastModified = Now
-            Game.DataChanged = True
+            grapevine.Action.LastModified = Now
+            grapevine.Game.DataChanged = True
                  
         End If
     End If
@@ -736,11 +736,11 @@ Private Sub cmdRemoveLink_Click(Index As Integer)
             SubAction.Effects.RemoveLink
         End If
         
-        SubAction.Causes.PopulateList lstLinks(ceCause), Action.ActDate
-        SubAction.Effects.PopulateList lstLinks(ceEffect), Action.ActDate
+        SubAction.Causes.PopulateList lstLinks(ceCause), grapevine.Action.ActDate
+        SubAction.Effects.PopulateList lstLinks(ceEffect), grapevine.Action.ActDate
         
-        Action.LastModified = Now
-        Game.DataChanged = True
+        grapevine.Action.LastModified = Now
+        grapevine.Game.DataChanged = True
         
     End If
 
@@ -752,7 +752,7 @@ Private Sub cmdShow_Click()
 ' Description:  Show the character associated with this action.
 '
     
-    mdiMain.ShowCharacterSheet Action.CharName
+    mdiMain.ShowCharacterSheet grapevine.Action.CharName
 
 End Sub
 
@@ -762,8 +762,8 @@ Private Sub Form_Activate()
 ' Description:  Refresh the link lists when the form is reactivated.
 '
 
-    SubAction.Causes.PopulateList lstLinks(ceCause), Action.ActDate
-    SubAction.Effects.PopulateList lstLinks(ceEffect), Action.ActDate
+    SubAction.Causes.PopulateList lstLinks(ceCause), grapevine.Action.ActDate
+    SubAction.Effects.PopulateList lstLinks(ceEffect), grapevine.Action.ActDate
     
 End Sub
 
@@ -795,9 +795,9 @@ Private Sub lblTitle_Click(Index As Integer)
         
         Select Case mdiMain.CreatePopup(Choices, Me)
             Case "Change character"
-                frmGetAPRInfo.GetNewActionChar Action.ActDate
+                frmGetAPRInfo.GetNewActionChar grapevine.Action.ActDate
             Case "Change date"
-                frmGetAPRInfo.GetNewActionDate Action.CharName
+                frmGetAPRInfo.GetNewActionDate grapevine.Action.CharName
             Case Else
                 Exit Sub
         End Select
@@ -806,22 +806,22 @@ Private Sub lblTitle_Click(Index As Integer)
         NewName = Trim(frmGetAPRInfo.NewItem)
         Unload frmGetAPRInfo
         
-        If Not (NewName = "" Or (NewName = Action.CharName And NewDate = Action.ActDate)) Then
+        If Not (NewName = "" Or (NewName = grapevine.Action.CharName And NewDate = grapevine.Action.ActDate)) Then
         
-            Game.APREngine.MoveToPair ActionList, NewDate, NewName
+            grapevine.Game.APREngine.MoveToPair ActionList, NewDate, NewName
             If ActionList.Off Then
-                Game.APREngine.Reassign ActionList, Action.CharName, NewName, Action.ActDate, NewDate
-                ShortDate = Format(Action.ActDate, "Short Date")
-                Me.Caption = Action.Name
-                lblTitle(liMainTitle).Caption = " " & Action.Name
-                SubAction.Causes.PopulateList lstLinks(ceCause), Action.ActDate
-                SubAction.Effects.PopulateList lstLinks(ceEffect), Action.ActDate
-                Action.LastModified = Now
-                Game.DataChanged = True
+                grapevine.Game.APREngine.Reassign ActionList, grapevine.Action.CharName, NewName, grapevine.Action.ActDate, NewDate
+                ShortDate = Format(grapevine.Action.ActDate, "Short Date")
+                Me.Caption = grapevine.Action.Name
+                lblTitle(liMainTitle).Caption = " " & grapevine.Action.Name
+                SubAction.Causes.PopulateList lstLinks(ceCause), grapevine.Action.ActDate
+                SubAction.Effects.PopulateList lstLinks(ceEffect), grapevine.Action.ActDate
+                grapevine.Action.LastModified = Now
+                grapevine.Game.DataChanged = True
                 mdiMain.AnnounceChanges Me, atActions
             Else
                 MsgBox "An action already exists for that character and date.", _
-                       vbOKOnly + vbExclamation, "Reassign Action"
+                       vbOKOnly + vbExclamation, "Reassign grapevine.Action"
             End If
                 
         End If
@@ -889,10 +889,10 @@ Private Sub lvwActions_ItemClick(ByVal Item As MSComctlLib.ListItem)
 ' Description:  Populate the action window with the data from the selected item.
 '
 
-    Action.MoveTo Item.Text
-    If Not Action.Off Then
+    grapevine.Action.MoveTo Item.Text
+    If Not grapevine.Action.Off Then
     
-        Set SubAction = Action.SubAction
+        Set SubAction = grapevine.Action.SubAction
         cmdDeleteAction.Enabled = Not (SubAction.Name = BasicSubactionName)
         
         Populating = True
@@ -904,12 +904,12 @@ Private Sub lvwActions_ItemClick(ByVal Item As MSComctlLib.ListItem)
         
         Populating = False
         
-        SubAction.Causes.PopulateList lstLinks(ceCause), Action.ActDate
-        SubAction.Effects.PopulateList lstLinks(ceEffect), Action.ActDate
+        SubAction.Causes.PopulateList lstLinks(ceCause), grapevine.Action.ActDate
+        SubAction.Effects.PopulateList lstLinks(ceEffect), grapevine.Action.ActDate
     
         lblTitle(liActionTitle).Caption = ShortDate & " " & SubAction.Name & " A&ction"
         lblTitle(liResultTitle).Caption = ShortDate & " " & SubAction.Name & " &Results"
-        txtAction.Text = SubAction.Action
+        txtAction.Text = SubAction.grapevine.Action
         txtResults.Text = SubAction.Result
 
     End If
@@ -945,13 +945,13 @@ Private Sub txtAction_Validate(Cancel As Boolean)
 
     If Not (SubAction Is Nothing) Then
     
-        If txtAction.Text <> SubAction.Action Then
-            SubAction.Action = TrimWhiteSpace(txtAction.Text)
-            Game.DataChanged = True
-            Action.LastModified = Now
+        If txtAction.Text <> SubAction.grapevine.Action Then
+            SubAction.grapevine.Action = TrimWhiteSpace(txtAction.Text)
+            grapevine.Game.DataChanged = True
+            grapevine.Action.LastModified = Now
             lvwActions.SelectedItem.ListSubItems("done").Text = IIf(SubAction.IsComplete, "X", "-")
-            Action.IfDoneSetDone
-            chkDone.Value = IIf(Action.Done, vbChecked, vbUnchecked)
+            grapevine.Action.IfDoneSetDone
+            chkDone.Value = IIf(grapevine.Action.Done, vbChecked, vbUnchecked)
         End If
     
     End If
@@ -984,8 +984,8 @@ Private Sub txtDetail_Change(Index As Integer)
                 lvwActions.SelectedItem.ListSubItems("growth").Text = CStr(Value)
         End Select
         
-        Game.DataChanged = True
-        Action.LastModified = Now
+        grapevine.Game.DataChanged = True
+        grapevine.Action.LastModified = Now
         
     End If
 
@@ -1013,14 +1013,14 @@ Private Sub txtResults_Validate(Cancel As Boolean)
             Dim OldDone As Boolean
         
             SubAction.Result = TrimWhiteSpace(txtResults.Text)
-            Game.DataChanged = True
-            Action.LastModified = Now
+            grapevine.Game.DataChanged = True
+            grapevine.Action.LastModified = Now
             lvwActions.SelectedItem.ListSubItems("done").Text = IIf(SubAction.IsComplete, "X", "-")
             
-            OldDone = Action.Done
-            Action.IfDoneSetDone
-            If Not OldDone = Action.Done Then
-                chkDone.Value = IIf(Action.Done, vbChecked, vbUnchecked)
+            OldDone = grapevine.Action.Done
+            grapevine.Action.IfDoneSetDone
+            If Not OldDone = grapevine.Action.Done Then
+                chkDone.Value = IIf(grapevine.Action.Done, vbChecked, vbUnchecked)
                 mdiMain.AnnounceChanges Me, atActions
             End If
             
