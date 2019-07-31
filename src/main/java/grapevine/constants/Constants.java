@@ -44,7 +44,7 @@ public final class Constants {
 
     //grapevine.Game File Version Headers for each file format.
     public static final String GAME_FILE_VERSION_0 = "<-Grapevine II grapevine.Game File->";
-    public static final String GAME_FILE_2_0 = "<-Grapevine 2.0 grapevine.Game File / Format 1->";
+    public static final String GAME_FILE_2_0V1 = "<-Grapevine 2.0 grapevine.Game File / Format 1->";
     public static final String GAME_FILE_2_0V2 = "<-Grapevine 2.0 grapevine.Game File / Format 2->";
     public static final String GAME_FILE_2_1 = "<-Grapevine 2.1 grapevine.Game File / Format 1->";
     public static final String GAME_FILE_2_2 = "<-Grapevine 2.2 grapevine.Game File / Format 1->";
@@ -71,8 +71,8 @@ public final class Constants {
 
     //Standard grapevine.Template Names
     public static final String TN_CHARACTER_SHEET_SUFFIX = " Character Sheet";
-    public static final String TN_ACTION_RUMOR = "grapevine.Action and Rumor Report";
-    public static final String TN_MASTER_ACTION = "Master grapevine.Action Report";
+    public static final String TN_ACTION_RUMOR = "Action and Rumor Report";
+    public static final String TN_MASTER_ACTION = "Master Action Report";
     public static final String TN_MASTER_RUMOR = "Master Rumor Report";
     public static final String TN_PLOT = "Plot Report";
     public static final String TN_CHARACTER_SHEETS = "Character Sheets";
@@ -85,7 +85,7 @@ public final class Constants {
     public static final String TN_XP_HISTORY = "Experience History";
     public static final String TN_PP_HISTORY = "Player Point History";
     public static final String TN_PLAYER_ROSTER = "Player Roster";
-    public static final String TN_GAME_CALENDAR = "grapevine.Game Calendar";
+    public static final String TN_GAME_CALENDAR = "Game Calendar";
     public static final String TN_SEARCH = "Search Report";
     public static final String TN_STATISTICS = "Statistics Report";
     public static final String TN_MERITS_FLAWS = "Merits and Flaws Report";
