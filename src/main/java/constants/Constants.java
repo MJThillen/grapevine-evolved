@@ -1,4 +1,4 @@
-package java.constants;
+package constants;
 
 public final class Constants {
 

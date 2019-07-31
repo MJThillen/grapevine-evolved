@@ -1,7 +1,5 @@
-package java;
-
-import java.constants.FileFormat;
-import java.constants.Race;
+import constants.FileFormat;
+import constants.Race;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
