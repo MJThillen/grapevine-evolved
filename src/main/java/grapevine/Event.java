@@ -2,10 +2,15 @@ package grapevine;
 
 import grapevine.constants.Constants;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Event {
+@XmlRootElement
+public class Event implements Serializable {
 
     public enum EVENT_TYPE {
         none(0),
@@ -27,19 +32,33 @@ public class Event {
         }
     }
 
+    @XmlElement
     private String name; // action, cause, effect - for c&e: item
+    @XmlElement
     private String event; // action, rumor, plot, cause, effect - for c&e: subitem
+    @XmlElement
     private String result; // action
+    @XmlElement
     private EVENT_TYPE eventType; //new+all
-
+    @XmlElement
     private int level; // action, rumor
+    @XmlElement
     private int unused; // action
+    @XmlElement
     private int total; // action
+    @XmlElement
     private int growth; // action
 
+    @XmlElementWrapper(name="causeList")
+    @XmlElement(name="cause")
     private List<Event> causes; // action, rumor, plot
+    @XmlElementWrapper(name="effectList")
+    @XmlElement(name="effect")
     private List<Event> effects; // action, plot
+    @XmlElementWrapper(name="recipientList")
+    @XmlElement(name="recipient")
     private List<String> recipients; //rumor
+    @XmlElement
     private LocalDate date; //plot
 
     public Event() {
