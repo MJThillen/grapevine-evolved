@@ -1,13 +1,5 @@
 package grapevine;
 
 public class Action {
-    public String charName;
-    public Date actDate;
-    public Event subAction;
-    public boolean done;
-    public Date lastModified;
-
-    private Event firstNode;
-    private Event lastNode;
-    private int NodeCount;
+    //ToDo: Implement when I figure out what the heck this actually does.
 }
