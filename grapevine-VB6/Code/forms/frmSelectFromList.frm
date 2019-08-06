@@ -83,7 +83,7 @@ Public Function ShowSelect(Inv As QueryInventoryType, SearchName As String, Titl
     Me.Caption = Title
     Inventory = Inv
     
-    With grapevine.Game.QueryEngine.QueryList
+    With grapevine.model.Game.QueryEngine.QueryList
         .First
         Do Until .Off
             If .Item.Inventory = Inventory Then
@@ -123,7 +123,7 @@ Private Sub cboSearch_Click()
     
     lstList.Clear
     
-    With grapevine.Game.QueryEngine.QueryList
+    With grapevine.model.Game.QueryEngine.QueryList
         .MoveTo cboSearch.Text
         If Not .Off Then
             Set Search = .Item
@@ -133,7 +133,7 @@ Private Sub cboSearch_Click()
         End If
     End With
     
-    With grapevine.Game.QueryEngine
+    With grapevine.model.Game.QueryEngine
         .MakeQuery Search, , (chkNot.Value = vbChecked)
     
         .Results.First

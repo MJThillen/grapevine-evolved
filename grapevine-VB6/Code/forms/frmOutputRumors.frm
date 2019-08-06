@@ -3,7 +3,7 @@ Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{FE0065C0-1B7B-11CF-9D53-00AA003C9CB6}#1.1#0"; "COMCT232.OCX"
 Begin VB.Form frmOutputRumors 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Print or Export grapevine.Action / Plot / Rumor Reports"
+   Caption         =   "Print or Export grapevine.model.Action / Plot / Rumor Reports"
    ClientHeight    =   6915
    ClientLeft      =   210
    ClientTop       =   570
@@ -441,7 +441,7 @@ Private Sub cmdExportMasterList_Click()
 
     OutputAid.SetStandardPageWidth
 
-    grapevine.Game.APREngine.OutputMasterReport OutputAid, CurrDate, (chkActions.Value = vbChecked), _
+    grapevine.model.Game.APREngine.OutputMasterReport OutputAid, CurrDate, (chkActions.Value = vbChecked), _
                                       (chkPlots.Value = vbChecked), (chkRumors.Value = vbChecked)
 
     GoTo ExportMasterFinish
@@ -534,7 +534,7 @@ Private Sub cmdExportRumors_Click()
     lblMeter.Visible = True
     EntriesCounted = 0
 
-    grapevine.Game.APREngine.PrepareRumorOutput CurrDate
+    grapevine.model.Game.APREngine.PrepareRumorOutput CurrDate
  
     DocWriting = False
     
@@ -587,7 +587,7 @@ Private Sub cmdExportRumors_Click()
             
                 DocWriting = True
 
-                grapevine.Game.APREngine.OutputCharacterReport OutputAid, CharacterList.Item.Name, CurrDate, _
+                grapevine.model.Game.APREngine.OutputCharacterReport OutputAid, CharacterList.Item.Name, CurrDate, _
                                (chkActions.Value = vbChecked), (chkRumors.Value = vbChecked)
 
                 If optPerCharacter.Value Then Close #FileNum
@@ -667,7 +667,7 @@ Private Sub cmdPrintMasterList_Click()
         
         DocPrinting = True
         
-        grapevine.Game.APREngine.OutputMasterReport OutputAid, CurrDate, (chkActions.Value = vbChecked), _
+        grapevine.model.Game.APREngine.OutputMasterReport OutputAid, CurrDate, (chkActions.Value = vbChecked), _
                                           (chkPlots.Value = vbChecked), (chkRumors.Value = vbChecked)
         
     Next Copy
@@ -693,7 +693,7 @@ PrintMasterError:
 TemplateMasterError:
     Screen.MousePointer = vbDefault
     MsgBox "Error working with template RTF file: " & Err.Description, vbCritical + vbOKOnly, _
-            "grapevine.Template file error"
+            "grapevine.util.Template file error"
     Close
     Resume PrintMasterFinish
 
@@ -752,7 +752,7 @@ Private Sub cmdPrintRumors_Click()
     If Cancel Then Exit Sub
     OutputAid.Destination = goPrinter
     OutputAid.FileLoc = -1
-    grapevine.Game.APREngine.PrepareRumorOutput CurrDate
+    grapevine.model.Game.APREngine.PrepareRumorOutput CurrDate
     
     For Copy = 1 To Val(txtCopies)
 
@@ -769,7 +769,7 @@ Private Sub cmdPrintRumors_Click()
                 End If
                 DocPrinting = True
 
-                grapevine.Game.APREngine.OutputCharacterReport OutputAid, CharacterList.Item.Name, CurrDate, _
+                grapevine.model.Game.APREngine.OutputCharacterReport OutputAid, CharacterList.Item.Name, CurrDate, _
                                (chkActions.Value = vbChecked), (chkRumors.Value = vbChecked)
                 
                 PresentCopy = PresentCopy + 1
@@ -872,7 +872,7 @@ Private Sub Form_Load()
     Dim Entry As Integer
     Dim NearDate As Date
     
-    With grapevine.Game.Calendar
+    With grapevine.model.Game.Calendar
         .MoveToCloseGame
         If Not .Off Then NearDate = .GetGameDate
         .First

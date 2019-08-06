@@ -1,12 +1,11 @@
-package grapevine;
-
-import grapevine.constants.Constants;
+package grapevine.model;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
@@ -33,36 +32,39 @@ public class Event implements Serializable {
     }
 
     @XmlElement
-    private String name; // action, cause, effect - for c&e: item
+    private String name;
     @XmlElement
-    private String event; // action, rumor, plot, cause, effect - for c&e: subitem
+    private LocalDate date;
     @XmlElement
-    private String result; // action
+    private String event; //Formerly Outline for Plots
     @XmlElement
-    private EVENT_TYPE eventType; //new+all
+    private String subEvent; //Formerly Development for Plot Nodes
     @XmlElement
-    private int level; // action, rumor
+    private int level;
     @XmlElement
-    private int unused; // action
-    @XmlElement
-    private int total; // action
-    @XmlElement
-    private int growth; // action
-
+    private EVENT_TYPE eventType;
     @XmlElementWrapper(name="causeList")
     @XmlElement(name="cause")
-    private List<Event> causes; // action, rumor, plot
+    private List<Event> causes;
     @XmlElementWrapper(name="effectList")
     @XmlElement(name="effect")
-    private List<Event> effects; // action, plot
-    @XmlElementWrapper(name="recipientList")
-    @XmlElement(name="recipient")
-    private List<String> recipients; //rumor
-    @XmlElement
-    private LocalDate date; //plot
+    private List<Event> effects; //Formerly SubRumors for Rumors
 
     public Event() {
+        eventType = EVENT_TYPE.none;
+        initialize();
+    }
 
+    public Event(final EVENT_TYPE type) {
+        eventType = type;
+        initialize();
+    }
+
+    private void initialize() {
+        this.date = LocalDate.now();
+        this.level = 0;
+        this.causes = new ArrayList<>();
+        this.effects = new ArrayList<>();
     }
 
     public String getName() {
@@ -81,44 +83,12 @@ public class Event implements Serializable {
         this.event = event;
     }
 
-    public String getResult() {
-        return result;
+    public String getSubEvent() {
+        return subEvent;
     }
 
-    public void setResult(String result) {
-        this.result = result;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public int getUnused() {
-        return unused;
-    }
-
-    public void setUnused(int unused) {
-        this.unused = unused;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public int getGrowth() {
-        return growth;
-    }
-
-    public void setGrowth(int growth) {
-        this.growth = growth;
+    public void setSubEvent(String result) {
+        this.subEvent = result;
     }
 
     public List<Event> getCauses() {
@@ -145,20 +115,28 @@ public class Event implements Serializable {
         this.eventType = eventType;
     }
 
-    public List<String> getRecipients() {
-        return recipients;
-    }
-
-    public void setRecipients(List<String> recipients) {
-        this.recipients = recipients;
-    }
-
     public LocalDate getDate() {
         return date;
     }
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public void addCause(Event cause) {
+        causes.add(cause);
+    }
+
+    public void addEffect(Event effect) {
+        effects.add(effect);
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public String shortDesc(LocalDate when) {

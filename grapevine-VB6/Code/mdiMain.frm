@@ -177,7 +177,7 @@ Begin VB.MDIForm mdiMain
          EndProperty
          BeginProperty ListImage34 {2C247F27-8591-11D1-B16A-00C0F0283628} 
             Picture         =   "mdiMain.frx":C1A4
-            Key             =   "grapevine.Action"
+            Key             =   "grapevine.model.Action"
          EndProperty
          BeginProperty ListImage35 {2C247F27-8591-11D1-B16A-00C0F0283628} 
             Picture         =   "mdiMain.frx":C73E
@@ -257,8 +257,8 @@ Begin VB.MDIForm mdiMain
       _Version        =   393216
       CancelError     =   -1  'True
       DefaultExt      =   "gv3"
-      DialogTitle     =   "Open grapevine.Game"
-      Filter          =   "Grapevine grapevine.Game Files|*.gv2;*.gv3|All Files|*.*"
+      DialogTitle     =   "Open grapevine.model.Game"
+      Filter          =   "Grapevine grapevine.model.Game Files|*.gv2;*.gv3|All Files|*.*"
       FilterIndex     =   1
       PrinterDefault  =   0   'False
    End
@@ -376,7 +376,7 @@ Begin VB.MDIForm mdiMain
          EndProperty
          BeginProperty ListImage26 {2C247F27-8591-11D1-B16A-00C0F0283628} 
             Picture         =   "mdiMain.frx":203C2
-            Key             =   "grapevine.Action"
+            Key             =   "grapevine.model.Action"
          EndProperty
          BeginProperty ListImage27 {2C247F27-8591-11D1-B16A-00C0F0283628} 
             Picture         =   "mdiMain.frx":20C9C
@@ -435,17 +435,17 @@ Begin VB.MDIForm mdiMain
          NumButtons      =   29
          BeginProperty Button1 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Key             =   "New"
-            Object.ToolTipText     =   "New grapevine.Game"
+            Object.ToolTipText     =   "New grapevine.model.Game"
             ImageKey        =   "New"
          EndProperty
          BeginProperty Button2 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Key             =   "Open"
-            Object.ToolTipText     =   "Open grapevine.Game"
+            Object.ToolTipText     =   "Open grapevine.model.Game"
             ImageKey        =   "Open"
          EndProperty
          BeginProperty Button3 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Key             =   "Save"
-            Object.ToolTipText     =   "Save grapevine.Game"
+            Object.ToolTipText     =   "Save grapevine.model.Game"
             ImageKey        =   "Save"
          EndProperty
          BeginProperty Button4 {66833FEA-8583-11D1-B16A-00C0F0283628} 
@@ -458,7 +458,7 @@ Begin VB.MDIForm mdiMain
          EndProperty
          BeginProperty Button6 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Key             =   "Dates"
-            Object.ToolTipText     =   "grapevine.Game Dates"
+            Object.ToolTipText     =   "grapevine.model.Game Dates"
             ImageKey        =   "Calendar"
          EndProperty
          BeginProperty Button7 {66833FEA-8583-11D1-B16A-00C0F0283628} 
@@ -536,7 +536,7 @@ Begin VB.MDIForm mdiMain
          BeginProperty Button23 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Key             =   "Actions"
             Object.ToolTipText     =   "Actions"
-            ImageKey        =   "grapevine.Action"
+            ImageKey        =   "grapevine.model.Action"
          EndProperty
          BeginProperty Button24 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Key             =   "Plots"
@@ -574,18 +574,18 @@ Begin VB.MDIForm mdiMain
       Caption         =   "&File "
       NegotiatePosition=   1  'Left
       Begin VB.Menu mnuNewGame 
-         Caption         =   "&New grapevine.Game"
+         Caption         =   "&New grapevine.model.Game"
       End
       Begin VB.Menu mnuOpenGame 
-         Caption         =   "&Open grapevine.Game..."
+         Caption         =   "&Open grapevine.model.Game..."
          Shortcut        =   ^O
       End
       Begin VB.Menu mnuSaveGame 
-         Caption         =   "&Save grapevine.Game"
+         Caption         =   "&Save grapevine.model.Game"
          Shortcut        =   ^S
       End
       Begin VB.Menu mnuSaveGameAs 
-         Caption         =   "Save grapevine.Game &As..."
+         Caption         =   "Save grapevine.model.Game &As..."
       End
       Begin VB.Menu mnuFileExchangeBar 
          Caption         =   "-"
@@ -630,7 +630,7 @@ Begin VB.MDIForm mdiMain
       End
    End
    Begin VB.Menu mnuGameMenu 
-      Caption         =   "&grapevine.Game"
+      Caption         =   "&grapevine.model.Game"
       Begin VB.Menu mnuGameInformation 
          Caption         =   "&Information..."
       End
@@ -1033,7 +1033,7 @@ Public Sub ShowAPR(APR As APRType, ShowName As String, ShowDate As Date, _
 '               ShowName    Name of the item to show
 '               ShowDate    Date of the item to show
 '               ShowSubitem The Subitem to show, if any
-' Description:  If the grapevine.Action, Plot or Rumor is loaded, bring it to the front.
+' Description:  If the grapevine.model.Action, Plot or Rumor is loaded, bring it to the front.
 '               If not, load it.
 '
 
@@ -1046,7 +1046,7 @@ Public Sub ShowAPR(APR As APRType, ShowName As String, ShowDate As Date, _
         Case aprAction
             ShowCaption = "an action for " & ShowName & " dated " & Format(ShowDate, "Short Date")
             FormTag = "A"
-            grapevine.Game.APREngine.MoveToPair ActionList, ShowDate, ShowName
+            grapevine.model.Game.APREngine.MoveToPair ActionList, ShowDate, ShowName
             If Not ActionList.Off Then Set Item = ActionList.Item
         Case aprPlot
             ShowCaption = "a plot called """ & ShowName & """"
@@ -1056,7 +1056,7 @@ Public Sub ShowAPR(APR As APRType, ShowName As String, ShowDate As Date, _
         Case aprRumor
             ShowCaption = "a rumor called """ & ShowName & """ and dated " & Format(ShowDate, "Short Date")
             FormTag = "U"
-            grapevine.Game.APREngine.MoveToPair RumorList, ShowDate, ShowName
+            grapevine.model.Game.APREngine.MoveToPair RumorList, ShowDate, ShowName
             If Not RumorList.Off Then Set Item = RumorList.Item
     End Select
 
@@ -1174,13 +1174,13 @@ Private Sub PromptForSave(ByRef Continue As Boolean)
 
     Dim Answer As Integer
     
-    If grapevine.Game.DataChanged Then
+    If grapevine.model.Game.DataChanged Then
         Answer = MsgBox("Do you want to save the game first?", _
-                         vbYesNoCancel + vbQuestion, "Save grapevine.Game?")
+                         vbYesNoCancel + vbQuestion, "Save grapevine.model.Game?")
         Select Case Answer
             Case vbYes
                 Call mnuSaveGame_Click
-                Continue = Not grapevine.Game.FileError
+                Continue = Not grapevine.model.Game.FileError
             Case vbNo
                 Continue = True
             Case vbCancel
@@ -1191,14 +1191,14 @@ Private Sub PromptForSave(ByRef Continue As Boolean)
     End If
 
     If Continue Then
-        If grapevine.Game.MenuSet.DataChanged Then
+        If grapevine.model.Game.MenuSet.DataChanged Then
             Answer = MsgBox("You have made changes to the menu file." & vbCrLf & _
                             "Would you like to save those changes?", _
                              vbYesNoCancel + vbQuestion, "Save Menus?")
             Select Case Answer
                 Case vbYes
-                    grapevine.Game.MenuSet.SaveMenus grapevine.Game.MenuSet.FilePath
-                    Continue = Not grapevine.Game.MenuSet.FileError
+                    grapevine.model.Game.MenuSet.SaveMenus grapevine.model.Game.MenuSet.FilePath
+                    Continue = Not grapevine.model.Game.MenuSet.FileError
                 Case vbNo
                     Continue = True
                 Case vbCancel
@@ -1282,8 +1282,8 @@ Private Sub MDIForm_Load()
     Dim MidHeight As Integer
     Dim MidWidth As Integer
 
-    Set grapevine.Game.FileProgress = pgbProgress
-    Set grapevine.Game.MenuSet.FileProgress = pgbProgress
+    Set grapevine.model.Game.FileProgress = pgbProgress
+    Set grapevine.model.Game.MenuSet.FileProgress = pgbProgress
 
     Me.Caption = GrapevineCaption
     Me.WindowState = GetSetting(App.Title, "Settings", "WindowState", vbMaximized)
@@ -1344,7 +1344,7 @@ Private Sub MDIForm_OLEDragDrop(Data As DataObject, Effect As Long, Button As In
         File = Data.Files(1)
         If LCase(Right(File, 3)) = "gex" Then
             UnloadForms
-            grapevine.Game.LoadExchange File
+            grapevine.model.Game.LoadExchange File
         Else
             Title = Right(File, Len(File) - InStrRev(File, "\"))
             Call UpdateRecentFiles(Title, File)
@@ -1410,7 +1410,7 @@ End Sub
 Private Sub mnuChroniclePreferences_Click(Index As Integer)
 '
 ' Name:         mnuChroniclePreferences_Click
-' Description:  Make visible the grapevine.Game Settings window with the chosen tab selected.
+' Description:  Make visible the grapevine.model.Game Settings window with the chosen tab selected.
 '
 
     frmGameInfo.ShowWith IIf(Index = 0, "Actions", "Rumors")
@@ -1434,12 +1434,12 @@ Private Sub mnuFileMerge_Click()
 ' Description:  Merge in another file, replacing the old with the new.
 '
 
-    cmnDialog.DialogTitle = "Merge grapevine.Game"
+    cmnDialog.DialogTitle = "Merge grapevine.model.Game"
     cmnDialog.InitDir = GetSetting(App.Title, "Files", "GameDir", CurDir)
     cmnDialog.FileName = ""
     cmnDialog.Flags = cdlOFNFileMustExist + cdlOFNPathMustExist
     cmnDialog.DefaultExt = "gv3"
-    cmnDialog.Filter = "Grapevine grapevine.Game Files|*.gv3;*.gv2|" & _
+    cmnDialog.Filter = "Grapevine grapevine.model.Game Files|*.gv3;*.gv2|" & _
                        "All Files|*.*"
     cmnDialog.FilterIndex = 1
     
@@ -1455,15 +1455,15 @@ Private Sub mnuFileMerge_Click()
     pgbProgress.Value = 0
     pgbProgress.Max = 101
     pgbProgress.Visible = True
-    grapevine.Game.Merge cmnDialog.FileName
+    grapevine.model.Game.Merge cmnDialog.FileName
     pgbProgress.Visible = False
     
     Screen.MousePointer = vbDefault
     
-    If Not grapevine.Game.FileError Then
-        frmMergeResults.ShowResults grapevine.Game.MergeResults, Me
+    If Not grapevine.model.Game.FileError Then
+        frmMergeResults.ShowResults grapevine.model.Game.MergeResults, Me
     Else
-        MsgBox grapevine.Game.FileErrorMessage, vbExclamation, "Open grapevine.Game"
+        MsgBox grapevine.model.Game.FileErrorMessage, vbExclamation, "Open grapevine.model.Game"
     End If
     
     Call mnuCharacters_Click
@@ -1545,7 +1545,7 @@ End Sub
 Private Sub mnuGameDates_Click()
 '
 ' Name:         mnuGameDates_Click
-' Description:  Display the grapevine.Game Dates window.
+' Description:  Display the grapevine.model.Game Dates window.
 '
 
     frmGameInfo.ShowWith "Dates"
@@ -1555,7 +1555,7 @@ End Sub
 Private Sub mnuGameInformation_Click()
 '
 ' Name:         mnuGameInformation_Click
-' Description:  Display the grapevine.Game Information window.
+' Description:  Display the grapevine.model.Game Information window.
 '
 
     frmGameInfo.ShowWith "Info"
@@ -1565,7 +1565,7 @@ End Sub
 Private Sub mnuGameSettings_Click()
 '
 ' Name:         mnuGameSettings_Click
-' Description:  Display the grapevine.Game Preferences window.
+' Description:  Display the grapevine.model.Game Preferences window.
 '
 
     frmGameInfo.ShowWith "General"
@@ -1685,7 +1685,7 @@ Private Sub mnuPlayerEMail_Click()
 '    End If
 '
 '    If InitializeSMTP Then
-'        OutputEngine.InitializeMessage ooReport, grapevine.Game.ChronicleTitle & " Announcement"
+'        OutputEngine.InitializeMessage ooReport, grapevine.model.Game.ChronicleTitle & " Announcement"
 '        frmEMailAddressing.ShowAddressing OutputEngine.Mailer, ooReport, "E-Mail Players"
 '
 '        On Error Resume Next
@@ -1773,11 +1773,11 @@ Private Sub mnuRecentFile_Click(Index As Integer)
         pgbProgress.Value = 0
         pgbProgress.Max = 101
         pgbProgress.Visible = True
-        grapevine.Game.OpenGame RecentFiles.Item
+        grapevine.model.Game.OpenGame RecentFiles.Item
         pgbProgress.Visible = False
         Screen.MousePointer = vbDefault
         
-        If Not grapevine.Game.FileError Then
+        If Not grapevine.model.Game.FileError Then
             Me.Caption = GrapevineCaption & ": " & RecentTitles.Item
             EnableMenus True
             Call UpdateRecentFiles(RecentTitles.Item, RecentFiles.Item)
@@ -1785,7 +1785,7 @@ Private Sub mnuRecentFile_Click(Index As Integer)
         Else
             Me.Caption = GrapevineCaption
             EnableMenus False
-            MsgBox grapevine.Game.FileErrorMessage, vbExclamation, "Open File"
+            MsgBox grapevine.model.Game.FileErrorMessage, vbExclamation, "Open File"
         End If
             
     End If
@@ -1884,7 +1884,7 @@ Private Sub mnuNewGame_Click()
         pgbProgress.Value = 0
         pgbProgress.Max = 101
         pgbProgress.Visible = True
-        grapevine.Game.NewGame
+        grapevine.model.Game.NewGame
         pgbProgress.Visible = False
         Screen.MousePointer = vbDefault
         EnableMenus True
@@ -1907,12 +1907,12 @@ Private Sub mnuOpenGame_Click()
     PromptForSave Continue
     
     If Continue Then
-        cmnDialog.DialogTitle = "Open grapevine.Game"
+        cmnDialog.DialogTitle = "Open grapevine.model.Game"
         cmnDialog.InitDir = GetSetting(App.Title, "Files", "GameDir", CurDir)
         cmnDialog.FileName = ""
         cmnDialog.Flags = cdlOFNFileMustExist + cdlOFNPathMustExist + cdlOFNHideReadOnly
         cmnDialog.DefaultExt = "gv3"
-        cmnDialog.Filter = "Grapevine grapevine.Game Files|*.gv3;*.gv2|" & _
+        cmnDialog.Filter = "Grapevine grapevine.model.Game Files|*.gv3;*.gv2|" & _
                            "All Files|*.*"
         cmnDialog.FilterIndex = 1
         
@@ -1929,26 +1929,26 @@ Private Sub mnuOpenGame_Click()
         pgbProgress.Value = 0
         pgbProgress.Max = 101
         pgbProgress.Visible = True
-        grapevine.Game.OpenGame cmnDialog.FileName
+        grapevine.model.Game.OpenGame cmnDialog.FileName
         pgbProgress.Visible = False
         On Error GoTo 0
         
         Screen.MousePointer = vbDefault
         
-        If Not grapevine.Game.FileError Then
-            If grapevine.Game.ChronicleTitle = "" Then
+        If Not grapevine.model.Game.FileError Then
+            If grapevine.model.Game.ChronicleTitle = "" Then
                 Me.Caption = GrapevineCaption & ": " & cmnDialog.FileTitle
                 Call UpdateRecentFiles(cmnDialog.FileTitle, cmnDialog.FileName)
             Else
-                Me.Caption = GrapevineCaption & ": " & grapevine.Game.ChronicleTitle
-                Call UpdateRecentFiles(grapevine.Game.ChronicleTitle, cmnDialog.FileName)
+                Me.Caption = GrapevineCaption & ": " & grapevine.model.Game.ChronicleTitle
+                Call UpdateRecentFiles(grapevine.model.Game.ChronicleTitle, cmnDialog.FileName)
             End If
             EnableMenus True
             Call mnuCharacters_Click
         Else
             Me.Caption = GrapevineCaption
             EnableMenus False
-            MsgBox grapevine.Game.FileErrorMessage, vbExclamation, "Open grapevine.Game"
+            MsgBox grapevine.model.Game.FileErrorMessage, vbExclamation, "Open grapevine.model.Game"
         End If
     End If
     
@@ -1977,7 +1977,7 @@ Private Sub mnuSaveGame_Click()
 ' Description:  Save the current game, prompting if there is no filename yet.
 '
 
-    If grapevine.Game.GameFile = "" Then
+    If grapevine.model.Game.GameFile = "" Then
         Call mnuSaveGameAs_Click
     Else
         
@@ -1987,12 +1987,12 @@ Private Sub mnuSaveGame_Click()
         pgbProgress.Value = 0
         pgbProgress.Max = 101
         pgbProgress.Visible = True
-        grapevine.Game.SaveGame grapevine.Game.GameFile
+        grapevine.model.Game.SaveGame grapevine.model.Game.GameFile
         pgbProgress.Visible = False
         Screen.MousePointer = vbDefault
         
-        If grapevine.Game.FileError Then _
-            MsgBox grapevine.Game.FileErrorMessage, vbExclamation, "Save grapevine.Game"
+        If grapevine.model.Game.FileError Then _
+            MsgBox grapevine.model.Game.FileErrorMessage, vbExclamation, "Save grapevine.model.Game"
     
     End If
     
@@ -2006,42 +2006,42 @@ Private Sub mnuSaveGameAs_Click()
 
     ValidateActiveForm
     
-    cmnDialog.DialogTitle = "Save grapevine.Game As..."
+    cmnDialog.DialogTitle = "Save grapevine.model.Game As..."
     cmnDialog.InitDir = GetSetting(App.Title, "Files", "GameDir", CurDir)
-    cmnDialog.FileName = grapevine.Game.GameFile
+    cmnDialog.FileName = grapevine.model.Game.GameFile
     cmnDialog.Flags = cdlOFNPathMustExist + cdlOFNNoReadOnlyReturn + _
             cdlOFNOverwritePrompt + cdlOFNHideReadOnly
     cmnDialog.DefaultExt = "gv3"
-    cmnDialog.Filter = "Grapevine grapevine.Game File (Binary Format)|*.gv3;*.gv2|" & _
-                       "Grapevine grapevine.Game File (XML Format)|*.gv3;*.gv2|" & _
+    cmnDialog.Filter = "Grapevine grapevine.model.Game File (Binary Format)|*.gv3;*.gv2|" & _
+                       "Grapevine grapevine.model.Game File (XML Format)|*.gv3;*.gv2|" & _
                        "All Files|*.*"
-    cmnDialog.FilterIndex = IIf(grapevine.Game.FileFormat = gvXML, 2, 1)
+    cmnDialog.FilterIndex = IIf(grapevine.model.Game.FileFormat = gvXML, 2, 1)
     
     On Error GoTo mnuSaveGameAs_CancelError
     cmnDialog.ShowSave
     On Error GoTo 0
     
     SaveSetting App.Title, "Files", "GameDir", CurDir
-    grapevine.Game.FileFormat = IIf(cmnDialog.FilterIndex = 1, gvBinaryGame, gvXML)
+    grapevine.model.Game.FileFormat = IIf(cmnDialog.FilterIndex = 1, gvBinaryGame, gvXML)
     
     Screen.MousePointer = vbHourglass
     pgbProgress.Value = 0
     pgbProgress.Max = 101
     pgbProgress.Visible = True
-    grapevine.Game.SaveGame cmnDialog.FileName
+    grapevine.model.Game.SaveGame cmnDialog.FileName
     pgbProgress.Visible = False
     Screen.MousePointer = vbDefault
     
-    If Not grapevine.Game.FileError Then
-        If grapevine.Game.ChronicleTitle = "" Then
+    If Not grapevine.model.Game.FileError Then
+        If grapevine.model.Game.ChronicleTitle = "" Then
             Call UpdateRecentFiles(cmnDialog.FileTitle, cmnDialog.FileName)
             Me.Caption = GrapevineCaption & ": " & cmnDialog.FileTitle
         Else
-            Call UpdateRecentFiles(grapevine.Game.ChronicleTitle, cmnDialog.FileName)
-            Me.Caption = GrapevineCaption & ": " & grapevine.Game.ChronicleTitle
+            Call UpdateRecentFiles(grapevine.model.Game.ChronicleTitle, cmnDialog.FileName)
+            Me.Caption = GrapevineCaption & ": " & grapevine.model.Game.ChronicleTitle
         End If
     Else
-        MsgBox grapevine.Game.FileErrorMessage, vbExclamation, "Save grapevine.Game"
+        MsgBox grapevine.model.Game.FileErrorMessage, vbExclamation, "Save grapevine.model.Game"
     End If
     
     GoTo mnuSaveGameAs_Finish
@@ -2261,25 +2261,25 @@ Private Sub timAutosave_Timer()
             Dim DataState As Boolean
             Dim GameFile As String
             
-            DataState = grapevine.Game.DataChanged
-            GameFile = grapevine.Game.GameFile
+            DataState = grapevine.model.Game.DataChanged
+            GameFile = grapevine.model.Game.GameFile
             timAutosave.Tag = "0"
             
             Screen.MousePointer = vbHourglass
             pgbProgress.Value = 0
             pgbProgress.Max = 101
             pgbProgress.Visible = True
-            grapevine.Game.SaveGame SlashPath(App.Path) & BackupFileName
+            grapevine.model.Game.SaveGame SlashPath(App.Path) & BackupFileName
             pgbProgress.Visible = False
             Screen.MousePointer = vbDefault
             
-            grapevine.Game.DataChanged = DataState
-            grapevine.Game.GameFile = GameFile
+            grapevine.model.Game.DataChanged = DataState
+            grapevine.model.Game.GameFile = GameFile
             
-             If grapevine.Game.FileError Then
+             If grapevine.model.Game.FileError Then
                 AutosaveTime = 0
                 MsgBox "Error during Autosave:" & vbCrLf & _
-                       grapevine.Game.FileErrorMessage, vbExclamation, "Autosave Error"
+                       grapevine.model.Game.FileErrorMessage, vbExclamation, "Autosave Error"
             End If
             
         End If

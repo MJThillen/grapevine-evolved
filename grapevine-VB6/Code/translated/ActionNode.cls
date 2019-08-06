@@ -14,7 +14,7 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Public Name As String
-Public grapevine.Action As String
+Public grapevine.model.Action As String
 Public Result As String
 
 Public Level As Integer
@@ -46,7 +46,7 @@ Public Function IsComplete() As Boolean
 ' Description:  Return TRUE iff the action and result are both filled.
 '
 
-    IsComplete = Not (grapevine.Action = "" Or Result = "")
+    IsComplete = Not (grapevine.model.Action = "" Or Result = "")
 
 End Function
 
@@ -83,7 +83,7 @@ Public Sub OutputToFile(XML As XMLWriterClass)
             .WriteAttribute "total", Total
             .WriteAttribute "growth", Growth, 0
             
-            .WriteCDataTag "act", grapevine.Action
+            .WriteCDataTag "act", grapevine.model.Action
             .WriteCDataTag "results", Result
             
             Effects.OutputToFile XML
@@ -121,7 +121,7 @@ Public Sub InputFromFile(XML As XMLReaderClass, Version As Double)
                     Case "act"
                         If Not .Terminal Then
                             .ReadTag
-                            grapevine.Action = .GetTagText
+                            grapevine.model.Action = .GetTagText
                         End If
                     Case "results"
                         If Not .Terminal Then
@@ -155,7 +155,7 @@ Public Sub OutputToBinary(FileNum As Integer)
     
     Effects.OutputToBinary FileNum
     
-    PutStrB FileNum, grapevine.Action
+    PutStrB FileNum, grapevine.model.Action
     PutStrB FileNum, Result
 
 End Sub
@@ -176,7 +176,7 @@ Public Sub InputFromBinary(FileNum As Integer, Version As Double)
     
     Effects.InputFromBinary FileNum, Version
     
-    GetStrB FileNum, grapevine.Action
+    GetStrB FileNum, grapevine.model.Action
     GetStrB FileNum, Result
  
 End Sub

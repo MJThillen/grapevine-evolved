@@ -1,21 +1,34 @@
-package grapevine;
+package grapevine.model;
 
-import grapevine.constants.ExperienceChange;
-import grapevine.constants.FileFormat;
-import grapevine.constants.Race;
+import grapevine.constants.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
+import java.util.prefs.Preferences;
 
-import grapevine.constants.Constants;
 import grapevine.util.ImportHelper;
+import grapevine.util.Template;
+import grapevine.service.APREngine;
+
+import static grapevine.constants.DefaultPreferences.*;
 
 public class Game {
+    Preferences gamePrefs = Preferences.userNodeForPackage(Game.class);
+
+    //These values come from preferences
+    private FileFormat fileFormat; //current file type to save file as
+    private String gameFilename; //full pathname of game file
+    private boolean extendedHealth; //whether this game uses abbreviated or extended health levels
+    private boolean enforceHistory; //whether to enforce use of XP history
+    private boolean linkTraitMaxes; //Whether to link trait maximums on character sheets
+    private String randomTraits; //Comma-separated list of random trait options
+    private String stCommentStart; //opening markup of an ST comment
+    private String stCommentEnd; //closing markup of an ST comment
+
+    //These are more Involved lists, but we'll have to make them available somehow. Perhaps a main GameService
     private List<Player> players; //Collection of all players
     private List<Character> characters; //collection of all characters
     private List<Item> items; //collection of all items
@@ -23,45 +36,45 @@ public class Game {
     private List<Location> locations; //collection of all locations
     private List<List<Rumor>> rumorLists; //collection of lists of rumors, one per date
     private List<InfluenceAction> influenceUses; //collection of influence use actions
+
+    //These are Services/Engines, all of which need rebuilt.
     private MenuSet menuSet; //collection of menus
     private QueryEngine queryEngine; //collection, logic of queries
     private APREngine aprEngine; //collection, logic of actions/plots/rumors
 
-    private FileFormat fileFormat; //current file type to save file as
-    private String gameFilename; //full pathname of game file
-
+    //These are game-specific details, which will probably need a Model object of their own.
     private String chronicleTitle; //Title of the Chronicle
     private String website; //grapevine.Game URL
     private String email; //Main ST Email address
     private String phone; //Main Phone Number
     private String usualSite; //Usual grapevine.Game Site
     private String usualTime; //Usual grapevine.Game Start Time
-    private GameCalendar gameCalendar; //Calendar of game dates
+    private GameCalendar gameCalendar; //Calendar of game dates  - I'd like to implement this differently.
     private String description; //Description of your game
-    private boolean extendedHealth; //whether this game uses abbreviated or extended health levels
-    private boolean enforceHistory; //whether to enforce use of XP history
-    private boolean linkTraitMaxes; //Whether to link trait maximums on character sheets
-    private String randomTraits; //Comma-separated list of random trait options
-    private String stCommentStart; //opening markup of an ST comment
-    private String stCommentEnd; //closing markup of an ST comment
+
     private List<ExperienceAward> xpAwardList; //list of standard XP and PP awards
     private List<Template> outputTemplates; //list of output templates
-    private boolean fileError; //whether a file error happened during open or save
-    private String errorMessage; //description of the error
-    private String mergeResults; //line-delimited results of a merge or exchange file load
-    private ProgressBar fileProgress; //control describing progress of load
+
+
     private DuplicateAction duplicateAction; //What action to take when duplicating characters
     private boolean duplicateAll; //Whether to take that action in all cases
 
-    //Percent of progress bar to fill for each loading part
-    private static final int CALENDAR_PERCENT = 5;
+    // These are legacy values and will likelygo away in the new version.
+    private ProgressBar fileProgress; //control describing progress of load
+    private boolean fileError; //whether a file error happened during open or save
+    private String errorMessage; //description of the error
+    private String mergeResults; //line-delimited results of a merge or exchange file load
+
+    //Percent of progress bar to fill for each loading part.
+        private static final int CALENDAR_PERCENT = 5;
     private static final int PLAYER_PERCENT = 30;
     private static final int CHARACTER_PERCENT = 65;
+
 
     private boolean changed; //Dirty Flag
 
     /**
-     * Create and initialize all needed objects.
+     * Create and initialize all needed objects, pull default values from preferences.
      */
     public Game() {
         this.players = new ArrayList<>();
@@ -73,18 +86,310 @@ public class Game {
         this.influenceUses = new ArrayList<>();
         this.menuSet = new MenuSet();
         this.queryEngine = new QueryEngine();
-        this.aprEngine = new APREngine();
+        this.aprEngine = new APREngine(this);
         this.gameCalendar = new GameCalendar();
         this.xpAwardList = new ArrayList<>();
         this.outputTemplates = new ArrayList<>();
 
-        extendedHealth = true;
-        enforceHistory = true;
-        linkTraitMaxes = true;
+        extendedHealth = Boolean.getBoolean(gamePrefs.get(EXTENDED_HEALTH.getName(), EXTENDED_HEALTH.getValue()));
+        enforceHistory = Boolean.getBoolean(gamePrefs.get(ENFORCE_HISTORY.getName(), ENFORCE_HISTORY.getValue()));
+        linkTraitMaxes = Boolean.getBoolean(gamePrefs.get(LINK_TRAIT_MAXES.getName(), LINK_TRAIT_MAXES.getValue()));
 
-        randomTraits = "7,5,3,5,5,5,5";
-        stCommentStart = "[ST]";
-        stCommentEnd = "[/ST]";
+        randomTraits = gamePrefs.get(RANDOM_TRAITS.getName(), RANDOM_TRAITS.getValue());
+        stCommentStart = gamePrefs.get(ST_COMMENT_START.getName(), ST_COMMENT_START.getValue());
+        stCommentEnd = gamePrefs.get(ST_COMMENT_END.getName(), ST_COMMENT_END.getValue());
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
+    public List<Character> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(List<Character> characters) {
+        this.characters = characters;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public List<Rote> getRotes() {
+        return rotes;
+    }
+
+    public void setRotes(List<Rote> rotes) {
+        this.rotes = rotes;
+    }
+
+    public List<Location> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
+    }
+
+    public List<List<Rumor>> getRumorLists() {
+        return rumorLists;
+    }
+
+    public void setRumorLists(List<List<Rumor>> rumorLists) {
+        this.rumorLists = rumorLists;
+    }
+
+    public List<InfluenceAction> getInfluenceUses() {
+        return influenceUses;
+    }
+
+    public void setInfluenceUses(List<InfluenceAction> influenceUses) {
+        this.influenceUses = influenceUses;
+    }
+
+    public MenuSet getMenuSet() {
+        return menuSet;
+    }
+
+    public void setMenuSet(MenuSet menuSet) {
+        this.menuSet = menuSet;
+    }
+
+    public QueryEngine getQueryEngine() {
+        return queryEngine;
+    }
+
+    public void setQueryEngine(QueryEngine queryEngine) {
+        this.queryEngine = queryEngine;
+    }
+
+    public APREngine getAprEngine() {
+        return aprEngine;
+    }
+
+    public void setAprEngine(APREngine aprEngine) {
+        this.aprEngine = aprEngine;
+    }
+
+    public FileFormat getFileFormat() {
+        return fileFormat;
+    }
+
+    public void setFileFormat(FileFormat fileFormat) {
+        this.fileFormat = fileFormat;
+    }
+
+    public String getGameFilename() {
+        return gameFilename;
+    }
+
+    public void setGameFilename(String gameFilename) {
+        this.gameFilename = gameFilename;
+    }
+
+    public String getChronicleTitle() {
+        return chronicleTitle;
+    }
+
+    public void setChronicleTitle(String chronicleTitle) {
+        this.chronicleTitle = chronicleTitle;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getUsualSite() {
+        return usualSite;
+    }
+
+    public void setUsualSite(String usualSite) {
+        this.usualSite = usualSite;
+    }
+
+    public String getUsualTime() {
+        return usualTime;
+    }
+
+    public void setUsualTime(String usualTime) {
+        this.usualTime = usualTime;
+    }
+
+    public GameCalendar getGameCalendar() {
+        return gameCalendar;
+    }
+
+    public void setGameCalendar(GameCalendar gameCalendar) {
+        this.gameCalendar = gameCalendar;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isExtendedHealth() {
+        return extendedHealth;
+    }
+
+    public void setExtendedHealth(boolean extendedHealth) {
+        this.extendedHealth = extendedHealth;
+    }
+
+    public boolean isEnforceHistory() {
+        return enforceHistory;
+    }
+
+    public void setEnforceHistory(boolean enforceHistory) {
+        this.enforceHistory = enforceHistory;
+    }
+
+    public boolean isLinkTraitMaxes() {
+        return linkTraitMaxes;
+    }
+
+    public void setLinkTraitMaxes(boolean linkTraitMaxes) {
+        this.linkTraitMaxes = linkTraitMaxes;
+    }
+
+    public String getRandomTraits() {
+        return randomTraits;
+    }
+
+    public void setRandomTraits(String randomTraits) {
+        this.randomTraits = randomTraits;
+    }
+
+    public String getStCommentStart() {
+        return stCommentStart;
+    }
+
+    public void setStCommentStart(String stCommentStart) {
+        this.stCommentStart = stCommentStart;
+    }
+
+    public String getStCommentEnd() {
+        return stCommentEnd;
+    }
+
+    public void setStCommentEnd(String stCommentEnd) {
+        this.stCommentEnd = stCommentEnd;
+    }
+
+    public List<ExperienceAward> getXpAwardList() {
+        return xpAwardList;
+    }
+
+    public void setXpAwardList(List<ExperienceAward> xpAwardList) {
+        this.xpAwardList = xpAwardList;
+    }
+
+    public List<Template> getOutputTemplates() {
+        return outputTemplates;
+    }
+
+    public void setOutputTemplates(List<Template> outputTemplates) {
+        this.outputTemplates = outputTemplates;
+    }
+
+    public boolean isFileError() {
+        return fileError;
+    }
+
+    public void setFileError(boolean fileError) {
+        this.fileError = fileError;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    public String getMergeResults() {
+        return mergeResults;
+    }
+
+    public void setMergeResults(String mergeResults) {
+        this.mergeResults = mergeResults;
+    }
+
+    public ProgressBar getFileProgress() {
+        return fileProgress;
+    }
+
+    public void setFileProgress(ProgressBar fileProgress) {
+        this.fileProgress = fileProgress;
+    }
+
+    public DuplicateAction getDuplicateAction() {
+        return duplicateAction;
+    }
+
+    public void setDuplicateAction(DuplicateAction duplicateAction) {
+        this.duplicateAction = duplicateAction;
+    }
+
+    public boolean isDuplicateAll() {
+        return duplicateAll;
+    }
+
+    public void setDuplicateAll(boolean duplicateAll) {
+        this.duplicateAll = duplicateAll;
+    }
+
+    public static int getCalendarPercent() {
+        return CALENDAR_PERCENT;
+    }
+
+    public static int getPlayerPercent() {
+        return PLAYER_PERCENT;
+    }
+
+    public static int getCharacterPercent() {
+        return CHARACTER_PERCENT;
+    }
+
+    public boolean isChanged() {
+        return changed;
+    }
+
+    public void setChanged(boolean changed) {
+        this.changed = changed;
     }
 
     /**

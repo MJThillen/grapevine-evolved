@@ -147,7 +147,7 @@ Public Sub WriteStringData(Data As String, Optional CData = True)
         Print #FileNum, Spc(Indent + Spaces);
         If CData Then
             If HideSTFromFile Then
-                Print #FileNum, "<![CDATA[" & Replace(grapevine.Game.STFilter(Data), "]]>", "]] >") & "]]>"
+                Print #FileNum, "<![CDATA[" & Replace(grapevine.model.Game.STFilter(Data), "]]>", "]] >") & "]]>"
             Else
                 Print #FileNum, "<![CDATA[" & Replace(Data, "]]>", "]] >") & "]]>"
             End If
@@ -168,7 +168,7 @@ Private Function FormatForXML(ByRef SVal As String) As String
 '
 
     FormatForXML = SVal
-    If HideSTFromFile Then FormatForXML = grapevine.Game.STFilter(FormatForXML)
+    If HideSTFromFile Then FormatForXML = grapevine.model.Game.STFilter(FormatForXML)
     FormatForXML = Replace(FormatForXML, "&", "&amp;")
     FormatForXML = Replace(FormatForXML, "<", "&lt;")
     FormatForXML = Replace(FormatForXML, ">", "&gt;")

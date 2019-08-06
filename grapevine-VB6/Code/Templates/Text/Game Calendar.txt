@@ -1,5 +1,5 @@
 [Title]
-grapevine.Game Calendar: [DateRange]
+grapevine.model.Game Calendar: [DateRange]
 [wrap 70]
 [report calendar][repeat]
 ----------------------------------------------------------------------

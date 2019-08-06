@@ -164,7 +164,7 @@ Public Enum DupAction
     KeepNewer
 End Enum
 
-Public grapevine.Action As DupAction          'the action selected by the user
+Public grapevine.model.Action As DupAction          'the action selected by the user
 Public All As Boolean               'whether to perform that action on all duplicates
 Public NewName As String            'new name entered by user
 Private OriginalName As String      'original duplicate name
@@ -225,7 +225,7 @@ Private Sub cmdKeepNewer_Click()
 ' Name:         cmdKeepNewer_Click
 ' Description:  signify that the user wants to keep the newer data.
 '
-    grapevine.Action = KeepNewer
+    grapevine.model.Action = KeepNewer
     Me.Hide
 
 End Sub
@@ -235,7 +235,7 @@ Private Sub cmdKeepOlder_Click()
 ' Name:         cmdKeepOlder_Click
 ' Description:  signify that the user wants to keep the Older data.
 '
-    grapevine.Action = keepolder
+    grapevine.model.Action = keepolder
     Me.Hide
 
 End Sub
@@ -258,7 +258,7 @@ Private Sub cmdRenameExisting_Click()
 
     SearchList.MoveTo txtName
     If SearchList.Off Then
-        grapevine.Action = RenameOld
+        grapevine.model.Action = RenameOld
         NewName = txtName
         Me.Hide
     Else
@@ -285,7 +285,7 @@ Private Sub cmdRenameIncoming_Click()
     
     SearchList.MoveTo txtName
     If SearchList.Off Then
-        grapevine.Action = RenameNew
+        grapevine.model.Action = RenameNew
         NewName = txtName
         Me.Hide
     Else
@@ -301,7 +301,7 @@ Private Sub cmdReplace_Click()
 '               with the incoming data.
 '
 
-    grapevine.Action = ReplaceOld
+    grapevine.model.Action = ReplaceOld
     Me.Hide
 
 End Sub
@@ -312,7 +312,7 @@ Private Sub cmdSkip_Click()
 ' Description:  Signify that the user wants to skip the incoming data.
 '
 
-    grapevine.Action = Skip
+    grapevine.model.Action = Skip
     Me.Hide
     
 End Sub

@@ -16,7 +16,7 @@ Option Explicit
 Public PrevNode As CalendarNode     'Previous history entry
 Public NextNode As CalendarNode     'Next history entry
 
-Public GameDate As Date             'Date of grapevine.Game
+Public GameDate As Date             'Date of grapevine.model.Game
 Public Time As String               'Time
 Public Place As String              'Place
 Public Notes As String              'Notes

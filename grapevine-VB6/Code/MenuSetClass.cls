@@ -430,10 +430,10 @@ Public Sub OpenMenus(FileName As String, ReOpen As Boolean)
                 OpenMenusXML FileName
             Case gvBinaryGame
                 FileErrorMessage = ShortFile(FileName) & _
-                        " is a grapevine menu file: open it from File -> Open grapevine.Game."
+                        " is a grapevine menu file: open it from File -> Open grapevine.model.Game."
             Case gv23Game
                 FileErrorMessage = ShortFile(FileName) & _
-                        " is a grapevine menu file: open it from File -> Open grapevine.Game."
+                        " is a grapevine menu file: open it from File -> Open grapevine.model.Game."
             Case gvBinaryExchange
                 FileErrorMessage = ShortFile(FileName) & _
                         " is a grapevine exchange file: open it from File -> Data Exchange."
@@ -789,7 +789,7 @@ Public Function GetSpecialMenu(MenuName As String) As LinkedMenuList
                 
                 GetSpecialMenu.Append "All Rotes", ":", "?R:"
                 
-                Set SphereMenu = grapevine.Game.MenuSet.GetCompleteMenu("Spheres")
+                Set SphereMenu = grapevine.model.Game.MenuSet.GetCompleteMenu("Spheres")
                 If Not SphereMenu Is Nothing Then
                     With SphereMenu
                         .First
@@ -830,7 +830,7 @@ Public Function GetSpecialMenu(MenuName As String) As LinkedMenuList
             
             Case "?DT"
             
-                With grapevine.Game.Calendar
+                With grapevine.model.Game.Calendar
                     .Last
                     Do Until .Off
                         GetSpecialMenu.Append Format(.GetGameDate, "mmmm d, yyyy"), "", ""
@@ -851,7 +851,7 @@ Public Function GetSpecialMenu(MenuName As String) As LinkedMenuList
             
                 GetSpecialMenu.Append "New Entry", "", ""
                 GetSpecialMenu.Append "Recent Purchases", "", ""
-                With grapevine.Game.XPAwardList
+                With grapevine.model.Game.XPAwardList
                     .First
                     Do Until .Off
                         If .Item.XP Then GetSpecialMenu.Append .Item.Name, "", ""
@@ -862,7 +862,7 @@ Public Function GetSpecialMenu(MenuName As String) As LinkedMenuList
             Case "?PP"
             
                 GetSpecialMenu.Append "New Entry", "", ""
-                With grapevine.Game.XPAwardList
+                With grapevine.model.Game.XPAwardList
                     .First
                     Do Until .Off
                         If Not .Item.XP Then GetSpecialMenu.Append .Item.Name, "", ""
@@ -882,7 +882,7 @@ Public Function GetSpecialMenu(MenuName As String) As LinkedMenuList
                 Query.AddClause qkPlayStatus, ActiveStatus, 0, qcEquals, (Mid(MenuName, 4) = ":X")
             End If
             
-            With grapevine.Game.QueryEngine
+            With grapevine.model.Game.QueryEngine
                 .MakeQuery Query, Sort
             
                 .Results.First
@@ -1011,7 +1011,7 @@ Public Sub GenerateRandomTraits(Char As Object)
     
     On Error Resume Next
 
-    RT = grapevine.Game.RandomTraits & ","
+    RT = grapevine.model.Game.RandomTraits & ","
     For I = 0 To 6
         C = InStr(RT, ",")
         If C > 0 Then Traits(I) = Int(Val(Mid(RT, 1, C - 1)))

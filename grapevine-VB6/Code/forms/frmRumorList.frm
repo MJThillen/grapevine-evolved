@@ -313,7 +313,7 @@ Private Sub RefreshCategories(Optional SelGame As Boolean = False)
     If CategoryDate Then
     
         If SelGame Then
-            With grapevine.Game.Calendar
+            With grapevine.model.Game.Calendar
                 If .HasNextGame Then
                     SelDate = .NextGameDate
                 ElseIf .HasPreviousGame Then
@@ -325,15 +325,15 @@ Private Sub RefreshCategories(Optional SelGame As Boolean = False)
         StoreCategory = lstDates.ListIndex
         lstDates.Clear
         
-        grapevine.Game.Calendar.Last
-        Do Until grapevine.Game.Calendar.Off
-            lstDates.AddItem Format(grapevine.Game.Calendar.GetGameDate, "mmmm d, yyyy")
+        grapevine.model.Game.Calendar.Last
+        Do Until grapevine.model.Game.Calendar.Off
+            lstDates.AddItem Format(grapevine.model.Game.Calendar.GetGameDate, "mmmm d, yyyy")
             If SelGame Then
-                If grapevine.Game.Calendar.GetGameDate = SelDate Then
+                If grapevine.model.Game.Calendar.GetGameDate = SelDate Then
                     StoreCategory = lstDates.NewIndex
                 End If
             End If
-            grapevine.Game.Calendar.MovePrevious
+            grapevine.model.Game.Calendar.MovePrevious
         Loop
     
         If StoreCategory >= lstDates.ListCount Then StoreCategory = lstDates.ListCount - 1
@@ -406,7 +406,7 @@ Private Sub RefreshRumors()
             Dim Rumor As RumorClass
             
             SelDate = CDate(lstDates.Text)
-            grapevine.Game.APREngine.MoveToFirstDate RumorList, SelDate
+            grapevine.model.Game.APREngine.MoveToFirstDate RumorList, SelDate
                 
             Do Until RumorList.Off
                 Set Rumor = RumorList.Item
@@ -414,7 +414,7 @@ Private Sub RefreshRumors()
                                              Text:=Rumor.Title, SmallIcon:=Rumor.IconKey)
                 Call NewItem.ListSubItems.Add(Text:=IIf(Rumor.Done, "X", ""), Key:="done")
                 Call NewItem.ListSubItems.Add(Text:=(CStr(Rumor.Category) & Rumor.Title), Key:="sortkey")
-                grapevine.Game.APREngine.MoveToNextDate RumorList, SelDate
+                grapevine.model.Game.APREngine.MoveToNextDate RumorList, SelDate
             Loop
                 
             lblCount.Caption = CStr(lvwTitles.ListItems.Count) & " &Rumors for " & lstDates.Text
@@ -440,7 +440,7 @@ Private Sub RefreshRumors()
             Dim CurDate As Long
             
             SelName = lvwTitles.SelectedItem.Text
-            grapevine.Game.APREngine.MoveToFirstTitle RumorList, SelName
+            grapevine.model.Game.APREngine.MoveToFirstTitle RumorList, SelName
             
             Do Until RumorList.Off
                 CurDate = RumorList.Item.RumorDate
@@ -450,7 +450,7 @@ Private Sub RefreshRumors()
                 Call NewItem.ListSubItems.Add(Text:=IIf(RumorList.Item.Done, "X", ""), Key:="done")
                 Call NewItem.ListSubItems.Add(Text:=Format(CurDate, "yyyy-mm-dd"), Key:="sortkey")
                 
-                grapevine.Game.APREngine.MoveToNextTitle RumorList, SelName
+                grapevine.model.Game.APREngine.MoveToNextTitle RumorList, SelName
             Loop
         
             lblCount.Caption = CStr(lvwDates.ListItems.Count) & " &Rumors for " & SelName
@@ -490,7 +490,7 @@ Private Sub RefreshInfo()
 
     If Not (ShowDate = 0 Or ShowName = "") Then
         
-        grapevine.Game.APREngine.MoveToPair RumorList, ShowDate, ShowName
+        grapevine.model.Game.APREngine.MoveToPair RumorList, ShowDate, ShowName
         If Not RumorList.Off Then
             Dim Rumor As RumorClass
             Set Rumor = RumorList.Item
@@ -525,14 +525,14 @@ Public Sub SetDefaultOutput()
     If CategoryDate Then
         If lstDates.ListIndex > -1 Then
             ShowDate = CDate(lstDates.Text)
-            grapevine.Game.APREngine.MoveToFirstDate RumorList, ShowDate
+            grapevine.model.Game.APREngine.MoveToFirstDate RumorList, ShowDate
         Else
             Exit Sub
         End If
     Else
         If Not (lvwTitles.SelectedItem Is Nothing) Then
             ShowName = lvwTitles.SelectedItem.Text
-            grapevine.Game.APREngine.MoveToFirstTitle RumorList, ShowName
+            grapevine.model.Game.APREngine.MoveToFirstTitle RumorList, ShowName
         Else
             Exit Sub
         End If
@@ -545,12 +545,12 @@ Public Sub SetDefaultOutput()
             Do Until RumorList.Off
                 .SelectSet(osRumors).Add RumorList.Item.Name
                 If CategoryDate Then
-                    grapevine.Game.APREngine.MoveToNextDate RumorList, ShowDate
+                    grapevine.model.Game.APREngine.MoveToNextDate RumorList, ShowDate
                 Else
-                    grapevine.Game.APREngine.MoveToNextTitle RumorList, ShowName
+                    grapevine.model.Game.APREngine.MoveToNextTitle RumorList, ShowName
                 End If
             Loop
-            .grapevine.Template = tnMasterRumor
+            .grapevine.util.Template = tnMasterRumor
             .GameDate = 0
         End With
     
@@ -589,10 +589,10 @@ Private Sub cmdAddNew_Click()
         
         Set NewRumor = New RumorClass
         NewRumor.InitializeQueryRumor NewName, NewDate, rtGeneral
-        grapevine.Game.APREngine.InsertSorted RumorList, NewRumor
+        grapevine.model.Game.APREngine.InsertSorted RumorList, NewRumor
         
         mdiMain.AnnounceChanges Me, atRumors
-        grapevine.Game.DataChanged = True
+        grapevine.model.Game.DataChanged = True
         RefreshRumors
     
         On Error Resume Next
@@ -637,7 +637,7 @@ Private Sub cmdDelete_Click()
     
     If Not (DelName = "" Or DelDate = 0) Then
     
-        grapevine.Game.APREngine.MoveToPair RumorList, DelDate, DelName
+        grapevine.model.Game.APREngine.MoveToPair RumorList, DelDate, DelName
     
         If Not RumorList.Off Then
     
@@ -648,7 +648,7 @@ Private Sub cmdDelete_Click()
             If Answer Then
                     
                 mdiMain.AnnounceChanges Me, atRumors
-                grapevine.Game.DataChanged = True
+                grapevine.model.Game.DataChanged = True
     
                 For Each NormForm In Forms()
                     If NormForm.Caption = RumorList.Item.Name And NormForm.Tag = "U" Then
@@ -683,10 +683,10 @@ Private Sub cmdDeleteAll_Click()
     If CategoryDate And lstDates.ListIndex > -1 Then
         DelDate = CDate(lstDates.Text)
         DelName = lstDates.Text
-        grapevine.Game.APREngine.MoveToFirstDate RumorList, DelDate
+        grapevine.model.Game.APREngine.MoveToFirstDate RumorList, DelDate
     ElseIf Not CategoryDate And Not lvwTitles.SelectedItem Is Nothing Then
         DelName = lvwTitles.SelectedItem.Text
-        grapevine.Game.APREngine.MoveToFirstTitle RumorList, DelName
+        grapevine.model.Game.APREngine.MoveToFirstTitle RumorList, DelName
     Else
         Exit Sub
     End If
@@ -700,7 +700,7 @@ Private Sub cmdDeleteAll_Click()
         If Answer Then
                 
             mdiMain.AnnounceChanges Me, atRumors
-            grapevine.Game.DataChanged = True
+            grapevine.model.Game.DataChanged = True
 
             For Each NormForm In Forms()
                 If NormForm.Tag = "U" Then
@@ -711,9 +711,9 @@ Private Sub cmdDeleteAll_Click()
             Do
                 RumorList.Remove
                 If CategoryDate Then
-                    grapevine.Game.APREngine.MoveToFirstDate RumorList, DelDate
+                    grapevine.model.Game.APREngine.MoveToFirstDate RumorList, DelDate
                 Else
-                    grapevine.Game.APREngine.MoveToFirstTitle RumorList, DelName
+                    grapevine.model.Game.APREngine.MoveToFirstTitle RumorList, DelName
                 End If
             Loop Until RumorList.Off
             
@@ -766,9 +766,9 @@ Private Sub cmdStandard_Click()
 '
 
     If lstDates.ListIndex > -1 Then
-        grapevine.Game.APREngine.AddStandardRumors CDate(lstDates.Text)
+        grapevine.model.Game.APREngine.AddStandardRumors CDate(lstDates.Text)
         RefreshRumors
-        grapevine.Game.DataChanged = True
+        grapevine.model.Game.DataChanged = True
     End If
     
 End Sub

@@ -344,7 +344,7 @@ Public Sub ShowCalculator(Char As Object)
         End If
         Spending = CSng((Spending - Val(PointList.Trait.Note)) * PointList.Trait.Number)
         
-        KeyTitle = CStr(grapevine.Game.QueryEngine.KeysToTitles(PointList.Trait.Name))
+        KeyTitle = CStr(grapevine.model.Game.QueryEngine.KeysToTitles(PointList.Trait.Name))
         If InStr(KeyTitle, " (") > 0 Then KeyTitle = Left(KeyTitle, InStr(KeyTitle, " (") - 1)
         KeyTitle = CStr(Count) & " " & KeyTitle
         
@@ -386,7 +386,7 @@ Public Sub SetDefaultOutput()
 ' Description:  Prepare an output setup for frmOutput.
 '
     With OutputEngine
-        .grapevine.Template = tnXPHistory
+        .grapevine.util.Template = tnXPHistory
         .SelectSet(osCharacters).Clear
         .SelectSet(osCharacters).Add Character.Name
         .GameDate = 0
@@ -456,7 +456,7 @@ Private Sub lvwInvoice_ItemClick(ByVal Item As MSComctlLib.ListItem)
             
             Character.GetValue Item.Tag, Value
 
-            KeyTitle = CStr(grapevine.Game.QueryEngine.KeysToTitles(Item.Tag))
+            KeyTitle = CStr(grapevine.model.Game.QueryEngine.KeysToTitles(Item.Tag))
             If InStr(KeyTitle, " (") > 0 Then KeyTitle = Left(KeyTitle, InStr(KeyTitle, " (") - 1)
 
             If IsObject(Value) Then

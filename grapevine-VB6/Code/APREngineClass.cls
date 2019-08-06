@@ -14,7 +14,7 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Public ActionList As LinkedList
-Public PlotList As LinkedList
+Public PlotplList As LinkedList
 Public RumorList As LinkedList
 
 Public BackgroundActions As LinkedTraitList
@@ -158,19 +158,19 @@ Public Sub AddStandardRumors(When As Date)
     
     If PreviousRumors Then      'Add copies of the previous date's rumors
     
-        grapevine.Game.Calendar.MoveTo When
-        grapevine.Game.Calendar.MovePrevious
-        If Not grapevine.Game.Calendar.Off Then   ' if there *is* a prior game
+        grapevine.model.Game.Calendar.MoveTo When
+        grapevine.model.Game.Calendar.MovePrevious
+        If Not grapevine.model.Game.Calendar.Off Then   ' if there *is* a prior game
         
             Dim PrevDate As Date
             
-            PrevDate = grapevine.Game.Calendar.GetGameDate
+            PrevDate = grapevine.model.Game.Calendar.GetGameDate
             
             MoveToFirstDate RumorList, PrevDate
             Do Until RumorList.Off
                 If Not Existing.Has(RumorList.Item.Title) Then
                     Set NewRumor = RumorList.Item.Clone(When, CopyPrevious)
-                    grapevine.Game.APREngine.InsertSorted RumorList, NewRumor
+                    grapevine.model.Game.APREngine.InsertSorted RumorList, NewRumor
                     Existing.Add NewRumor.Title
                 End If
                 MoveToNextDate RumorList, PrevDate
@@ -184,7 +184,7 @@ Public Sub AddStandardRumors(When As Date)
         If Not Existing.Has(PublicRumorTitle) Then
             Set NewRumor = New RumorClass
             NewRumor.InitializeQueryRumor PublicRumorTitle, When, rtGeneral
-            grapevine.Game.APREngine.InsertSorted RumorList, NewRumor
+            grapevine.model.Game.APREngine.InsertSorted RumorList, NewRumor
             Existing.Add NewRumor.Title
         End If
     End If
@@ -199,7 +199,7 @@ Public Sub AddStandardRumors(When As Date)
                 Set NewRumor = New RumorClass
                 NewRumor.InitializeQueryRumor NewTitle, When, rtPersonal
                 NewRumor.Query.AddClause qkName, NewTitle, 0, qcEquals, False
-                grapevine.Game.APREngine.InsertSorted RumorList, NewRumor
+                grapevine.model.Game.APREngine.InsertSorted RumorList, NewRumor
                 Existing.Add NewTitle
             End If
         
@@ -208,7 +208,7 @@ Public Sub AddStandardRumors(When As Date)
                 Set NewRumor = New RumorClass
                 NewRumor.InitializeQueryRumor NewTitle, When, rtRace
                 NewRumor.Query.AddClause qkRace, NewTitle, 0, qcEquals, False
-                grapevine.Game.APREngine.InsertSorted RumorList, NewRumor
+                grapevine.model.Game.APREngine.InsertSorted RumorList, NewRumor
                 Existing.Add NewTitle
             End If
         
@@ -217,7 +217,7 @@ Public Sub AddStandardRumors(When As Date)
                 Set NewRumor = New RumorClass
                 NewRumor.InitializeQueryRumor NewTitle, When, rtGroup
                 NewRumor.Query.AddClause qkGroup, NewTitle, 0, qcEquals, False
-                grapevine.Game.APREngine.InsertSorted RumorList, NewRumor
+                grapevine.model.Game.APREngine.InsertSorted RumorList, NewRumor
                 Existing.Add NewTitle
             End If
             
@@ -226,7 +226,7 @@ Public Sub AddStandardRumors(When As Date)
                 Set NewRumor = New RumorClass
                 NewRumor.InitializeQueryRumor NewTitle, When, rtSubgroup
                 NewRumor.Query.AddClause qkSubgroup, NewTitle, 0, qcEquals, False
-                grapevine.Game.APREngine.InsertSorted RumorList, NewRumor
+                grapevine.model.Game.APREngine.InsertSorted RumorList, NewRumor
                 Existing.Add NewTitle
             End If
         
@@ -244,7 +244,7 @@ Public Sub AddStandardRumors(When As Date)
                             Set NewRumor = New RumorClass
                             NewRumor.InitializeMultiRumor NewTitle, When, _
                                      qkInfluences, Influences.Trait.Name
-                            grapevine.Game.APREngine.InsertSorted RumorList, NewRumor
+                            grapevine.model.Game.APREngine.InsertSorted RumorList, NewRumor
                             Existing.Add NewTitle
                         End If
                         Influences.MoveNext
@@ -260,7 +260,7 @@ Public Sub AddStandardRumors(When As Date)
 
     Set Existing = Nothing
     
-    grapevine.Game.DataChanged = True
+    grapevine.model.Game.DataChanged = True
     
     Screen.MousePointer = vbDefault
 
@@ -442,7 +442,7 @@ Public Sub InsertSorted(List As LinkedList, Entity As Object)
 '
 ' Name:         InsertSorted
 ' Parameters:   List            ActionList or RumorList to insert into
-'               Entity          grapevine.Action or Rumor object to insert
+'               Entity          grapevine.model.Action or Rumor object to insert
 ' Description:  Insert an action or rumor into its list, sorting by
 '               descending date then ascending name.
 '
@@ -495,7 +495,7 @@ Public Sub ReconnectAll(CreateDates As Boolean)
 ' Name:         ReconnectAll
 ' Parameters:   CreateDates     Whether or not to create missing dates
 ' Description:  When a game or exchange file is loaded, ensure the following:
-'               1. All dates appearing in grapevine.Action and Rumor lists are created.
+'               1. All dates appearing in grapevine.model.Action and Rumor lists are created.
 '               2. All Effects of actions and plot developments create reciprocal Causes.
 '                  Effects that don't exist result in a removal of those links.
 '
@@ -515,7 +515,7 @@ Public Sub ReconnectAll(CreateDates As Boolean)
     
         Set DateSet = New StringSet
         
-        With grapevine.Game.Calendar
+        With grapevine.model.Game.Calendar
             .First
             Do Until .Off
                 DateSet.Add CStr(.GetGameDate)
@@ -527,7 +527,7 @@ Public Sub ReconnectAll(CreateDates As Boolean)
         Do Until ActionList.Off
             Set Act = ActionList.Item
             If Not DateSet.Has(CStr(Act.ActDate)) Then
-                grapevine.Game.Calendar.Insert Act.ActDate, grapevine.Game.UsualPlace, grapevine.Game.UsualPlace, ""
+                grapevine.model.Game.Calendar.Insert Act.ActDate, grapevine.model.Game.UsualPlace, grapevine.model.Game.UsualPlace, ""
                 DateSet.Add CStr(Act.ActDate)
             End If
             ActionList.MoveNext
@@ -537,7 +537,7 @@ Public Sub ReconnectAll(CreateDates As Boolean)
         Do Until RumorList.Off
             Set Rumor = RumorList.Item
             If Not DateSet.Has(CStr(Rumor.RumorDate)) Then
-                grapevine.Game.Calendar.Insert Rumor.RumorDate, grapevine.Game.UsualPlace, grapevine.Game.UsualPlace, ""
+                grapevine.model.Game.Calendar.Insert Rumor.RumorDate, grapevine.model.Game.UsualPlace, grapevine.model.Game.UsualPlace, ""
                 DateSet.Add CStr(Rumor.RumorDate)
             End If
             RumorList.MoveNext
@@ -656,7 +656,7 @@ Public Sub Reassign(SourceList As LinkedList, OldName As String, NewName As Stri
 '               NewName         New name of item
 '               OldDate         Old Date of item
 '               NewDate         New Date of item
-' Description:  Given a new Name/Title and Date to an grapevine.Action, Plot or Rumor.
+' Description:  Given a new Name/Title and Date to an grapevine.model.Action, Plot or Rumor.
 '
 
     Dim APR As Object
@@ -944,7 +944,7 @@ Public Sub OldInputFromFile(FileNum As Integer, Version As String)
     Dim UsedBy As String
     Dim Exclude As Boolean
     
-    Dim grapevine.Action As ActionClass
+    Dim grapevine.model.Action As ActionClass
     Dim Rumor As RumorClass
     
     Line Input #FileNum, Read
@@ -967,35 +967,35 @@ Public Sub OldInputFromFile(FileNum As Integer, Version As String)
             Exclude = CBool(Read)
         End If
         
-        If Category = 4 Then        ' Create grapevine.Action: Old 'Influence Use' Category
+        If Category = 4 Then        ' Create grapevine.model.Action: Old 'Influence Use' Category
         
             MoveToPair ActionList, DateStamp, UsedBy
             
             If ActionList.Off Then
-                Set grapevine.Action = New ActionClass
-                grapevine.Action.CharName = UsedBy
-                grapevine.Action.ActDate = DateStamp
-                InsertSorted ActionList, grapevine.Action
+                Set grapevine.model.Action = New ActionClass
+                grapevine.model.Action.CharName = UsedBy
+                grapevine.model.Action.ActDate = DateStamp
+                InsertSorted ActionList, grapevine.model.Action
             Else
-                Set grapevine.Action = ActionList.Item
+                Set grapevine.model.Action = ActionList.Item
             End If
         
-            grapevine.Action.MoveTo Recipient
-            If grapevine.Action.Off Then
-                grapevine.Action.Add Recipient, 0, 0, 0, 0
-                grapevine.Action.SubAction.grapevine.Action = "Level " & CStr(Level) & ": " & Text
+            grapevine.model.Action.MoveTo Recipient
+            If grapevine.model.Action.Off Then
+                grapevine.model.Action.Add Recipient, 0, 0, 0, 0
+                grapevine.model.Action.SubAction.grapevine.model.Action = "Level " & CStr(Level) & ": " & Text
             Else
-                grapevine.Action.SubAction.grapevine.Action = grapevine.Action.SubAction.grapevine.Action & vbCrLf & vbCrLf _
+                grapevine.model.Action.SubAction.grapevine.model.Action = grapevine.model.Action.SubAction.grapevine.model.Action & vbCrLf & vbCrLf _
                                         & "Level " & CStr(Level) & ": " & Text
             End If
             
-            If Level > grapevine.Action.SubAction.Level Then
-                grapevine.Action.SubAction.Level = Level
+            If Level > grapevine.model.Action.SubAction.Level Then
+                grapevine.model.Action.SubAction.Level = Level
                 ActionsPerLevel.MoveTo CStr(Level)
-                grapevine.Action.SubAction.Total = ActionsPerLevel.Trait.Number
+                grapevine.model.Action.SubAction.Total = ActionsPerLevel.Trait.Number
             End If
             
-            grapevine.Action.Done = True
+            grapevine.model.Action.Done = True
             
         Else                        ' Create rumor
             

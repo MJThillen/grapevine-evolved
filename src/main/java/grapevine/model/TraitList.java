@@ -1,4 +1,4 @@
-package grapevine;
+package grapevine.model;
 
 import grapevine.constants.ListDisplay;
 

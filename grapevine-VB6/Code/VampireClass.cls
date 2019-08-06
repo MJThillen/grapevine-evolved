@@ -978,7 +978,7 @@ Private Sub Class_Initialize()
         .Append StdHealth(2)
         .Append StdHealth(3)
         .Append "Torpor"
-        If grapevine.Game.ExtendedHealth Then
+        If grapevine.model.Game.ExtendedHealth Then
             .Append StdHealth(0)
             .Append StdHealth(1)
             .Append StdHealth(1)

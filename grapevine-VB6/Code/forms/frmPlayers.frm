@@ -485,7 +485,7 @@ Private Sub SetDataChanged()
 '               Last Modified date.
 '
     If Not Populating Then
-        grapevine.Game.DataChanged = True
+        grapevine.model.Game.DataChanged = True
         Player.LastModified = Now
     End If
     
@@ -551,7 +551,7 @@ Private Sub cmdAddPlayer_Click()
             txtID.SetFocus
         
             mdiMain.AnnounceChanges Me, atPlayers
-            grapevine.Game.DataChanged = True
+            grapevine.model.Game.DataChanged = True
         Else
             MsgBox "The name """ & NewName & """ is already in use.  Please " & _
                     "enter a different name.", vbExclamation + vbOKOnly, "Duplicate Name"
@@ -603,7 +603,7 @@ Private Sub cmdDeletePlayer_Click()
                 
                 PlayerList.Remove
                 mdiMain.AnnounceChanges Me, atPlayers
-                grapevine.Game.DataChanged = True
+                grapevine.model.Game.DataChanged = True
                 ReFillPlayerList
                 Call lstPlayers_Click
             
@@ -674,9 +674,9 @@ Private Sub Form_Activate()
                 " / " & CStr(Player.Experience.Earned)
         Populating = False
     End If
-    txtPoints.Locked = grapevine.Game.EnforceHistory
-    cmdChange.Visible = grapevine.Game.EnforceHistory
-    updPoints.Visible = Not grapevine.Game.EnforceHistory
+    txtPoints.Locked = grapevine.model.Game.EnforceHistory
+    cmdChange.Visible = grapevine.model.Game.EnforceHistory
+    updPoints.Visible = Not grapevine.model.Game.EnforceHistory
 
 End Sub
 
@@ -723,12 +723,12 @@ Private Sub Form_Load()
     Dim DataState As Boolean
     
     Populating = True
-    DataState = grapevine.Game.DataChanged
+    DataState = grapevine.model.Game.DataChanged
     chkHideInactive.Value = _
         IIf(GetSetting(App.Title, "Settings", "HideInactive", False), vbChecked, vbUnchecked)
     ReFillPlayerList
     If lstPlayers.ListCount > 0 Then lstPlayers.ListIndex = 0
-    grapevine.Game.DataChanged = DataState
+    grapevine.model.Game.DataChanged = DataState
     Populating = False
     mdiMain.OrientForm Me
     

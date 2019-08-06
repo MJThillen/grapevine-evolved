@@ -84,7 +84,7 @@ Begin VB.Form frmNewActionRumor
       Width           =   2055
    End
    Begin VB.Label lblDate 
-      Caption         =   "Previous grapevine.Game:"
+      Caption         =   "Previous grapevine.model.Game:"
       Height          =   255
       Index           =   0
       Left            =   2520
@@ -93,7 +93,7 @@ Begin VB.Form frmNewActionRumor
       Width           =   1215
    End
    Begin VB.Label lblDate 
-      Caption         =   "Next grapevine.Game:"
+      Caption         =   "Next grapevine.model.Game:"
       Height          =   255
       Index           =   1
       Left            =   2520
@@ -178,7 +178,7 @@ Public Function GetNewRumorTitle(RumorDate As Date)
     lblLabel.Caption = " &Select or type in a title for the new rumor:"
     Me.Caption = "Add New Rumor"
     
-    With grapevine.Game.APREngine.RumorList
+    With grapevine.model.Game.APREngine.RumorList
         .First
         Do Until .Off
             If Not .Item.Category = rtInfluence Then
@@ -236,13 +236,13 @@ Public Function GetNewRumorDate(RumorTitle As String)
     
     SelSession = 0
     
-    grapevine.Game.APREngine.MoveToFirstTitle RumorList, RumorTitle
+    grapevine.model.Game.APREngine.MoveToFirstTitle RumorList, RumorTitle
     Do Until RumorList.Off
         InUseSet.Add CStr(RumorList.Item.RumorDate)
-        grapevine.Game.APREngine.MoveToNextTitle RumorList, RumorTitle
+        grapevine.model.Game.APREngine.MoveToNextTitle RumorList, RumorTitle
     Loop
     
-    With grapevine.Game.Calendar
+    With grapevine.model.Game.Calendar
     
         If .HasNextGame Then SelSession = .NextGameDate
         If SelSession = 0 And .HasPreviousGame Then SelSession = .PreviousGameDate
@@ -268,7 +268,7 @@ End Function
 Public Function GetNewActionChar(ActDate As Date)
 '
 ' Name:         GetNewAction
-' Parameters:   ActDate     Date for which to create this grapevine.Action
+' Parameters:   ActDate     Date for which to create this grapevine.model.Action
 ' Description:  Determine a new action to be created with the given date and selected character.
 '
 
@@ -285,15 +285,15 @@ Public Function GetNewActionChar(ActDate As Date)
     lstChars.Visible = True
 
     lblLabel.Caption = " &Select the character who performs the new action:"
-    Me.Caption = "Add New grapevine.Action"
+    Me.Caption = "Add New grapevine.model.Action"
     
-    grapevine.Game.APREngine.MoveToFirstDate ActionList, ActDate
+    grapevine.model.Game.APREngine.MoveToFirstDate ActionList, ActDate
     Do Until ActionList.Off
         InUseSet.Add ActionList.Item.CharName
-        grapevine.Game.APREngine.MoveToNextDate ActionList, ActDate
+        grapevine.model.Game.APREngine.MoveToNextDate ActionList, ActDate
     Loop
     
-    With grapevine.Game.QueryEngine.QueryList
+    With grapevine.model.Game.QueryEngine.QueryList
         .First
         Do Until .Off
             If .Item.Inventory = qiCharacters Then cboSearches.AddItem .Item.Name
@@ -336,17 +336,17 @@ Public Function GetNewActionDate(ActChar As String)
     lstDates.Visible = True
     
     lblLabel.Caption = " &Select a date for the character's new action:"
-    Me.Caption = "Add New grapevine.Action"
+    Me.Caption = "Add New grapevine.model.Action"
     
-    grapevine.Game.APREngine.MoveToFirstTitle ActionList, ActChar
+    grapevine.model.Game.APREngine.MoveToFirstTitle ActionList, ActChar
     Do Until ActionList.Off
         InUseSet.Add CStr(ActionList.Item.ActDate)
-        grapevine.Game.APREngine.MoveToNextTitle ActionList, ActChar
+        grapevine.model.Game.APREngine.MoveToNextTitle ActionList, ActChar
     Loop
     
     SelSession = 0
     
-    With grapevine.Game.Calendar
+    With grapevine.model.Game.Calendar
     
         If .HasNextGame Then SelSession = .NextGameDate
         If SelSession = 0 And .HasPreviousGame Then SelSession = .PreviousGameDate
@@ -375,7 +375,7 @@ Private Sub UpdateCaption()
 ' Description:  Update the caption of the txtPair control.
 '
 
-    txtPair.Text = IIf(IsAction, "grapevine.Action:", "Rumor:") & vbCrLf & vbCrLf
+    txtPair.Text = IIf(IsAction, "grapevine.model.Action:", "Rumor:") & vbCrLf & vbCrLf
     If FindDate Then
         txtPair.Text = txtPair.Text & lstDates.Text & vbCrLf & NewItem
     Else
@@ -399,11 +399,11 @@ Private Sub cboSearches_Click()
     Set Values = New LinkedList
     lstChars.Clear
     
-    grapevine.Game.QueryEngine.QueryList.MoveTo cboSearches.Text
-    If grapevine.Game.QueryEngine.QueryList.Off Then
+    grapevine.model.Game.QueryEngine.QueryList.MoveTo cboSearches.Text
+    If grapevine.model.Game.QueryEngine.QueryList.Off Then
         Set Source = CharacterList
     Else
-        grapevine.Game.QueryEngine.MakeQuery grapevine.Game.QueryEngine.QueryList.Item, Results, Values
+        grapevine.model.Game.QueryEngine.MakeQuery grapevine.model.Game.QueryEngine.QueryList.Item, Results, Values
         Set Source = Results
     End If
     
@@ -484,12 +484,12 @@ Private Sub cmdOK_Click()
     If Not (NewDate = 0 Or NewItem = "") Then
 
         If IsAction Then
-            Set Source = grapevine.Game.APREngine.ActionList
+            Set Source = grapevine.model.Game.APREngine.ActionList
         Else
-            Set Source = grapevine.Game.APREngine.RumorList
+            Set Source = grapevine.model.Game.APREngine.RumorList
         End If
         
-        grapevine.Game.APREngine.MoveToPair Source, NewDate, NewItem
+        grapevine.model.Game.APREngine.MoveToPair Source, NewDate, NewItem
 
         If Not Source.Off Then
         
@@ -514,7 +514,7 @@ Private Sub Form_Load()
 ' Description:  Populate the game dates when the form loads.
 '
 
-    With grapevine.Game.Calendar
+    With grapevine.model.Game.Calendar
     
         If .HasNextGame Then
             lblNext.Caption = Format(.NextGameDate, "mmmm d, yyyy")

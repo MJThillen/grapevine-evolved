@@ -415,7 +415,7 @@ Public Sub SetDefaultOutput()
 ' Description:  Initilize the OutputEngineClass with default output settings.
 '
     With OutputEngine
-        .grapevine.Template = tnSearch
+        .grapevine.util.Template = tnSearch
         .SearchName = RecentSearchName
         .SearchNot = False
         .GameDate = 0
@@ -446,8 +446,8 @@ Private Sub cboKey_Click(Index As Integer)
     Dim Key As String
     Dim KeyType As QueryKeyType
     
-    Key = grapevine.Game.QueryEngine.TitlesToKeys(cboKey(Index).Text)
-    KeyType = grapevine.Game.QueryEngine.KeysToTypes(Key)
+    Key = grapevine.model.Game.QueryEngine.TitlesToKeys(cboKey(Index).Text)
+    KeyType = grapevine.model.Game.QueryEngine.KeysToTypes(Key)
     
     If cboKey(Index).Tag <> CStr(KeyType) Or cboCompare(Index).ListCount = 0 Then
         
@@ -541,14 +541,14 @@ Private Sub cboSearches_Click()
 
     If Not Populating Then
 
-        grapevine.Game.QueryEngine.QueryList.MoveTo cboSearches.Text
-        If Not grapevine.Game.QueryEngine.QueryList.Off Then
+        grapevine.model.Game.QueryEngine.QueryList.MoveTo cboSearches.Text
+        If Not grapevine.model.Game.QueryEngine.QueryList.Off Then
         
             Dim Search As QueryClass
             Dim SortTitle As String
             Dim I As Integer
             
-            Set Search = grapevine.Game.QueryEngine.QueryList.Item
+            Set Search = grapevine.model.Game.QueryEngine.QueryList.Item
         
             UserQuery.Clear
             UserQuery.Name = RecentSearchName
@@ -574,7 +574,7 @@ Private Sub cboSearches_Click()
                         cboSort.ListIndex = MATCH_INDEX
                     Case Else
                         For I = 3 To cboSort.ListCount - 1
-                            If grapevine.Game.QueryEngine.TitlesToKeys(cboSort.List(I)) = .SortKey Then
+                            If grapevine.model.Game.QueryEngine.TitlesToKeys(cboSort.List(I)) = .SortKey Then
                                 cboSort.ListIndex = I
                                 Exit For
                             End If
@@ -664,17 +664,17 @@ Private Sub cmdDelete_Click()
 ' Description:  Delect the currently selected query.
 '
 
-    grapevine.Game.QueryEngine.QueryList.MoveTo cboSearches.Text
+    grapevine.model.Game.QueryEngine.QueryList.MoveTo cboSearches.Text
 
-    If Not grapevine.Game.QueryEngine.QueryList.Off Then
+    If Not grapevine.model.Game.QueryEngine.QueryList.Off Then
     
         If MsgBox("Are you sure you want to delete the search """ & _
                     cboSearches.Text & """?", vbYesNo, "Delete Search") = vbYes Then
                     
-            grapevine.Game.QueryEngine.QueryList.Remove
+            grapevine.model.Game.QueryEngine.QueryList.Remove
             cboSearches.RemoveItem cboSearches.ListIndex
             mdiMain.AnnounceChanges Me, atQueries
-            grapevine.Game.DataChanged = True
+            grapevine.model.Game.DataChanged = True
                     
         End If
     
@@ -710,13 +710,13 @@ Private Sub cmdSave_Click()
         
             Populating = True
         
-            grapevine.Game.QueryEngine.QueryList.MoveTo Name
-            If Not grapevine.Game.QueryEngine.QueryList.Off Then
+            grapevine.model.Game.QueryEngine.QueryList.MoveTo Name
+            If Not grapevine.model.Game.QueryEngine.QueryList.Off Then
             
                 If MsgBox("A search named """ & Name & """ already exists." & vbCrLf & _
                            "Are you sure you want to replace it?", vbYesNo, "Replace Search") _
                            = vbNo Then Exit Sub
-                grapevine.Game.QueryEngine.QueryList.Remove
+                grapevine.model.Game.QueryEngine.QueryList.Remove
                 For X = 0 To cboSearches.ListCount - 1
                     If cboSearches.List(X) = Name Then cboSearches.ListIndex = X
                 Next X
@@ -729,10 +729,10 @@ Private Sub cmdSave_Click()
             End If
                         
             UserQuery.Name = Name
-            grapevine.Game.QueryEngine.AddQueryCopy UserQuery
+            grapevine.model.Game.QueryEngine.AddQueryCopy UserQuery
             UserQuery.Name = RecentSearchName
             mdiMain.AnnounceChanges Me, atQueries
-            grapevine.Game.DataChanged = True
+            grapevine.model.Game.DataChanged = True
             
             Populating = False
         
@@ -755,7 +755,7 @@ Private Sub cmdSearch_Click()
         
         Screen.MousePointer = vbHourglass
         
-        With grapevine.Game.QueryEngine
+        With grapevine.model.Game.QueryEngine
         
             .MakeQuery UserQuery, Not (UserQuery.SortKey = "" Or UserQuery.SortKey = qkName)
         
@@ -820,7 +820,7 @@ Private Sub Form_Load()
     ' Add "Most Recent Search" Query, if it's not there; then
     ' fill list of saved queries
     
-    With grapevine.Game.QueryEngine.QueryList
+    With grapevine.model.Game.QueryEngine.QueryList
     
         .First
         Do Until .Off
@@ -849,7 +849,7 @@ Private Sub Form_Load()
        
     'Populate cboKey(0) and cboSort
     
-    With grapevine.Game.QueryEngine
+    With grapevine.model.Game.QueryEngine
     
         For Each Key In .TitlesToKeys
         
@@ -1020,7 +1020,7 @@ Private Sub AddTerm(Clause As QueryClauseClass)
 
     On Error Resume Next            ' Just in case there's no match for the key in the collection
     KeyTitle = qkName
-    KeyTitle = grapevine.Game.QueryEngine.KeysToTitles(Clause.Key)
+    KeyTitle = grapevine.model.Game.QueryEngine.KeysToTitles(Clause.Key)
     On Error GoTo 0
     
     For X = 0 To cboKey(I).ListCount - 1
@@ -1209,7 +1209,7 @@ Private Function ValidateTerms() As Boolean
     If cboSort.ListIndex = 0 Then
         UserQuery.SortKey = qkName
     Else
-        UserQuery.SortKey = grapevine.Game.QueryEngine.TitlesToKeys(cboSort.Text)
+        UserQuery.SortKey = grapevine.model.Game.QueryEngine.TitlesToKeys(cboSort.Text)
     End If
     On Error GoTo 0
     
@@ -1218,7 +1218,7 @@ Private Function ValidateTerms() As Boolean
     
         On Error Resume Next
         Key = "(none)"
-        Key = grapevine.Game.QueryEngine.TitlesToKeys(cboKey(I).Text)
+        Key = grapevine.model.Game.QueryEngine.TitlesToKeys(cboKey(I).Text)
         On Error GoTo 0
         
         If Key = "(none)" Then

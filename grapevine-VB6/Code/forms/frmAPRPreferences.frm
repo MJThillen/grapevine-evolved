@@ -3,7 +3,7 @@ Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmAPRPreferences 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "grapevine.Action and Rumor Settings"
+   Caption         =   "grapevine.model.Action and Rumor Settings"
    ClientHeight    =   5100
    ClientLeft      =   45
    ClientTop       =   330
@@ -148,7 +148,7 @@ Begin VB.Form frmAPRPreferences
          EndProperty
       End
       Begin VB.Label lblLabel 
-         Caption         =   "grapevine.Action &Value"
+         Caption         =   "grapevine.model.Action &Value"
          Height          =   255
          Index           =   4
          Left            =   5040
@@ -158,7 +158,7 @@ Begin VB.Form frmAPRPreferences
       End
       Begin VB.Label lblLabel 
          Alignment       =   1  'Right Justify
-         Caption         =   "Backgrounds &with grapevine.Action Values"
+         Caption         =   "Backgrounds &with grapevine.model.Action Values"
          Height          =   495
          Index           =   5
          Left            =   240
@@ -168,7 +168,7 @@ Begin VB.Form frmAPRPreferences
       End
       Begin VB.Label lblLabel 
          Alignment       =   1  'Right Justify
-         Caption         =   "grapevine.Action Values per &Level of Influence or Background"
+         Caption         =   "grapevine.model.Action Values per &Level of Influence or Background"
          Height          =   495
          Index           =   3
          Left            =   240
@@ -178,7 +178,7 @@ Begin VB.Form frmAPRPreferences
       End
       Begin VB.Label lblLabel 
          Alignment       =   1  'Right Justify
-         Caption         =   "Total &Personal grapevine.Action Value"
+         Caption         =   "Total &Personal grapevine.model.Action Value"
          Height          =   255
          Index           =   2
          Left            =   240
@@ -328,7 +328,7 @@ Private Sub chkRumors_Click(Index As Integer)
 
     If Not Populating Then
     
-        With grapevine.Game.APREngine
+        With grapevine.model.Game.APREngine
         
             .PublicRumors = (chkRumors(ciPublic).Value = vbChecked)
             .PersonalRumors = (chkRumors(ciPersonal).Value = vbChecked)
@@ -341,7 +341,7 @@ Private Sub chkRumors_Click(Index As Integer)
         
         End With
     
-        grapevine.Game.DataChanged = True
+        grapevine.model.Game.DataChanged = True
     
     End If
 
@@ -363,8 +363,8 @@ Private Sub cmdAddBackground_Click()
     If NewBackground <> "" Then
     
         lstBackgrounds.AddItem NewBackground
-        grapevine.Game.APREngine.BackgroundActions.Insert NewBackground
-        grapevine.Game.DataChanged = True
+        grapevine.model.Game.APREngine.BackgroundActions.Insert NewBackground
+        grapevine.model.Game.DataChanged = True
         
     End If
     
@@ -378,11 +378,11 @@ Private Sub cmdDeleteBackground_Click()
 
     If lstBackgrounds.ListIndex > -1 Then
     
-        grapevine.Game.APREngine.BackgroundActions.MoveTo lstBackgrounds.Text
-        grapevine.Game.APREngine.BackgroundActions.RemoveTrait
+        grapevine.model.Game.APREngine.BackgroundActions.MoveTo lstBackgrounds.Text
+        grapevine.model.Game.APREngine.BackgroundActions.RemoveTrait
         lstBackgrounds.RemoveItem lstBackgrounds.ListIndex
         If lstBackgrounds.ListCount > 0 Then lstBackgrounds.ListIndex = 0
-        grapevine.Game.DataChanged = True
+        grapevine.model.Game.DataChanged = True
         
     End If
 
@@ -407,7 +407,7 @@ Private Sub Form_Load()
     Dim I As Integer
     Dim NewItem As ListItem
     
-    With grapevine.Game.APREngine
+    With grapevine.model.Game.APREngine
     
         For I = 1 To 10
             .ActionsPerLevel.MoveTo CStr(I)
@@ -453,7 +453,7 @@ Private Sub lvwLevels_ItemClick(ByVal Item As MSComctlLib.ListItem)
 ' Description:  Move to a new action level, making it available to edit.
 '
     
-    With grapevine.Game.APREngine.ActionsPerLevel
+    With grapevine.model.Game.APREngine.ActionsPerLevel
         .MoveToPlace (Item.Index - 1)
         If Not .Off Then
             Populating = True
@@ -485,8 +485,8 @@ Private Sub txtPersonal_Change()
 '
 
     If Not Populating Then
-        grapevine.Game.APREngine.PersonalActions = Val(txtPersonal.Text)
-        grapevine.Game.DataChanged = True
+        grapevine.model.Game.APREngine.PersonalActions = Val(txtPersonal.Text)
+        grapevine.model.Game.DataChanged = True
     End If
     
 End Sub
@@ -508,7 +508,7 @@ Private Sub txtValue_Change()
     
     If Not (Populating Or lvwLevels.SelectedItem Is Nothing) Then
     
-        With grapevine.Game.APREngine.ActionsPerLevel
+        With grapevine.model.Game.APREngine.ActionsPerLevel
             .MoveToPlace (lvwLevels.SelectedItem.Index - 1)
             If Not .Off Then
                 .Trait.Total = Val(txtValue.Text)

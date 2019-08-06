@@ -1,7 +1,6 @@
-package grapevine;
+package grapevine.model;
 
 import grapevine.constants.ExperienceChange;
-import grapevine.constants.Constants;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

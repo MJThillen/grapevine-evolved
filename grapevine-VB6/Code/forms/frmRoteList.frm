@@ -240,9 +240,9 @@ Private Sub RefreshList()
         If cboSpheres.Text = "Spirit" Then _
             Q.AddClause qkSpheres, "Dimensional Science", 0, qcContains, False
         
-        grapevine.Game.QueryEngine.MakeQuery Q
+        grapevine.model.Game.QueryEngine.MakeQuery Q
         
-        Set Results = grapevine.Game.QueryEngine.Results
+        Set Results = grapevine.model.Game.QueryEngine.Results
         Set Q = Nothing
         
     End If
@@ -281,7 +281,7 @@ Public Sub SetDefaultOutput()
 ' Description:  Initilize the OutputEngineClass with default output settings.
 '
     With OutputEngine
-        .grapevine.Template = tnRoteCards
+        .grapevine.util.Template = tnRoteCards
         .SelectSet(osRotes).Clear
         .SelectSet(osRotes).StoreListView lvwList, True
         .GameDate = 0
@@ -325,7 +325,7 @@ Private Sub cmdAddNew_Click()
         RoteList.InsertSorted NewRote
         
         mdiMain.AnnounceChanges Me, atRotes
-        grapevine.Game.DataChanged = True
+        grapevine.model.Game.DataChanged = True
         RefreshList
     
         On Error Resume Next
@@ -367,7 +367,7 @@ Private Sub cmdDelete_Click()
             If Answer Then
                     
                 mdiMain.AnnounceChanges Me, atRotes
-                grapevine.Game.DataChanged = True
+                grapevine.model.Game.DataChanged = True
     
                 For Each NormForm In Forms()
                     If NormForm.Caption = DelName And NormForm.Tag = "R" Then

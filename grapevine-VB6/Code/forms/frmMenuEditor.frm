@@ -957,7 +957,7 @@ Public Sub SetDefaultOutput()
 ' Description:  Initialize the OutputEngineClass with default output settings.
 '
     With OutputEngine
-        .grapevine.Template = tnCharacterSheets
+        .grapevine.util.Template = tnCharacterSheets
         .GameDate = 0
     End With
     
@@ -1630,7 +1630,7 @@ Private Sub Form_Load()
     Dim NodeText As String
     Dim I As Integer
     
-    Set MenuSet = grapevine.Game.MenuSet
+    Set MenuSet = grapevine.model.Game.MenuSet
     
     Populating = True
     Screen.MousePointer = vbHourglass

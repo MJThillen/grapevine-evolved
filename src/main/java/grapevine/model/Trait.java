@@ -1,12 +1,12 @@
-package grapevine;
+package grapevine.model;
 
 public class Trait implements Comparable{
     private String name;
     private int total;
     private String note;
 
-    public Trait(){
-        name = "";
+    public Trait(final String name){
+        this.name = name;
         total = 0;
         note = "";
     }

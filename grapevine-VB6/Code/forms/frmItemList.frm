@@ -264,7 +264,7 @@ Public Sub SetDefaultOutput()
 ' Description:  Initilize the OutputEngineClass with default output settings.
 '
     With OutputEngine
-        .grapevine.Template = tnItemCards
+        .grapevine.util.Template = tnItemCards
         .SelectSet(osItems).Clear
         .SelectSet(osItems).StoreListView lvwList, True
         .GameDate = 0
@@ -298,7 +298,7 @@ Private Sub cmdAddNew_Click()
         ItemList.InsertSorted NewItem
         
         mdiMain.AnnounceChanges Me, atItems
-        grapevine.Game.DataChanged = True
+        grapevine.model.Game.DataChanged = True
         RefreshList
     
         On Error Resume Next
@@ -334,7 +334,7 @@ Private Sub cmdDelete_Click()
             If Answer Then
                     
                 mdiMain.AnnounceChanges Me, atItems
-                grapevine.Game.DataChanged = True
+                grapevine.model.Game.DataChanged = True
     
                 For Each NormForm In Forms()
                     If NormForm.Caption = DelName And NormForm.Tag = "I" Then

@@ -176,7 +176,7 @@ Private Sub PopulateKeys()
     If Not Editing Then EditKey = qkGroup
     
     If cboKey.ListCount = 0 Then
-        With grapevine.Game.QueryEngine
+        With grapevine.model.Game.QueryEngine
             For Each Key In .TitlesToKeys
                 If (.KeysToInventories(Key) And qiCharacters) Then
                     cboKey.AddItem CStr(.KeysToTitles(Key))
@@ -186,7 +186,7 @@ Private Sub PopulateKeys()
         End With
     Else
         For I = 0 To cboKey.ListCount - 1
-            Key = grapevine.Game.QueryEngine.TitlesToKeys(cboKey.List(I))
+            Key = grapevine.model.Game.QueryEngine.TitlesToKeys(cboKey.List(I))
             If Key = EditKey Then cboKey.ListIndex = I
         Next I
     End If
@@ -264,7 +264,7 @@ Private Sub cboKey_Click()
     Dim KeyType As QueryKeyType
     Dim AutoSelect As Integer
     
-    With grapevine.Game.QueryEngine
+    With grapevine.model.Game.QueryEngine
         
         Key = .TitlesToKeys(cboKey.Text)
         KeyType = .KeysToTypes(Key)
@@ -380,7 +380,7 @@ Private Sub cmdOK_Click()
     Dim Key As String
     Dim Comp As Long
     
-    Key = grapevine.Game.QueryEngine.TitlesToKeys(cboKey.Text)
+    Key = grapevine.model.Game.QueryEngine.TitlesToKeys(cboKey.Text)
     Comp = cboCompare.ItemData(cboCompare.ListIndex)
     
     If Editing Then

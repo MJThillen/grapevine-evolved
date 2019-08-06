@@ -7,15 +7,15 @@ Attribute VB_Name = "PublicVariables"
 Option Explicit
 
 '
-' Variable:         grapevine.Game
+' Variable:         grapevine.model.Game
 ' Description:      Reference to the instance of GameClass.
 ' Used In:          Everything.
 '
-Public grapevine.Game As GameClass
+Public grapevine.model.Game As GameClass
 
 '
 ' Variables:        Utility Lists
-' Description:      Refences to Lists within grapevine.Game.
+' Description:      Refences to Lists within grapevine.model.Game.
 ' Used In:          Everything.
 '
 Public PlayerList As LinkedList                         'Public Pointers to the game lists
