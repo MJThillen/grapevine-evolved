@@ -7,6 +7,7 @@ import grapevine.constants.RumorCategory;
 import grapevine.model.*;
 import grapevine.model.Character;
 
+import java.io.ObjectInputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -43,6 +44,10 @@ public class APREngine {
         bgActions = new TraitList<Trait>("Backgrounds", false, false, false, ListDisplay.SIMPLE);
         apLevel = new TraitList<Trait>("Actions", false, false, false, ListDisplay.SIMPLE);
         initialize();
+    }
+
+    public static APREngine inputFromBinary(ObjectInputStream inputStream) throws ClassNotFoundException {
+        return null;
     }
 
     public LinkedList<Action> getActions() {
@@ -205,13 +210,13 @@ public class APREngine {
 
         //ToDo: In the original code, it turns the pointer to an hourglass here.
 
-        for(Event rumor : rumors) {
+        for(Rumor rumor : rumors) {
             if (rumor.getDate() != null && rumor.getDate().isEqual(when)) {
                 existing.add(rumor.getName());
             }
         }
         if (previousRumors) { //Add previously existing rumors to this date
-            for(Event rumor : rumors) {
+            for(Rumor rumor : rumors) {
                 if (rumor.getDate() != null && rumor.getDate().isBefore(when)) {
                     newRumor = (Rumor) rumor;
                     newRumor.setDate(when);
@@ -288,7 +293,7 @@ public class APREngine {
                         newName = influence.getName() + " Influence";
                         if (!existing.contains(newName)) {
                             newRumor = new Rumor();
-                            newRumor.initializeMulti(
+                            newRumor.influenceRumorSetup(
                                     newName, when, QueryKeys.INFLUENCES.getValue(), influence.getName());
                             rumors.add(newRumor);
                             existing.add(newName);

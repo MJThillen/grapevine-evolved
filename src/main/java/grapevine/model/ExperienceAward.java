@@ -9,17 +9,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-@XmlRootElement
 public class ExperienceAward implements Serializable {
-    @XmlElement
     private String name;
-    @XmlElement
     private ExperienceChange change;
-    @XmlElement
     private int amount;
-    @XmlElement
     private String reason;
-    @XmlElement
     private boolean xp;
 
     public String getName() {

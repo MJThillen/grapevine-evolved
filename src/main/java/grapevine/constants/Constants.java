@@ -91,6 +91,11 @@ public final class Constants {
     public static final String TN_MERITS_FLAWS = "Merits and Flaws Report";
     public static final String TN_INFLUENCE = "Influence Report";
 
+    //Arrays
+    public static final String[] xpDefaults =
+            {"Attendance","Costuming","Downtime Activities","First Night","Good Roleplaying","Leadership"};
+    public static final String[] ppDefaults = {"Storytelling", "Bookkeeping", "Narrating", "Setup/Cleanup"};
+
     public enum OUTPUT_ID_CONSTANTS {
         none(-1),
         traitList(0),

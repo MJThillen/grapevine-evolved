@@ -5,30 +5,38 @@ import grapevine.constants.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.prefs.Preferences;
 
+import grapevine.service.GameCalendar;
+import grapevine.service.MenuSet;
+import grapevine.service.QueryEngine;
 import grapevine.util.ImportHelper;
 import grapevine.util.Template;
 import grapevine.service.APREngine;
+import javafx.scene.control.ProgressBar;
 
 import static grapevine.constants.DefaultPreferences.*;
 
 public class Game {
-    Preferences gamePrefs = Preferences.userNodeForPackage(Game.class);
-
-    //These values come from preferences
-    private FileFormat fileFormat; //current file type to save file as
-    private String gameFilename; //full pathname of game file
+    //These will be persisted to the DB
+    private int id;
+    private String chronicleTitle; //Title of the Chronicle
+    private String website; //grapevine.Game URL
+    private String email; //Main ST Email address
+    private String phone; //Main Phone Number
+    private String usualSite; //Usual grapevine.Game Site
+    private String usualTime; //Usual grapevine.Game Start Time
+    private List<LocalDate> gameDates; //Calendar of game dates
+    private String description; //Description of your game
     private boolean extendedHealth; //whether this game uses abbreviated or extended health levels
     private boolean enforceHistory; //whether to enforce use of XP history
     private boolean linkTraitMaxes; //Whether to link trait maximums on character sheets
-    private String randomTraits; //Comma-separated list of random trait options
-    private String stCommentStart; //opening markup of an ST comment
-    private String stCommentEnd; //closing markup of an ST comment
 
-    //These are more Involved lists, but we'll have to make them available somehow. Perhaps a main GameService
+
+    //These will end up being one-to-many relationships
     private List<Player> players; //Collection of all players
     private List<Character> characters; //collection of all characters
     private List<Item> items; //collection of all items
@@ -36,37 +44,33 @@ public class Game {
     private List<Location> locations; //collection of all locations
     private List<List<Rumor>> rumorLists; //collection of lists of rumors, one per date
     private List<InfluenceAction> influenceUses; //collection of influence use actions
+    private List<ExperienceAward> experienceAwards; //list of standard XP and PP awards
+    private List<Template> outputTemplates; //list of output templates
 
-    //These are Services/Engines, all of which need rebuilt.
+
+    //These are situational + user-supplied
+    private FileFormat fileFormat; //current file type to save file as
+    private String gameFilename; //full pathname of game file
+
+    //These are Services/Engines, all of which need rebuilt, and likely won't be linked here anymore.
     private MenuSet menuSet; //collection of menus
     private QueryEngine queryEngine; //collection, logic of queries
     private APREngine aprEngine; //collection, logic of actions/plots/rumors
 
-    //These are game-specific details, which will probably need a Model object of their own.
-    private String chronicleTitle; //Title of the Chronicle
-    private String website; //grapevine.Game URL
-    private String email; //Main ST Email address
-    private String phone; //Main Phone Number
-    private String usualSite; //Usual grapevine.Game Site
-    private String usualTime; //Usual grapevine.Game Start Time
-    private GameCalendar gameCalendar; //Calendar of game dates  - I'd like to implement this differently.
-    private String description; //Description of your game
-
-    private List<ExperienceAward> xpAwardList; //list of standard XP and PP awards
-    private List<Template> outputTemplates; //list of output templates
-
-
-    private DuplicateAction duplicateAction; //What action to take when duplicating characters
-    private boolean duplicateAll; //Whether to take that action in all cases
-
-    // These are legacy values and will likelygo away in the new version.
+    // These are legacy values and will likely go away in the new version.
     private ProgressBar fileProgress; //control describing progress of load
     private boolean fileError; //whether a file error happened during open or save
     private String errorMessage; //description of the error
     private String mergeResults; //line-delimited results of a merge or exchange file load
+    private DuplicateAction duplicateAction; //What action to take when duplicating characters
+
+    //These are basic defaults and can probably live in a properties file/preferences implementation
+    private String randomTraits; //Comma-separated list of random trait options
+    private String stCommentStart; //opening markup of an ST comment
+    private String stCommentEnd; //closing markup of an ST comment
 
     //Percent of progress bar to fill for each loading part.
-        private static final int CALENDAR_PERCENT = 5;
+    private static final int CALENDAR_PERCENT = 5;
     private static final int PLAYER_PERCENT = 30;
     private static final int CHARACTER_PERCENT = 65;
 
@@ -77,6 +81,8 @@ public class Game {
      * Create and initialize all needed objects, pull default values from preferences.
      */
     public Game() {
+        gamePrefs = Preferences.userNodeForPackage(Game.class);
+
         this.players = new ArrayList<>();
         this.characters = new ArrayList<>();
         this.items = new ArrayList<>();
@@ -87,8 +93,7 @@ public class Game {
         this.menuSet = new MenuSet();
         this.queryEngine = new QueryEngine();
         this.aprEngine = new APREngine(this);
-        this.gameCalendar = new GameCalendar();
-        this.xpAwardList = new ArrayList<>();
+        this.experienceAwards = new ArrayList<>();
         this.outputTemplates = new ArrayList<>();
 
         extendedHealth = Boolean.getBoolean(gamePrefs.get(EXTENDED_HEALTH.getName(), EXTENDED_HEALTH.getValue()));
@@ -244,12 +249,12 @@ public class Game {
         this.usualTime = usualTime;
     }
 
-    public GameCalendar getGameCalendar() {
-        return gameCalendar;
+    public List<LocalDate> getGameCalendar() {
+        return gameDates;
     }
 
-    public void setGameCalendar(GameCalendar gameCalendar) {
-        this.gameCalendar = gameCalendar;
+    public void setGameCalendar(List<LocalDate> gameCalendar) {
+        this.gameDates = gameCalendar;
     }
 
     public String getDescription() {
@@ -308,12 +313,12 @@ public class Game {
         this.stCommentEnd = stCommentEnd;
     }
 
-    public List<ExperienceAward> getXpAwardList() {
-        return xpAwardList;
+    public List<ExperienceAward> getExperienceAwards() {
+        return experienceAwards;
     }
 
-    public void setXpAwardList(List<ExperienceAward> xpAwardList) {
-        this.xpAwardList = xpAwardList;
+    public void setExperienceAwards(List<ExperienceAward> experienceAwards) {
+        this.experienceAwards = experienceAwards;
     }
 
     public List<Template> getOutputTemplates() {
@@ -362,14 +367,6 @@ public class Game {
 
     public void setDuplicateAction(DuplicateAction duplicateAction) {
         this.duplicateAction = duplicateAction;
-    }
-
-    public boolean isDuplicateAll() {
-        return duplicateAll;
-    }
-
-    public void setDuplicateAll(boolean duplicateAll) {
-        this.duplicateAll = duplicateAll;
     }
 
     public static int getCalendarPercent() {
@@ -448,12 +445,9 @@ public class Game {
      * Add default XP and PP awards to this game
      */
     private void addDefaultXPAwards() {
-        String[] xpDefaults =
-                {"Attendance","Costuming","Downtime Activities","First Night","Good Roleplaying","Leadership"};
-        String[] ppDefaults = {"Storytelling", "Bookkeeping", "Narrating", "Setup/Cleanup"};
         ExperienceAward award;
 
-        for (String xp : xpDefaults) {
+        for (String xp : Constants.xpDefaults) {
             award = new ExperienceAward();
             award.setName(xp);
             award.setXp(true);
@@ -463,7 +457,7 @@ public class Game {
             xpAwardList.add(award);
         }
 
-        for (String pp : ppDefaults) {
+        for (String pp : Constants.ppDefaults) {
             award = new ExperienceAward();
             award.setName(pp);
             award.setXp(false);
@@ -477,7 +471,9 @@ public class Game {
     /**
      * ToDo: Whatever needs done here when I actually implement a progress bar, if anything.
      */
-    private void addFileProgress(int addition) { }
+    private void addFileProgress(int addition) {
+
+    }
 
     /**
      * ToDo: Implement this?
@@ -526,6 +522,10 @@ public class Game {
             case INVALID:
                 throw new IOException("File is not an Exchange file.");
         }
+    }
+
+    private void loadExchangeXML(ObjectInputStream inputStream) {
+
     }
 
     /**
