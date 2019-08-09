@@ -46,11 +46,27 @@ public class Various extends Character {
     }
 
     /**
+     * A wrapper for readability
+     * @param charClass the value of charClass to store in the group variable
+     */
+    public void setCharClass(String charClass) {
+        this.setGroup(charClass);
+    }
+
+    /**
      * A wrapper method for readability.
      * @return the subGroup value where we stored the subClass.
      */
     public String getSubClass() {
         return this.getSubGroup();
+    }
+
+    /**
+     * A wrapper for readability
+     * @param subClass the value of subClass to store in the subGroup variable
+     */
+    public void setSubClass(String subClass) {
+        this.setSubGroup(subClass);
     }
 
     /* Generic Getters and Setters */

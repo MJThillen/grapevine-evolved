@@ -91,11 +91,27 @@ public class Vampire extends Character {
     }
 
     /**
+     * A wrapper for readability
+     * @param clan the value of clan to store in the group variable
+     */
+    public void setClan(String clan) {
+        this.setGroup(clan);
+    }
+
+    /**
      * A wrapper method for readability.
      * @return the subGroup value where we stored the sect.
      */
     public String getSect() {
         return this.getSubGroup();
+    }
+
+    /**
+     * A wrapper for readability
+     * @param sect the value of sect to store in the subGroup variable
+     */
+    public void setSect(String sect) {
+        this.setSubGroup(sect);
     }
 
     /* Generic Getters and Setters */
