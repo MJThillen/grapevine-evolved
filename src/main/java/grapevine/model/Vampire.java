@@ -3,6 +3,7 @@ package grapevine.model;
 import grapevine.constants.Race;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Vampire extends Character {
     private int generation;

@@ -81,8 +81,6 @@ public class Game {
      * Create and initialize all needed objects, pull default values from preferences.
      */
     public Game() {
-        gamePrefs = Preferences.userNodeForPackage(Game.class);
-
         this.players = new ArrayList<>();
         this.characters = new ArrayList<>();
         this.items = new ArrayList<>();
@@ -96,13 +94,13 @@ public class Game {
         this.experienceAwards = new ArrayList<>();
         this.outputTemplates = new ArrayList<>();
 
-        extendedHealth = Boolean.getBoolean(gamePrefs.get(EXTENDED_HEALTH.getName(), EXTENDED_HEALTH.getValue()));
-        enforceHistory = Boolean.getBoolean(gamePrefs.get(ENFORCE_HISTORY.getName(), ENFORCE_HISTORY.getValue()));
-        linkTraitMaxes = Boolean.getBoolean(gamePrefs.get(LINK_TRAIT_MAXES.getName(), LINK_TRAIT_MAXES.getValue()));
+        extendedHealth = true;
+        enforceHistory = true;
+        linkTraitMaxes = true;
 
-        randomTraits = gamePrefs.get(RANDOM_TRAITS.getName(), RANDOM_TRAITS.getValue());
-        stCommentStart = gamePrefs.get(ST_COMMENT_START.getName(), ST_COMMENT_START.getValue());
-        stCommentEnd = gamePrefs.get(ST_COMMENT_END.getName(), ST_COMMENT_END.getValue());
+        randomTraits = "7,5,3,5,5,5,5";
+        stCommentStart = "[ST]";
+        stCommentEnd = "[/ST]";
     }
 
     public List<Player> getPlayers() {
@@ -454,7 +452,7 @@ public class Game {
             award.setChange(ExperienceChange.EARNED);
             award.setAmount(1);
             award.setReason(xp);
-            xpAwardList.add(award);
+            experienceAwards.add(award);
         }
 
         for (String pp : Constants.ppDefaults) {
@@ -464,7 +462,7 @@ public class Game {
             award.setChange(ExperienceChange.EARNED);
             award.setAmount(1);
             award.setReason(pp);
-            xpAwardList.add(award);
+            experienceAwards.add(award);
         }
     }
 
@@ -564,12 +562,12 @@ public class Game {
                     int quantity = inputStream.readInt();
                     for (int i = 0; i < quantity; i++) {
                         ExperienceAward newAward = ExperienceAward.inputFromBinary(inputStream, version);
-                        for (ExperienceAward award : xpAwardList) {
+                        for (ExperienceAward award : experienceAwards) {
                             if (award.getName().equals(newAward.getName())) {
-                                xpAwardList.remove(award);
+                                experienceAwards.remove(award);
                             }
                         }
-                        xpAwardList.add(newAward);
+                        experienceAwards.add(newAward);
                     }
                 } catch (ClassNotFoundException e) {
                     throw new IOException("Malformed Exchange File (ExperienceAward Break)..", e);

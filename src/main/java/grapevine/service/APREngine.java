@@ -1,6 +1,5 @@
 package grapevine.service;
 
-import com.sun.istack.NotNull;
 import grapevine.constants.Constants;
 import grapevine.constants.ListDisplay;
 import grapevine.constants.RumorCategory;
@@ -14,6 +13,7 @@ import java.util.LinkedList;
 
 import static grapevine.constants.QueryConstants.*;
 
+//ToDo: Replace this with a controller.
 public class APREngine {
     private Game game;
     private LinkedList<Action> actions;
@@ -36,7 +36,7 @@ public class APREngine {
     private int personalActions;
 
 
-    public APREngine(@NotNull final Game game) {
+    public APREngine(final Game game) {
         this.game = game;
         actions = new LinkedList<>();
         plots = new LinkedList<>();
