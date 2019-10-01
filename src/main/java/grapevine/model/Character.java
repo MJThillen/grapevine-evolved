@@ -12,6 +12,7 @@ public class Character {
     //OOC Notes
     private int id;
     private Player player;
+    private Game game;
     private String status;
     private LocalDate startDate;
     private Experience experience;

@@ -5,19 +5,19 @@ import java.time.LocalDate;
 public class Boon {
     private String charName;
     private boolean isOwed;
-    private String boonType;
-    private LocalDate boonDate;
+    private String type;
+    private LocalDate date;
     private String description;
 
     public Boon(String charName,
                 boolean isOwed,
-                String boonType,
-                LocalDate boonDate,
+                String type,
+                LocalDate date,
                 String description) {
         this.charName = charName;
         this.isOwed = isOwed;
-        this.boonType = boonType;
-        this.boonDate = boonDate;
+        this.type = type;
+        this.date = date;
         this.description = description;
     }
 
@@ -37,20 +37,20 @@ public class Boon {
         isOwed = owed;
     }
 
-    public String getBoonType() {
-        return boonType;
+    public String getType() {
+        return type;
     }
 
-    public void setBoonType(String boonType) {
-        this.boonType = boonType;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public LocalDate getBoonDate() {
-        return boonDate;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setBoonDate(LocalDate boonDate) {
-        this.boonDate = boonDate;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public String getDescription() {
